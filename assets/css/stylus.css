@@ -1,0 +1,122 @@
+body{
+  background: rgb(82, 80, 80);
+}
+
+.frame{
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  width: 400px;
+  height: 500px;
+  margin-top: -200px;
+  margin-left: -200px;
+  border-radius: 2px;
+  box-shadow: 4px 8px 16px 0 rgba(0,0,0,0.5);
+  overflow: hidden;
+  background: rgb(49, 45, 45);
+  color: rgb(255, 255, 255);
+  font-family: 'Open Sans', Helvetica, sans-serif;
+}
+
+
+/*Coluna esquerda configs*/
+.col-left{
+  position: absolute;
+  width: 50px;
+  height: 500px;
+  left: 5%;
+  top: 0%;
+}
+
+h6{
+  font-family: 'Open Sans', Helvetica, sans-serif;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.button-left-left{
+  position: absolute;
+  top: 50%;
+  width: 50px;
+  height: 100px;
+  clip-path: polygon(50% 0%, 0% 50%, 50% 100%);
+  background-color: rgb(249, 249, 249);
+}
+
+
+/*Coluna meio configs*/
+.col-middle{
+  position: absolute;
+  width: 300px;
+  left: 32%;
+  top: 15px;
+}
+
+.button-middle-left{
+  width: 30px;
+  height: 30px;
+  clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+  background-color: rgb(249, 249, 249);
+  rotate:calc(270deg);
+  display: inline-block;
+}
+
+.timer{
+  margin-top: 5%;
+  font-size: 60px;
+  font-weight: 950;
+  width: 100px;
+  height: 100px;
+  background-color: rgb(206, 84, 84);
+  border-radius: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  display: inline-flex;
+}
+
+.button-middle-right{
+  width: 30px;
+  height: 30px;
+  clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+  background-color: rgb(249, 249, 249);
+  rotate:calc(90deg);
+  display: inline-block;
+}
+
+.task{
+  position: absolute;
+  margin-top: 20px;
+  background-color: aqua;
+  
+}
+
+input{
+  border: rgb(110, 101, 101);
+  
+}
+
+/*coluna direita configs*/
+.col-right{
+  position: absolute;
+  width: 50px;
+  right: 0%;
+  top: 15px;
+}
+
+.see-week{
+  position: absolute;
+  top: 15px;
+
+}
+
+.button-right-right{
+  position: absolute;
+  top: 230px; /*Trocar aqui pra porcentagem...*/
+  width: 50px;
+  height: 100px;
+  clip-path: polygon(0% 0%, 50% 50%, 0% 100%);
+  background-color: rgb(249, 249, 249);
+}
