@@ -46,57 +46,70 @@ h6{
 }
 
 
+
 /*Coluna meio configs*/
 .col-middle{
   position: absolute;
   width: 300px;
-  left: 32%;
+  left: 30%;
   top: 15px;
 }
 
 .button-middle-left{
+  padding-top: 15%;
   width: 30px;
   height: 30px;
-  clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+  clip-path: polygon(100% 0%, 100% 100%, 0% 50%);
   background-color: rgb(249, 249, 249);
-  rotate:calc(270deg);
   display: inline-block;
 }
 
 .timer{
-  margin-top: 5%;
+  margin-top: 2%;
   font-size: 60px;
-  font-weight: 950;
+  font-weight: 999;
   width: 100px;
   height: 100px;
   background-color: rgb(206, 84, 84);
   border-radius: 50px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   display: inline-flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .button-middle-right{
+  padding-top: 15%;
   width: 30px;
   height: 30px;
-  clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+  clip-path: polygon(0% 0%, 0% 100%, 100% 50%);
   background-color: rgb(249, 249, 249);
-  rotate:calc(90deg);
   display: inline-block;
 }
 
-.task{
+.insert{
   position: absolute;
-  margin-top: 20px;
-  background-color: aqua;
-  
+  top: 135px;
+  left: -50px;
+  border:rgba(90, 89, 89, 0.884) solid 10px ;
+  display: flex;
 }
 
-input{
-  border: rgb(110, 101, 101);
-  
+.button-add{
+  display: flex;
+  left: -50px;
+  font-weight: 700;
+  font-size: 16px;
+  padding: 0px 5px 0px 5px;
 }
+
+.input-add{
+  display: flex;
+  padding: 0px 5px 0px 5px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+
 
 /*coluna direita configs*/
 .col-right{
