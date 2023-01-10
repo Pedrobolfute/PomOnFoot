@@ -50,12 +50,20 @@ h6{
 /*Coluna meio configs*/
 .col-middle{
   position: absolute;
-  width: 300px;
-  left: 30%;
+  width: 260px;
+  height: 500px;
+  left: 19%;
+  right: 30%;
   top: 15px;
 }
 
+.col-middle-top{
+  width: 70%;
+  margin-left: 16%;
+}
+
 .button-middle-left{
+
   padding-top: 15%;
   width: 30px;
   height: 30px;
@@ -89,7 +97,7 @@ h6{
 .insert{
   position: absolute;
   top: 135px;
-  left: -50px;
+  left: 0%;
   border:rgba(90, 89, 89, 0.884) solid 10px ;
   display: flex;
 }
@@ -99,7 +107,8 @@ h6{
   left: -50px;
   font-weight: 700;
   font-size: 16px;
-  padding: 0px 5px 0px 5px;
+  padding: 5px 5px 5px 5px;
+  background-color: rgb(246, 163, 163) ;
 }
 
 .input-add{
@@ -109,12 +118,32 @@ h6{
   font-weight: 500;
 }
 
+.list{
+  top: 40%;
+  position: absolute;
+  display:flex;
+  flex-direction:column;
+  align-items:flex-start;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 20px;
+  color: aliceblue;
+}
+
+.form-item{
+  font-family: 'Open Sans', Helvetica, sans-serif;
+  font-style: normal;
+  font-size: 20px;
+  font-weight: 600;
+  color: bisque;
+}
 
 
 /*coluna direita configs*/
 .col-right{
   position: absolute;
   width: 50px;
+  height: 500px;
   right: 0%;
   top: 15px;
 }
