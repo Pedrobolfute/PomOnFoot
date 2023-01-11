@@ -111,11 +111,25 @@ h6{
   background-color: rgb(246, 163, 163) ;
 }
 
+.button-add:hover{
+  background-color: rgb(237, 131, 131);
+  cursor: pointer;
+}
+
 .input-add{
   display: flex;
   padding: 0px 5px 0px 5px;
   font-size: 14px;
   font-weight: 500;
+}
+
+input{
+  background-color: rgb(39, 38, 38);
+  color: white;
+}
+
+input:hover{
+  background-color: rgb(24, 23, 23);
 }
 
 .list{
@@ -132,11 +146,17 @@ h6{
 
 .form-item{
   font-family: 'Open Sans', Helvetica, sans-serif;
-  font-style: normal;
-  font-size: 20px;
+  text-transform: uppercase;
   font-weight: 600;
   color: bisque;
+  font-size: 14px;
+
 }
+
+.taskList{
+  accent-color: red;
+}
+
 
 
 /*coluna direita configs*/

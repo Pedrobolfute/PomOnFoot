@@ -19,7 +19,7 @@ function newTask(description){
   const descriptionInput = document.createTextNode(description);
 
   createContent.setAttribute("type", "checkbox");
-  createContent.setAttribute("class", "TaskList");
+  createContent.setAttribute("class", "taskList");
   createContent.setAttribute("name", description);
   createContent.setAttribute("id", description);
 
