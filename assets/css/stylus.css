@@ -1,44 +1,45 @@
-body{
-  background: rgb(82, 80, 80);
+:root{
+  --row-distance: 25% 10% 65%;
 }
 
-.frame{
-  position: absolute;
-  top: 40%;
-  left: 50%;
+body{
+  display: grid;
+  align-content: center;
+  width: 100vh;
+  height: 100vh;
+  margin: 0 auto;
+  background: rgb(82, 80, 80);
+  overflow: hidden;
+}
+
+.pomodoro{
+  display: grid;
+  grid-template-columns: 15% 70% 15%;
   width: 400px;
   height: 500px;
-  margin-top: -200px;
-  margin-left: -200px;
-  border-radius: 2px;
+  margin: 0 auto;
+  border-radius: 10px;
   box-shadow: 4px 8px 16px 0 rgba(0,0,0,0.5);
-  overflow: hidden;
   background: rgb(49, 45, 45);
   color: rgb(255, 255, 255);
   font-family: 'Open Sans', Helvetica, sans-serif;
 }
 
 
-/*Coluna esquerda configs*/
-.col-left{
-  position: absolute;
-  width: 50px;
-  height: 500px;
-  left: 5%;
-  top: 0%;
+/* Coluna Esquerda */
+.columnLeft{
+  display: grid;
+  grid-template-rows: var(--row-distance);
+  align-items: center;
+  justify-items: center;
 }
 
 h6{
   font-family: 'Open Sans', Helvetica, sans-serif;
   font-size: 16px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
-.button-left-left{
-  position: absolute;
-  top: 50%;
+.buttonTodoLeft{
   width: 50px;
   height: 100px;
   clip-path: polygon(50% 0%, 0% 50%, 50% 100%);
@@ -46,79 +47,69 @@ h6{
 }
 
 
-
-/*Coluna meio configs*/
-.col-middle{
-  position: absolute;
-  width: 260px;
-  height: 500px;
-  left: 19%;
-  right: 30%;
-  top: 15px;
-}
-
-.col-middle-top{
-  width: 70%;
-  margin-left: 16%;
-}
-
-.button-middle-left{
-
-  padding-top: 15%;
-  width: 30px;
-  height: 30px;
-  clip-path: polygon(100% 0%, 100% 100%, 0% 50%);
-  background-color: rgb(249, 249, 249);
-  display: inline-block;
+/* Coluna Meio */
+.columnMiddle{
+  display: grid;
+  grid-template-rows: var(--row-distance);
+  align-items: center;
+  justify-items: center;
 }
 
 .timer{
-  margin-top: 2%;
-  font-size: 60px;
-  font-weight: 999;
-  width: 100px;
-  height: 100px;
-  background-color: rgb(206, 84, 84);
-  border-radius: 50px;
-  display: inline-flex;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: 20% 65% 20%;
   align-items: center;
+  justify-items: center;
+  justify-content: center;
+  margin: 0 auto;
 }
 
-.button-middle-right{
-  padding-top: 15%;
+.buttonTimerLeft{
   width: 30px;
-  height: 30px;
+  height: 40px;
+  clip-path: polygon(100% 0%, 100% 100%, 0% 50%);
+  background-color: rgb(249, 249, 249);
+}
+
+.time{
+  display: inline-grid;
+  justify-content: center;
+  align-items: center;
+  width: 90px;
+  height: 90px;
+  font-size: 60px;
+  font-weight: 999;
+  background-color: rgb(206, 84, 84);
+  border-radius: 50px;
+}
+
+.buttonTimerRight{
+  width: 30px;
+  height: 40px;
   clip-path: polygon(0% 0%, 0% 100%, 100% 50%);
   background-color: rgb(249, 249, 249);
-  display: inline-block;
 }
 
 .insert{
-  position: absolute;
-  top: 135px;
-  left: 0%;
-  border:rgba(90, 89, 89, 0.884) solid 10px ;
-  display: flex;
+  display: grid;
+  grid-template-columns: 20% 80%;
+  border:rgba(90, 89, 89, 0.884) solid 10px;
 }
 
-.button-add{
-  display: flex;
-  left: -50px;
-  font-weight: 700;
+.buttonAdd{
+  width: 48px;
+  height: 40px;
+  font-weight: 900;
   font-size: 16px;
-  padding: 5px 5px 5px 5px;
-  background-color: rgb(246, 163, 163) ;
+  background-color: rgb(246, 163, 163);
 }
 
-.button-add:hover{
+.buttonAdd:hover{
   background-color: rgb(237, 131, 131);
   cursor: pointer;
 }
 
-.input-add{
-  display: flex;
-  padding: 0px 5px 0px 5px;
+.inputAdd{
   font-size: 14px;
   font-weight: 500;
 }
@@ -132,51 +123,53 @@ input:hover{
   background-color: rgb(24, 23, 23);
 }
 
+/* Mexer aqui. */
 .list{
-  top: 40%;
-  position: absolute;
-  display:flex;
-  flex-direction:column;
-  align-items:flex-start;
-  justify-content: center;
+  display:grid;
+  grid-auto-rows: 25px;
+  height: 100%;
+  width: 100%;
+  max-height: 280px;
+  max-width: 260px;
   font-weight: 600;
   font-size: 20px;
   color: aliceblue;
+  overflow: auto;
+  align-content: start;
 }
 
-.form-item{
+.formItem{
+  display: block;
+  height: 100%;
   font-family: 'Open Sans', Helvetica, sans-serif;
   text-transform: uppercase;
   font-weight: 600;
   color: bisque;
   font-size: 14px;
-
+  
 }
 
 .taskList{
+
   accent-color: red;
 }
 
 
-
-/*coluna direita configs*/
-.col-right{
-  position: absolute;
-  width: 50px;
-  height: 500px;
-  right: 0%;
-  top: 15px;
+/* Coluna Direita */
+.columnRight{
+  display: grid;
+  grid-template-rows: var(--row-distance);
+  align-items: center;
+  justify-items: center;
 }
 
-.see-week{
-  position: absolute;
-  top: 15px;
-
+.seeWeek{
+  display: block;
+  width: 20px;
+  height: 20px;
 }
 
-.button-right-right{
-  position: absolute;
-  top: 230px; /*Trocar aqui pra porcentagem...*/
+.buttonTodoRight{
   width: 50px;
   height: 100px;
   clip-path: polygon(0% 0%, 50% 50%, 0% 100%);

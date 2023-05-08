@@ -4,7 +4,7 @@ const list = document.getElementsByClassName('list')[0];
 insert.onsubmit = function(parameter){
   
   parameter.preventDefault();
-  const inputAdd = document.getElementsByClassName('input-add')[0];
+  const inputAdd = document.getElementsByClassName('inputAdd')[0];
 
   if(inputAdd.value.trim() !== ''){
   newTask(inputAdd.value);
@@ -26,7 +26,7 @@ function newTask(description){
   createLabel.setAttribute("for", description);
   createLabel.appendChild(descriptionInput);
 
-  createDiv.classList.add("form-item");
+  createDiv.classList.add("formItem");
   createDiv.appendChild(createContent);
   createDiv.appendChild(createLabel);
   createDiv.appendChild(descriptionInput);

@@ -10,32 +10,34 @@
 </head>
 <body>
 
-  <div class="frame">
-    <div class="col-left">
+  <div class="pomodoro">
+
+    <div class="columnLeft">
       <header><h6>Hoje</h6></header>
-      <button class="button-left-left" type="button"></button>
+      <div></div>
+      <button class="buttonTodoLeft" type="button"></button>
     </div>
 
-    <div class="col-middle">
-      <div class="col-middle-top">
-        <button class="button-middle-left" type="button"></button>
-        <header class="timer">40</header>
-        <button class="button-middle-right" type="button"></button>
+    <div class="columnMiddle">
+      <div class="timer">
+        <button class="buttonTimerLeft" type="button"></button>
+        <header class="time">40</header>
+        <button class="buttonTimerRight" type="button"></button>
       </div>
-      <div class="task">
-        <form class="insert">
-          <button class="button-add" type="submit">Add</button>
-          <input class="input-add" type="text" placeholder="To-Do">
-        </form>
-        <div class="list"></div>
-      </div>
+      <form class="insert">
+        <button class="buttonAdd" type="submit"></button>
+        <input class="inputAdd" type="text" placeholder="To-Do">
+      </form>
+      <div class="list"></div>
     </div>
 
-    <div class="col-right">
-      <header><button class="see-week" type="button"></button></header>
-      <button class="button-right-right" type="button"></button>
+    <div class="columnRight">
+      <header><button class="seeWeek" type="button"></button></header>
+      <div></div>
+      <button class="buttonTodoRight" type="button"></button>
     </div>
   </div>
+  
 <script src="./assets/js/index.js"></script>  
 </body>
 </html>
