@@ -42,7 +42,7 @@ h6{
 .buttonTodoLeft{
   width: 50px;
   height: 100px;
-  clip-path: polygon(50% 0%, 0% 50%, 50% 100%);
+  clip-path: polygon(100% 0%, 50% 50%, 100% 100%);
   background-color: rgb(249, 249, 249);
 }
 
