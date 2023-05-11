@@ -1,2 +1,0 @@
-# PomOnFoot
-Pomodoro
