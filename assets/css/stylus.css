@@ -36,7 +36,8 @@ body{
 
 h6{
   font-family: 'Open Sans', Helvetica, sans-serif;
-  font-size: 16px;
+  font-size: 12px;
+  font-weight: 900;
 }
 
 .buttonTodoLeft{
