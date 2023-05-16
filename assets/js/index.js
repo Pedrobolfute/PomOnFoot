@@ -108,6 +108,4 @@ function newTask(description){
   createDiv.appendChild(descriptionInput);
   
   list.appendChild(createDiv);
-
-  
 }
