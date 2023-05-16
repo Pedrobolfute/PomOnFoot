@@ -1,4 +1,8 @@
-let defaultTime = 3
+const btnStart = document.querySelector('.time');
+console.log(btnStart.textContent)
+
+const som = document.getElementById('som');
+let defaultTime = btnStart.textContent
 
 class Timer {
   constructor(displayId) {
@@ -46,10 +50,10 @@ class Timer {
     }
   }
   getTimeComponents() {
-    const hours = Math.floor(this.time / 3600);
     const minutes = Math.floor((this.time % 3600) / 60);
     const seconds = this.time % 60;
-    return { hours, minutes, seconds };
+    console.log(minutes, seconds)
+    return { minutes, seconds };
   }
 
   formatTime(time) {
@@ -67,9 +71,7 @@ class Timer {
 }
 
 const timer = new Timer('.time');
-const btnStart = document.querySelector('.time');
 
-const som = document.getElementById('som');
 
 
 btnStart.addEventListener('click', timer.start.bind(timer));
