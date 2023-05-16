@@ -9,7 +9,7 @@ class Timer {
   start() {
     if (!this.running) {
       this.running = true;
-      this.time = 5 * 60;
+      this.time = 10;
       this.watch();
       this.interval = setInterval(this.watch.bind(this), 1000);
     }
