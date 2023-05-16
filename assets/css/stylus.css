@@ -36,7 +36,8 @@ body{
 
 h6{
   font-family: 'Open Sans', Helvetica, sans-serif;
-  font-size: 16px;
+  font-size: 12px;
+  font-weight: 900;
 }
 
 .buttonTodoLeft{
@@ -77,10 +78,15 @@ h6{
   align-items: center;
   width: 90px;
   height: 90px;
-  font-size: 60px;
+  font-size: 20px;
   font-weight: 999;
   background-color: rgb(206, 84, 84);
   border-radius: 50px;
+  font-size: 2.5rem;
+}
+
+.time:hover{
+  cursor: pointer;
 }
 
 .buttonTimerRight{
