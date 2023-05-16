@@ -1,9 +1,9 @@
-let defaultTime = 3
+//let defaultTime = 3 * 60
 
 class Timer {
   constructor(displayId) {
     this.display = document.querySelector(displayId);
-    this.time = defaultTime;
+    this.time = 5;
     this.running = false;
     this.interval = null;
   }
@@ -11,7 +11,7 @@ class Timer {
   start() {
     if (!this.running) {
       this.running = true;
-      this.time = defaultTime;
+      this.time = 5;
       this.watch();
       this.interval = setInterval(this.watch.bind(this), 1000);
     }
@@ -23,18 +23,19 @@ class Timer {
     this.running = false;
   }
 
-  reset() {
+  /*reset() {
     this.stop();
     this.display.textContent = '00';
-  }
+  }*/
 
   watch() {
-    if (this.time >= 0) {
+    if (this.time > 0) {
       const { minutes, seconds } = this.getTimeComponents();
+      console.log(minutes)
       if(minutes < 1){
-        this.display.textContent = this.formatTime(seconds)
-      }else{
         this.display.textContent = this.formatTime(minutes)
+      }else{
+        this.display.textContent = this.formatTime(seconds)
       }
     }
   
