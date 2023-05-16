@@ -9,6 +9,38 @@
   <title>PomOnFoot</title>
 </head>
 <body>
+
+  <div class="pomodoro">
+
+    <div class="columnLeft">
+      <header><h6>Hoje</h6></header>
+      <div></div>
+      <button class="buttonTodoLeft" type="button"></button>
+    </div>
+
+    <div class="columnMiddle">
+      <div class="timer">
+        <button class="buttonTimerLeft" type="button"></button>
+        <header class="time">40</header>
+        <button class="buttonTimerRight" type="button"></button>
+      </div>
+      <form class="insert">
+        <button class="buttonAdd" type="submit"></button>
+        <input class="inputAdd" type="text" placeholder="To-Do">
+      </form>
+      <div class="list"></div>
+    </div>
+
+    <div class="columnRight">
+      <header><a href="./week.html"><button class="seeWeek" type="button"></button></a></header>
+      <div></div>
+      <button class="buttonTodoRight" type="button"></button>
+    </div>
+  </div>
   
+<script src="./assets/js/index.js"></script>  
+<script src="./assets/js/hoje.js"></script>
+<script src="./assets/js/ontem.js"></script>
+<script src="./assets/js/amanha.js"></script>
 </body>
 </html>
