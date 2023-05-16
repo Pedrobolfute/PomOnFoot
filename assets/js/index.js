@@ -11,7 +11,7 @@ class Timer {
       this.running = true;
       this.time = 5 * 60;
       this.watch();
-      this.interval = setInterval(this.watch.bind(this), 10);
+      this.interval = setInterval(this.watch.bind(this), 1000);
     }
   }
 
