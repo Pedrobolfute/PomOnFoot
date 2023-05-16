@@ -1,3 +1,79 @@
+class Timer {
+  constructor(displayId) {
+    this.display = document.querySelector(displayId);
+    this.time = 5 * 60;
+    this.running = false;
+    this.interval = null;
+  }
+
+  start() {
+    if (!this.running) {
+      this.running = true;
+      this.time = 5 * 60;
+      this.watch();
+      this.interval = setInterval(this.watch.bind(this), 10);
+    }
+  }
+
+  stop() {
+    clearInterval(this.interval);
+    this.time = 0;
+    this.running = false;
+  }
+
+  reset() {
+    this.stop();
+    this.display.textContent = '00:00:00';
+  }
+
+  watch() {
+    if (this.time >= 0) {
+      const { hours, minutes, seconds } = this.getTimeComponents();
+  
+      this.display.textContent =
+        this.formatTime(hours) +
+        ':' +
+        this.formatTime(minutes) +
+        ':' +
+        this.formatTime(seconds);
+    }
+  
+    if (this.time <= 0) {
+      this.stop();
+      this.showAlert();
+    } else {
+      this.time--;
+    }
+  }
+  getTimeComponents() {
+    const hours = Math.floor(this.time / 3600);
+    const minutes = Math.floor((this.time % 3600) / 60);
+    const seconds = this.time % 60;
+    return { hours, minutes, seconds };
+  }
+
+  formatTime(time) {
+    return String(time).padStart(2, '0');
+  }
+
+  showAlert() {
+    som.play();
+    setTimeout(() => {
+      alert('Tempo esgotado!');
+      som.pause();
+      som.currentTime = 0;
+    }, 100);
+  }
+}
+
+const timer = new Timer('.time');
+const btnStart = document.querySelector('.time');
+
+const som = document.getElementById('som');
+
+
+btnStart.addEventListener('click', timer.start.bind(timer));
+
 const insert = document.getElementsByClassName('insert')[0];
 const list = document.getElementsByClassName('list')[0];
 
