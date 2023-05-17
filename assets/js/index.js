@@ -2,12 +2,19 @@ const btnStart = document.querySelector('.time');
 console.log(btnStart.textContent)
 
 const som = document.getElementById('som');
-let defaultTime = btnStart.textContent
+let defaultTime = 25
+
+const buttonTimerRight = document.getElementsByClassName('buttonTimerRight')[0]
+buttonTimerRight.addEventListener('click', function(){
+  console.log(defaultTime)
+  return defaultTime +=5
+})
+console.log(buttonTimerRight)
 
 class Timer {
   constructor(displayId) {
     this.display = document.querySelector(displayId);
-    this.time = 25 * 60;
+    this.time;
     this.running = false;
     this.interval = null;
   }
@@ -15,7 +22,7 @@ class Timer {
   start() {
     if (!this.running) {
       this.running = true;
-      this.time = 25 * 60;
+      this.time = defaultTime * 60;
       this.watch();
       this.interval = setInterval(this.watch.bind(this), 1000);
     }
