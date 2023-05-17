@@ -1,3 +1,7 @@
+*{
+  box-sizing: border-box;
+}
+
 :root{
   --row-distance: 25% 10% 65%;
 }
@@ -47,6 +51,12 @@ h6{
   background-color: rgb(249, 249, 249);
 }
 
+.buttonTodoLeft:hover{
+  cursor: pointer;
+  background-color: #ce5454;
+  transition: 0.3s;
+  width: 55px;
+}
 
 /* Coluna Meio */
 .columnMiddle{
@@ -70,6 +80,13 @@ h6{
   height: 40px;
   clip-path: polygon(100% 0%, 100% 100%, 0% 50%);
   background-color: rgb(249, 249, 249);
+}
+
+.buttonTimerLeft:hover{
+  cursor: pointer;
+  background-color: #ce5454;
+  transition: 0.3s;
+  width: 35px;
 }
 
 .time{
@@ -96,10 +113,20 @@ h6{
   background-color: rgb(249, 249, 249);
 }
 
+.buttonTimerRight:hover{
+  cursor: pointer;
+  background-color: #ce5454;
+  transition: 0.3s;
+  width: 35px;
+}
+
 .insert{
-  display: grid;
-  grid-template-columns: 20% 80%;
-  border:rgba(90, 89, 89, 0.884) solid 10px;
+  display: flex;
+  flex-direction: row;
+  width: 90%;
+  justify-content: space-around;
+  border:rgba(90, 89, 89, 0.884) solid 5px;
+  background-color: rgba(90, 89, 89, 0.884);
 }
 
 .buttonAdd{
@@ -108,6 +135,7 @@ h6{
   font-weight: 900;
   font-size: 16px;
   background-color: rgb(246, 163, 163);
+  padding: 0;
 }
 
 .buttonAdd:hover{
@@ -118,9 +146,6 @@ h6{
 .inputAdd{
   font-size: 14px;
   font-weight: 500;
-}
-
-input{
   background-color: rgb(39, 38, 38);
   color: white;
 }
@@ -180,4 +205,11 @@ input:hover{
   height: 100px;
   clip-path: polygon(0% 0%, 50% 50%, 0% 100%);
   background-color: rgb(249, 249, 249);
+}
+
+.buttonTodoRight:hover{
+  cursor: pointer;
+  background-color: #ce5454;
+  transition: 0.3s;
+  width: 55px;
 }
