@@ -1,30 +1,23 @@
-const btnStart = document.querySelector('.time');
-console.log(btnStart.textContent)
-
-const som = document.getElementById('som');
-let defaultTime = 25
-
-const buttonTimerRight = document.getElementsByClassName('buttonTimerRight')[0]
-buttonTimerRight.addEventListener('click', function(){
-  console.log(defaultTime)
-  return defaultTime +=5
-})
-console.log(buttonTimerRight)
+const standardTime = 15
 
 class Timer {
-  constructor(displayId) {
+  constructor(displayId, qtd1, qtd2) {
     this.display = document.querySelector(displayId);
-    this.time;
+    this.time = document.querySelectorAll(qtd1, qtd2);
     this.running = false;
     this.interval = null;
+  }
+
+  getTimeDefainer() {
+    
   }
 
   start() {
     if (!this.running) {
       this.running = true;
-      this.time = defaultTime * 60;
+      this.time;
       this.watch();
-      this.interval = setInterval(this.watch.bind(this), 1000);
+      this.interval = setInterval(this.watch.bind(this), 10);
     }
   }
 
@@ -40,6 +33,7 @@ class Timer {
   }*/
 
   watch() {
+    
     if (this.time >= 0) {
       const { minutes, seconds } = this.getTimeComponents();
       //console.log(minutes)
@@ -83,11 +77,15 @@ class Timer {
   }
 }
 
-const timer = new Timer('.time');
-
-
+const timer = new Timer('.time', '.buttonTimerLeft', '.buttonTimerRight');
+const btnStart = document.querySelector('.time');
+const btn1 = document.querySelector('.buttonTimerLeft');
+const btn2 = document.querySelector('.buttonTimerRight')
+const som = document.getElementById('som');
 
 btnStart.addEventListener('click', timer.start.bind(timer));
+btn1.addEventListener('click', timer.getTimeDefainer.bind(timer));
+btn2.addEventListener('click', timer.getTimeDefainer.bind(timer));
 
 const insert = document.getElementsByClassName('insert')[0];
 const list = document.getElementsByClassName('list')[0];
