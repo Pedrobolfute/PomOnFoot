@@ -50,6 +50,7 @@ function watch() {
     if(time >= 60) {
       display.textContent = formatTime(minutes);
     }else {
+      mudarCor();
       display.textContent = seconds;
     }
   }
@@ -119,4 +120,15 @@ function newTask(description){
   createDiv.appendChild(descriptionInput);
   
   list.appendChild(createDiv);
+}
+
+function mudarCor() {
+  let cor = document.querySelector('.time')
+
+  if(time %2 == 0) {
+    cor.style.backgroundColor = '#ce5454'
+  } else {
+    cor.style.backgroundColor = '#de2e2e'
+  }
+  
 }
