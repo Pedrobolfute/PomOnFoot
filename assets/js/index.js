@@ -1,97 +1,85 @@
-class Timer {
-  constructor(displayId) {
-    this.display = document.querySelector(displayId);
-    this.time = 5;
-    this.running = false;
-    this.interval = null;
-  }
-
-  getTimeDefainer() {
-    //'.buttonTimerLeft', '.buttonTimerRight'
-    const btn1 = document.querySelector('.buttonTimerLeft')
-    btn1.addEventListener('click', ()=>{
-      const v1 = btn1 -=5;
-      console.log(v1);
-    })
-    const btn2 = document.querySelector('.buttonTimerRight')
-    btn2.addEventListener('click', ()=>{
-      this.time +=5;
-      console.log(this.time);
-    })
-  }
-
-  start() {
-    if (!this.running) {
-      this.running = true;
-      this.time;
-      this.watch();
-      this.interval = setInterval(this.watch.bind(this), 1000);
-    }
-  }
-
-  stop() {
-    clearInterval(this.interval);
-    this.time = 0;
-    this.running = false;
-  }
-
-  /*reset() {
-    this.stop();
-    this.display.textContent = '00';
-  }*/
-
-  watch() {
-    
-    if (this.time >= 0) {
-      const { minutes, seconds } = this.getTimeComponents();
-      //console.log(minutes)
-
-      if(this.time >= 60) {
-        this.display.textContent = this.formatTime(minutes)
-      }else {
-        this.display.textContent = seconds
-      }
-    }
-  
-    if (this.time <= 0) {
-      this.stop();
-      this.showAlert();
-    } else {
-      this.time--;
-    }
-  }
-  getTimeComponents() {
-    const minutes = Math.floor((this.time % 3600) / 60);
-    const seconds = this.time % 60;
-    console.log(minutes, seconds)
-    return { minutes, seconds };
-  }
-
-  formatTime(time) {
-    return String(time).padStart(1, '0');
-  }
-    /*else{
-      return String(time).padStart(2, '0');
-    }
-  }*/
-
-  showAlert() {
-    som.play();
-    setTimeout(() => {
-      alert('Tempo esgotado!');
-      som.pause();
-      som.currentTime = 0;
-    }, 100);
-  }
-}
-
-const timer = new Timer('.time');
+const display = document.querySelector('.time');
+const som = document.getElementById('som');
+const buttonTimerRight = document.querySelector('.buttonTimerRight')
+const buttonTimerLeft = document.querySelector('.buttonTimerLeft')
 const btnStart = document.querySelector('.time');
 
-const som = document.getElementById('som');
+let defaultTime = 25
+let time = defaultTime * 60;
+let running = false;
+let interval;
 
-btnStart.addEventListener('click', timer.start.bind(timer));
+buttonTimerLeft.addEventListener('click', toDecrease);
+buttonTimerRight.addEventListener('click', increase);
+btnStart.addEventListener('click', start);
 
+function toDecrease() {
+  display.textContent = defaultTime -= 5;
+  return defaultTime;
+}
+
+function increase() {
+  display.textContent = defaultTime += 5;
+  return defaultTime;
+}
+  
+function start() {
+  if (!running) {
+    running = true;
+    time = defaultTime * 60;
+    watch();
+    interval = setInterval(watch, 1000);
+  }
+}
+  
+function stop() {
+  clearInterval(interval);
+  time = 0;
+  running = false;
+}
+
+function watch() {
+  if (time >= 0) {
+    const { minutes, seconds } = getTimeComponents(time);
+    //console.log(minutes)
+
+    if(time >= 60) {
+      display.textContent = formatTime(minutes);
+    }else {
+      display.textContent = seconds;
+    }
+  }
+
+  if (time <= 0) {
+    stop();
+    showAlert();
+  } else {
+    time--;
+  }
+}
+function getTimeComponents(time) {
+  const minutes = Math.floor((time % 3600) / 60);
+  const seconds = time % 60;
+  console.log(minutes, seconds)
+  return { minutes, seconds };
+}
+
+function formatTime(time) {
+  return String(time).padStart(1, '0');
+}
+  /*else{
+    return String(time).padStart(2, '0');
+  }
+}*/
+
+function showAlert() {
+  som.play();
+  setTimeout(() => {
+    alert('Tempo esgotado!');
+    som.pause();
+    som.currentTime = 0;
+  }, 100);
+}
 
 const insert = document.getElementsByClassName('insert')[0];
 const list = document.getElementsByClassName('list')[0];
