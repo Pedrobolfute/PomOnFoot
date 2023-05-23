@@ -32,7 +32,7 @@ function start() {
     running = true;
     time = defaultTime * 60;
     watch();
-    interval = setInterval(watch, 1000);
+    interval = setInterval(watch, 10);
   }
 }
   
@@ -49,9 +49,8 @@ function watch() {
 
     if(time >= 60) {
       display.textContent = formatTime(minutes);
-      changeColor()
     }else {
-      mudarCor();
+      changeColor();
       display.textContent = seconds;
     }
   }
@@ -123,7 +122,7 @@ function newTask(description){
   list.appendChild(createDiv);
 }
 
-function mudarCor() {
+function changeColor() {
   let cor = document.querySelector('.time')
 
   if(time %2 == 0) {
