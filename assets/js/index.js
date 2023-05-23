@@ -4,7 +4,7 @@ const buttonTimerRight = document.querySelector('.buttonTimerRight')
 const buttonTimerLeft = document.querySelector('.buttonTimerLeft')
 const btnStart = document.querySelector('.time');
 
-let defaultTime = 25
+let defaultTime = 5
 let time = defaultTime * 60;
 let running = false;
 let interval;
@@ -14,12 +14,16 @@ buttonTimerRight.addEventListener('click', increase);
 btnStart.addEventListener('click', start);
 
 function toDecrease() {
-  display.textContent = defaultTime -= 5;
+  if(defaultTime >= 5) {
+    display.textContent = defaultTime -= 5;
+  }
   return defaultTime;
 }
 
 function increase() {
-  display.textContent = defaultTime += 5;
+  if(defaultTime <= 85) {
+    display.textContent = defaultTime += 5;
+  }
   return defaultTime;
 }
   
@@ -28,7 +32,7 @@ function start() {
     running = true;
     time = defaultTime * 60;
     watch();
-    interval = setInterval(watch, 1000);
+    interval = setInterval(watch, 10);
   }
 }
   
@@ -58,7 +62,7 @@ function watch() {
   }
 }
 function getTimeComponents(time) {
-  const minutes = Math.floor((time % 3600) / 60);
+  const minutes = Math.floor((time % 7200) / 60);
   const seconds = time % 60;
   console.log(minutes, seconds)
   return { minutes, seconds };
