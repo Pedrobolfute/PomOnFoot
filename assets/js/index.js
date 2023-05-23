@@ -1,15 +1,23 @@
-const standardTime = 15
-
 class Timer {
-  constructor(displayId, qtd1, qtd2) {
+  constructor(displayId) {
     this.display = document.querySelector(displayId);
-    this.time = document.querySelectorAll(qtd1, qtd2);
+    this.time = 5;
     this.running = false;
     this.interval = null;
   }
 
   getTimeDefainer() {
-    
+    //'.buttonTimerLeft', '.buttonTimerRight'
+    const btn1 = document.querySelector('.buttonTimerLeft')
+    btn1.addEventListener('click', ()=>{
+      const v1 = btn1 -=5;
+      console.log(v1);
+    })
+    const btn2 = document.querySelector('.buttonTimerRight')
+    btn2.addEventListener('click', ()=>{
+      this.time +=5;
+      console.log(this.time);
+    })
   }
 
   start() {
@@ -17,7 +25,7 @@ class Timer {
       this.running = true;
       this.time;
       this.watch();
-      this.interval = setInterval(this.watch.bind(this), 10);
+      this.interval = setInterval(this.watch.bind(this), 1000);
     }
   }
 
@@ -77,15 +85,13 @@ class Timer {
   }
 }
 
-const timer = new Timer('.time', '.buttonTimerLeft', '.buttonTimerRight');
+const timer = new Timer('.time');
 const btnStart = document.querySelector('.time');
-const btn1 = document.querySelector('.buttonTimerLeft');
-const btn2 = document.querySelector('.buttonTimerRight')
+
 const som = document.getElementById('som');
 
 btnStart.addEventListener('click', timer.start.bind(timer));
-btn1.addEventListener('click', timer.getTimeDefainer.bind(timer));
-btn2.addEventListener('click', timer.getTimeDefainer.bind(timer));
+
 
 const insert = document.getElementsByClassName('insert')[0];
 const list = document.getElementsByClassName('list')[0];
