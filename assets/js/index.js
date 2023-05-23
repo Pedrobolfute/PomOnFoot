@@ -1,93 +1,85 @@
-const btnStart = document.querySelector('.time');
-console.log(btnStart.textContent)
-
+const display = document.querySelector('.time');
 const som = document.getElementById('som');
+const buttonTimerRight = document.querySelector('.buttonTimerRight')
+const buttonTimerLeft = document.querySelector('.buttonTimerLeft')
+const btnStart = document.querySelector('.time');
+
 let defaultTime = 25
+let time = defaultTime * 60;
+let running = false;
+let interval;
 
-const buttonTimerRight = document.getElementsByClassName('buttonTimerRight')[0]
-buttonTimerRight.addEventListener('click', function(){
-  console.log(defaultTime)
-  return defaultTime +=5
-})
-console.log(buttonTimerRight)
+buttonTimerLeft.addEventListener('click', toDecrease);
+buttonTimerRight.addEventListener('click', increase);
+btnStart.addEventListener('click', start);
 
-class Timer {
-  constructor(displayId) {
-    this.display = document.querySelector(displayId);
-    this.time;
-    this.running = false;
-    this.interval = null;
-  }
-
-  start() {
-    if (!this.running) {
-      this.running = true;
-      this.time = defaultTime * 60;
-      this.watch();
-      this.interval = setInterval(this.watch.bind(this), 1000);
-    }
-  }
-
-  stop() {
-    clearInterval(this.interval);
-    this.time = 0;
-    this.running = false;
-  }
-
-  /*reset() {
-    this.stop();
-    this.display.textContent = '00';
-  }*/
-
-  watch() {
-    if (this.time >= 0) {
-      const { minutes, seconds } = this.getTimeComponents();
-      //console.log(minutes)
-
-      if(this.time >= 60) {
-        this.display.textContent = this.formatTime(minutes)
-      }else {
-        this.display.textContent = seconds
-      }
-    }
-  
-    if (this.time <= 0) {
-      this.stop();
-      this.showAlert();
-    } else {
-      this.time--;
-    }
-  }
-  getTimeComponents() {
-    const minutes = Math.floor((this.time % 3600) / 60);
-    const seconds = this.time % 60;
-    console.log(minutes, seconds)
-    return { minutes, seconds };
-  }
-
-  formatTime(time) {
-    return String(time).padStart(1, '0');
-  }
-    /*else{
-      return String(time).padStart(2, '0');
-    }
-  }*/
-
-  showAlert() {
-    som.play();
-    setTimeout(() => {
-      alert('Tempo esgotado!');
-      som.pause();
-      som.currentTime = 0;
-    }, 100);
-  }
+function toDecrease() {
+  display.textContent = defaultTime -= 5;
+  return defaultTime;
 }
 
-const timer = new Timer('.time');
+function increase() {
+  display.textContent = defaultTime += 5;
+  return defaultTime;
+}
+  
+function start() {
+  if (!running) {
+    running = true;
+    time = defaultTime * 60;
+    watch();
+    interval = setInterval(watch, 1000);
+  }
+}
+  
+function stop() {
+  clearInterval(interval);
+  time = 0;
+  running = false;
+}
 
+function watch() {
+  if (time >= 0) {
+    const { minutes, seconds } = getTimeComponents(time);
+    //console.log(minutes)
 
+    if(time >= 60) {
+      display.textContent = formatTime(minutes);
+    }else {
+      display.textContent = seconds;
+    }
+  }
 
-btnStart.addEventListener('click', timer.start.bind(timer));
+  if (time <= 0) {
+    stop();
+    showAlert();
+  } else {
+    time--;
+  }
+}
+function getTimeComponents(time) {
+  const minutes = Math.floor((time % 3600) / 60);
+  const seconds = time % 60;
+  console.log(minutes, seconds)
+  return { minutes, seconds };
+}
+
+function formatTime(time) {
+  return String(time).padStart(1, '0');
+}
+  /*else{
+    return String(time).padStart(2, '0');
+  }
+}*/
+
+function showAlert() {
+  som.play();
+  setTimeout(() => {
+    alert('Tempo esgotado!');
+    som.pause();
+    som.currentTime = 0;
+  }, 100);
+}
 
 const insert = document.getElementsByClassName('insert')[0];
 const list = document.getElementsByClassName('list')[0];
