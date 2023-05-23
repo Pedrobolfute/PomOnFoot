@@ -32,7 +32,7 @@ function start() {
     running = true;
     time = defaultTime * 60;
     watch();
-    interval = setInterval(watch, 10);
+    interval = setInterval(watch, 1000);
   }
 }
   
@@ -45,7 +45,6 @@ function stop() {
 function watch() {
   if (time >= 0) {
     const { minutes, seconds } = getTimeComponents(time);
-    //console.log(minutes)
 
     if(time >= 60) {
       display.textContent = formatTime(minutes);
@@ -72,10 +71,6 @@ function getTimeComponents(time) {
 function formatTime(time) {
   return String(time).padStart(1, '0');
 }
-  /*else{
-    return String(time).padStart(2, '0');
-  }
-}*/
 
 function showAlert() {
   som.play();
