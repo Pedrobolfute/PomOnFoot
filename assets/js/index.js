@@ -4,7 +4,7 @@ const buttonTimerRight = document.querySelector('.buttonTimerRight')
 const buttonTimerLeft = document.querySelector('.buttonTimerLeft')
 const btnStart = document.querySelector('.time');
 
-let defaultTime = 5
+let defaultTime = 25
 let time = defaultTime * 60;
 let running = false;
 let interval;
@@ -49,6 +49,7 @@ function watch() {
 
     if(time >= 60) {
       display.textContent = formatTime(minutes);
+      changeColor()
     }else {
       display.textContent = seconds;
     }
@@ -119,4 +120,10 @@ function newTask(description){
   createDiv.appendChild(descriptionInput);
   
   list.appendChild(createDiv);
+}
+
+
+function changeColor(){
+    let time = document.querySelector('.time')
+    time.classList.add('color')
 }

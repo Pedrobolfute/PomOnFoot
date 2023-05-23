@@ -100,6 +100,8 @@ h6{
   background-color: rgb(206, 84, 84);
   border-radius: 50px;
   font-size: 2.5rem;
+  animation: changeColor 60s ease-in-out infinite alternate;
+
 }
 
 .time:hover{
@@ -212,4 +214,28 @@ input:hover{
   background-color: #ce5454;
   transition: 0.3s;
   width: 55px;
+}
+
+.color{
+  animation: changeColor 2s ease-in-out infinite alternate;
+}
+
+@keyframes chageColor{
+  0%{
+    background-color: #de2e2e;
+  }
+  25%{
+    background-color: red;
+  }
+  50%{
+    background-color: red;
+  }
+
+  75%{
+    background-color: plum;
+  }
+
+  100%{
+    background-color: #ce5454;
+  }
 }
