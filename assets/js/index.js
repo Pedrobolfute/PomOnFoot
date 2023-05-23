@@ -51,6 +51,7 @@ function watch() {
       display.textContent = formatTime(minutes);
       changeColor()
     }else {
+      mudarCor();
       display.textContent = seconds;
     }
   }
@@ -122,8 +123,13 @@ function newTask(description){
   list.appendChild(createDiv);
 }
 
+function mudarCor() {
+  let cor = document.querySelector('.time')
 
-function changeColor(){
-    let time = document.querySelector('.time')
-    time.classList.add('color')
+  if(time %2 == 0) {
+    cor.style.backgroundColor = '#ce5454'
+  } else {
+    cor.style.backgroundColor = '#de2e2e'
+  }
+  
 }
