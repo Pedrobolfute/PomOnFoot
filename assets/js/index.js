@@ -32,7 +32,7 @@ function start() {
     running = true;
     time = defaultTime * 60;
     watch();
-    interval = setInterval(watch, 10);
+    interval = setInterval(watch, 1000);
   }
 }
   
