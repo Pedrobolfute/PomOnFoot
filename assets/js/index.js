@@ -14,17 +14,23 @@ buttonTimerRight.addEventListener('click', increase);
 btnStart.addEventListener('click', start);
 
 function toDecrease() {
-  if(defaultTime >= 5) {
-    display.textContent = defaultTime -= 5;
+  if(!running) {
+    if(defaultTime >= 10) {
+      display.textContent = defaultTime -= 5;
+    }
+    return defaultTime;
   }
-  return defaultTime;
+  
 }
 
 function increase() {
-  if(defaultTime <= 85) {
-    display.textContent = defaultTime += 5;
+  if(!running) {
+    if(defaultTime <= 85) {
+      display.textContent = defaultTime += 5;
+    }
+    return defaultTime;
   }
-  return defaultTime;
+  
 }
   
 function start() {
