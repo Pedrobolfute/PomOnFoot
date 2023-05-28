@@ -1,0 +1,285 @@
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  --row-distance: 25% 10% 65%;
+}
+
+body {
+  display: grid;
+  align-content: center;
+  width: 100vh;
+  height: 100vh;
+  margin: 0 auto;
+  background: rgb(82, 80, 80);
+  overflow: hidden;
+}
+
+.pomodoro {
+  display: grid;
+  grid-template-columns: 15% 70% 15%;
+  width: 400px;
+  height: 500px;
+  margin: 0 auto;
+  border-radius: 10px;
+  box-shadow: 4px 8px 16px 0 rgba(0, 0, 0, 0.5);
+  background: rgb(49, 45, 45);
+  color: rgb(255, 255, 255);
+  font-family: 'Open Sans', Helvetica, sans-serif;
+}
+
+
+/* Coluna Esquerda */
+.columnLeft {
+  display: grid;
+  grid-template-rows: var(--row-distance);
+  align-items: center;
+  justify-items: center;
+}
+
+h6 {
+  font-family: 'Open Sans', Helvetica, sans-serif;
+  font-size: 12px;
+  font-weight: 900;
+}
+
+.buttonTodoLeft {
+  width: 50px;
+  height: 100px;
+  clip-path: polygon(100% 0%, 50% 50%, 100% 100%);
+  background-color: rgb(249, 249, 249);
+}
+
+.buttonTodoLeft:hover {
+  cursor: pointer;
+  background-color: #ce5454;
+  transition: 0.3s;
+  width: 55px;
+}
+
+/* Coluna Meio */
+.columnMiddle {
+  display: grid;
+  grid-template-rows: var(--row-distance);
+  align-items: center;
+  justify-items: center;
+}
+
+.timer {
+  display: grid;
+  grid-template-columns: 20% 65% 20%;
+  align-items: center;
+  justify-items: center;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+.buttonTimerLeft {
+  position: relative;
+  z-index: 1;
+  width: 30px;
+  height: 40px;
+  clip-path: polygon(100% 0%, 100% 100%, 0% 50%);
+  background-color: rgb(249, 249, 249);
+}
+
+.buttonTimerLeft:hover {
+  cursor: pointer;
+  background-color: #ce5454;
+  transition: 0.3s;
+  width: 35px;
+}
+
+.time {
+  position: relative;
+  z-index: 1;
+  display: inline-grid;
+  justify-content: center;
+  align-items: center;
+  width: 90px;
+  height: 90px;
+  font-size: 20px;
+  font-weight: 999;
+  background-color: rgb(206, 84, 84);
+  border-radius: 50px;
+  font-size: 2.5rem;
+  animation: changeColor 60s ease-in-out infinite alternate;
+
+}
+
+.time:hover {
+  cursor: pointer;
+}
+
+.buttonTimerRight {
+  position: relative;
+  z-index: 2;
+  width: 30px;
+  height: 40px;
+  clip-path: polygon(0% 0%, 0% 100%, 100% 50%);
+  background-color: rgb(249, 249, 249);
+}
+
+.buttonTimerRight:hover {
+  cursor: pointer;
+  background-color: #ce5454;
+  transition: 0.3s;
+  width: 35px;
+}
+
+.insert {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  width: 90%;
+  justify-content: space-around;
+  border: rgba(90, 89, 89, 0.884) solid 5px;
+  background-color: rgba(90, 89, 89, 0.884);
+}
+
+.buttonAdd {
+  width: 48px;
+  height: 40px;
+  font-weight: 900;
+  font-size: 16px;
+  background-color: rgb(246, 163, 163);
+  padding: 0;
+}
+
+.buttonAdd:hover {
+  background-color: rgb(237, 131, 131);
+  cursor: pointer;
+}
+
+.inputAdd {
+  font-size: 14px;
+  font-weight: 500;
+  background-color: rgb(39, 38, 38);
+  color: white;
+}
+
+input:hover {
+  background-color: rgb(24, 23, 23);
+}
+
+/* Mexer aqui. */
+.list {
+  display: grid;
+  grid-auto-rows: 25px;
+  height: 100%;
+  width: 100%;
+  max-height: 280px;
+  max-width: 260px;
+  font-weight: 600;
+  font-size: 20px;
+  color: aliceblue;
+  overflow: auto;
+  align-content: start;
+}
+
+.formItem {
+  display: block;
+  height: 100%;
+  font-family: 'Open Sans', Helvetica, sans-serif;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: bisque;
+  font-size: 14px;
+
+}
+
+.taskList {
+
+  accent-color: red;
+}
+
+
+/* Coluna Direita */
+.columnRight {
+  display: grid;
+  grid-template-rows: var(--row-distance);
+  align-items: center;
+  justify-items: center;
+}
+
+.seeWeek {
+  cursor: pointer;
+  display: block;
+  width: 20px;
+  height: 20px;
+}
+
+.buttonTodoRight {
+  width: 50px;
+  height: 100px;
+  clip-path: polygon(0% 0%, 50% 50%, 0% 100%);
+  background-color: rgb(249, 249, 249);
+}
+
+.buttonTodoRight:hover {
+  cursor: pointer;
+  background-color: #ce5454;
+  transition: 0.3s;
+  width: 55px;
+}
+
+.color {
+  animation: changeColor 2s ease-in-out infinite alternate;
+}
+
+@keyframes chageColor {
+  0% {
+    background-color: #de2e2e;
+  }
+
+  25% {
+    background-color: red;
+  }
+
+  50% {
+    background-color: red;
+  }
+
+  75% {
+    background-color: plum;
+  }
+
+  100% {
+    background-color: #ce5454;
+  }
+}
+
+/*Animação do circulo*/
+
+.dial-plate{
+  position: relative;
+}
+
+svg {
+  position: absolute;
+  pointer-events: none;
+  z-index: 10;
+  height: 240px;
+  width: 240px;
+  margin-left: -165.5px;
+  margin-top: -75px;
+}
+
+svg circle {
+  stroke-linecap: round;
+  fill: none;
+  stroke: #00000000;
+  stroke-dasharray: 251.2;
+  stroke-width: 1px;
+}
+
+circle:nth-child(2) {
+  stroke: #00fbff00;
+  stroke-dasharray: 251.2;
+  stroke-width: 3px;
+  animation: animate-circle 60s linear infinite;
+  transform: rotate(-90deg);
+  transform-origin: center center;
+}
+
