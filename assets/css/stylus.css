@@ -213,3 +213,36 @@ input:hover{
   transition: 0.3s;
   width: 55px;
 }
+
+/*Animação do circulo*/
+
+.dial-plate{
+  position: relative;
+}
+
+svg {
+  position: absolute;
+  pointer-events: none;
+  z-index: 10;
+  height: 240px;
+  width: 240px;
+  margin-left: -165.5px;
+  margin-top: -75px;
+}
+
+svg circle {
+  stroke-linecap: round;
+  fill: none;
+  stroke: #00000000;
+  stroke-dasharray: 251.2;
+  stroke-width: 1px;
+}
+
+circle:nth-child(2) {
+  stroke: #00fbff00;
+  stroke-dasharray: 251.2;
+  stroke-width: 3px;
+  animation: animate-circle 60s linear infinite;
+  transform: rotate(-90deg);
+  transform-origin: center center;
+}
