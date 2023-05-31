@@ -4,7 +4,7 @@ const buttonTimerRight = document.querySelector('.buttonTimerRight')
 const buttonTimerLeft = document.querySelector('.buttonTimerLeft')
 const btnStart = document.querySelector('.time');
 
-let defaultTime = 25
+let defaultTime = 30
 let time = defaultTime * 60;
 let running = false;
 let interval;
@@ -14,17 +14,23 @@ buttonTimerRight.addEventListener('click', increase);
 btnStart.addEventListener('click', start);
 
 function toDecrease() {
-  if(defaultTime >= 5) {
-    display.textContent = defaultTime -= 5;
+  if(!running) {
+    if(defaultTime >= 10) {
+      display.textContent = defaultTime -= 5;
+    }
+    return defaultTime;
   }
-  return defaultTime;
+  
 }
 
 function increase() {
-  if(defaultTime <= 85) {
-    display.textContent = defaultTime += 5;
+  if(!running) {
+    if(defaultTime <= 85) {
+      display.textContent = defaultTime += 5;
+    }
+    return defaultTime;
   }
-  return defaultTime;
+  
 }
   
 function start() {
@@ -43,6 +49,7 @@ function stop() {
 }
 
 function watch() {
+
   if (time >= 0) {
     const { minutes, seconds } = getTimeComponents(time);
 
@@ -126,4 +133,57 @@ function changeColor() {
     cor.style.backgroundColor = '#de2e2e'
   }
   
+}
+
+const circle = document.querySelector('.dial-plate');
+
+circle.addEventListener('click', animationCircle);
+
+function animationCircle() {
+  const circle01 = document.querySelector('.circle01');
+  const circle02 = document.querySelector('.circle02');
+
+  circle01.style.stroke = 'black';
+  circle02.style.stroke = '#00fbff';
+
+  if (time == 0) {
+    
+    circle01.style.stroke = '#00000000';
+    circle02.style.stroke = '#00fbff00';
+    circle02.style.animation = "none";
+
+    var keyframes = "";
+
+    var style = document.createElement("style");
+    style.innerHTML = keyframes;
+    document.head.appendChild(style);
+  } else {
+    circle01.style.stroke = 'black';
+    circle02.style.stroke = '#00fbff';
+    var keyframes = `@keyframes animate-circle {
+      0% {
+        transform: rotate(-90deg) scaleY(1);
+        stroke-dashoffset: 251.2;
+      }
+    
+      50% {
+        transform: rotate(-90deg) scaleY(1);
+        stroke-dashoffset: 0;
+      }
+    
+      50.001% {
+        transform: rotate(-90deg) scaleY(-1);
+        stroke-dashoffset: 0;
+      }
+    
+      100% {
+        transform: rotate(-90deg) scaleY(-1);
+        stroke-dashoffset: 251.2;
+      }
+    }`;
+    circle02.style.animation = "animate-circle 120s linear infinite";
+    var style = document.createElement("style");
+    style.innerHTML = keyframes;
+    document.head.appendChild(style);
+  }
 }
