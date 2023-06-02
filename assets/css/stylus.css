@@ -4,6 +4,7 @@
 
 :root {
   --row-distance: 25% 10% 65%;
+  --filter-white: invert(100%) sepia(100%) saturate(0%) hue-rotate(125deg) brightness(110%) contrast(101%);
 }
 
 body {
@@ -47,15 +48,13 @@ h6 {
 .buttonTodoLeft {
   width: 50px;
   height: 100px;
-  clip-path: polygon(100% 0%, 50% 50%, 100% 100%);
-  background-color: rgb(249, 249, 249);
+  filter: var(--filter-white);
 }
 
 .buttonTodoLeft:hover {
   cursor: pointer;
-  background-color: #ce5454;
   transition: 0.3s;
-  width: 55px;
+  transform: scale(1.2);
 }
 
 /* Coluna Meio */
@@ -80,15 +79,13 @@ h6 {
   z-index: 1;
   width: 30px;
   height: 40px;
-  clip-path: polygon(100% 0%, 100% 100%, 0% 50%);
-  background-color: rgb(249, 249, 249);
+  filter: var(--filter-white)
 }
 
 .buttonTimerLeft:hover {
   cursor: pointer;
-  background-color: #ce5454;
   transition: 0.3s;
-  width: 35px;
+  transform: scale(1.2);
 }
 
 .time {
@@ -107,8 +104,9 @@ h6 {
   animation: changeColor 60s ease-in-out infinite alternate;
 }
 
-.time:hover{
+.time:hover {
   transform: scale(1.05);
+  transition: 0.1s;
 }
 
 .time:hover {
@@ -120,15 +118,14 @@ h6 {
   z-index: 2;
   width: 30px;
   height: 40px;
-  clip-path: polygon(0% 0%, 0% 100%, 100% 50%);
-  background-color: rgb(249, 249, 249);
+  filter: var(--filter-white);
+
 }
 
 .buttonTimerRight:hover {
   cursor: pointer;
-  background-color: #ce5454;
-  transition: 0.3s;
-  width: 35px;
+  transition: .3s;
+  transform: scale(1.2);
 }
 
 .insert {
@@ -208,23 +205,26 @@ input:hover {
 
 .seeWeek {
   cursor: pointer;
-  display: block;
-  width: 20px;
-  height: 20px;
+  width: 48px;
+  height: 48px;
+  filter: var(--filter-white)
+}
+
+.seeWeek:hover {
+  transition: .3s;
+  transform: scale(1.1);
 }
 
 .buttonTodoRight {
   width: 50px;
   height: 100px;
-  clip-path: polygon(0% 0%, 50% 50%, 0% 100%);
-  background-color: rgb(249, 249, 249);
+  filter: var(--filter-white)
 }
 
 .buttonTodoRight:hover {
   cursor: pointer;
-  background-color: #ce5454;
   transition: 0.3s;
-  width: 55px;
+  transform: scale(1.2);
 }
 
 .color {
@@ -233,7 +233,7 @@ input:hover {
 
 /*Animação do circulo*/
 
-.dial-plate{
+.dial-plate {
   position: relative;
 }
 
@@ -264,6 +264,4 @@ circle:nth-child(2) {
   transform-origin: center center;
 }
 
-button:hover{
-  transform: scale(1.05);
-}
+/* Pedro alterou isso */

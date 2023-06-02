@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="./assets/css/stylus.css">
-  <link rel="shortcut icon" href="">
+  <link rel="shortcut icon" href="./assets/img/svg/task.svg">
   <title>PomOnFoot</title>
 </head>
 
@@ -19,14 +19,20 @@
         <h6>Ontem</h6>
       </header>
       <div></div>
-      <button class="buttonTodoLeft" type="button"></button>
+      <img src="./assets/img/svg/leftArrow.svg" alt="buttonTodoLeft" class="buttonTodoLeft">
     </div>
 
     <div class="columnMiddle">
       <div class="timer">
-        <button class="buttonTimerLeft" type="button"></button>
-        <header class="time">30</header>
-        <button class="buttonTimerRight" type="button"></button>
+      <img src="./assets/img/svg/leftArrow.svg" alt="buttonTimerLeft" class="buttonTimerLeft">
+        <div class="dial-plate">
+          <header class="time">30</header>
+          <svg>
+            <circle  cx="120" cy="120" r="40" class="circle01"></circle>
+            <circle  cx="120" cy="120" r="40" class="circle02"></circle>
+          </svg>
+        </div>
+        <img src="./assets/img/svg/rightArrow.svg" alt="buttonTimerRight" class="buttonTimerRight">
         <audio id="som" src="assets/musk/realme_9_pro.mp3"></audio>
       </div>
       <form class="insert">
@@ -35,10 +41,11 @@
       </form>
       <div class="list"></div>
     </div>
+
     <div class="columnRight">
-      <header><a href="./week.html"><button class="seeWeek" type="button"></button></a></header>
+      <header><img src="./assets/img/svg/see.svg" alt="see" id="see" class="seeWeek"></header>
       <div></div>
-      <button class="buttonTodoRight" type="button"></button>
+      <img src="./assets/img/svg/rightArrow.svg" alt="buttonTodoRight" class="buttonTodoRight">
     </div>
   </div>
 
