@@ -152,6 +152,12 @@ h6 {
   cursor: pointer;
 }
 
+.buttonAdd img{
+  width: 40px;
+  height: 36px;
+
+}
+
 .inputAdd {
   font-size: 14px;
   font-weight: 500;
