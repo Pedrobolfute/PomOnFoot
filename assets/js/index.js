@@ -14,23 +14,17 @@ buttonTimerRight.addEventListener('click', increase);
 btnStart.addEventListener('click', start);
 
 function toDecrease() {
-  if(!running) {
-    if(defaultTime >= 10) {
+  if(!running && defaultTime >= 10) {
       display.textContent = defaultTime -= 5;
-    }
-    return defaultTime;
   }
-  
+  return defaultTime;
 }
 
 function increase() {
-  if(!running) {
-    if(defaultTime <= 85) {
+  if(!running && defaultTime <= 85) {
       display.textContent = defaultTime += 5;
-    }
-    return defaultTime;
   }
-  
+  return defaultTime;
 }
   
 function start() {
@@ -84,6 +78,7 @@ function showAlert() {
   setTimeout(() => {
     alert('Tempo esgotado!');
     som.pause();
+    window.location.href = "hoje.html";
     som.currentTime = 0;
   }, 100);
 }
