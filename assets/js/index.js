@@ -4,7 +4,7 @@ const buttonTimerRight = document.querySelector('.buttonTimerRight')
 const buttonTimerLeft = document.querySelector('.buttonTimerLeft')
 const btnStart = document.querySelector('.time');
 
-let defaultTime = 5
+let defaultTime = 30
 let time = defaultTime * 60;
 let running = false;
 let interval;
@@ -38,7 +38,7 @@ function start() {
     running = true;
     time = defaultTime * 60;
     watch();
-    interval = setInterval(watch, 10);
+    interval = setInterval(watch, 1000);
   }
 }
   
@@ -52,12 +52,11 @@ function watch() {
 
   if (time >= 0) {
     const { minutes, seconds } = getTimeComponents(time);
-    //console.log(minutes)
 
     if(time >= 60) {
       display.textContent = formatTime(minutes);
     }else {
-      mudarCor();
+      changeColor();
       display.textContent = seconds;
     }
   }
@@ -79,17 +78,12 @@ function getTimeComponents(time) {
 function formatTime(time) {
   return String(time).padStart(1, '0');
 }
-  /*else{
-    return String(time).padStart(2, '0');
-  }
-}*/
 
 function showAlert() {
   som.play();
   setTimeout(() => {
     alert('Tempo esgotado!');
     som.pause();
-    window.location.href = "hoje.html"
     som.currentTime = 0;
   }, 100);
 }
@@ -130,7 +124,7 @@ function newTask(description){
   list.appendChild(createDiv);
 }
 
-function mudarCor() {
+function changeColor() {
   let cor = document.querySelector('.time')
 
   if(time %2 == 0) {
@@ -139,4 +133,57 @@ function mudarCor() {
     cor.style.backgroundColor = '#de2e2e'
   }
   
+}
+
+const circle = document.querySelector('.dial-plate');
+
+circle.addEventListener('click', animationCircle);
+
+function animationCircle() {
+  const circle01 = document.querySelector('.circle01');
+  const circle02 = document.querySelector('.circle02');
+
+  circle01.style.stroke = 'black';
+  circle02.style.stroke = '#00fbff';
+
+  if (time == 0) {
+    
+    circle01.style.stroke = '#00000000';
+    circle02.style.stroke = '#00fbff00';
+    circle02.style.animation = "none";
+
+    var keyframes = "";
+
+    var style = document.createElement("style");
+    style.innerHTML = keyframes;
+    document.head.appendChild(style);
+  } else {
+    circle01.style.stroke = 'black';
+    circle02.style.stroke = '#00fbff';
+    var keyframes = `@keyframes animate-circle {
+      0% {
+        transform: rotate(-90deg) scaleY(1);
+        stroke-dashoffset: 251.2;
+      }
+    
+      50% {
+        transform: rotate(-90deg) scaleY(1);
+        stroke-dashoffset: 0;
+      }
+    
+      50.001% {
+        transform: rotate(-90deg) scaleY(-1);
+        stroke-dashoffset: 0;
+      }
+    
+      100% {
+        transform: rotate(-90deg) scaleY(-1);
+        stroke-dashoffset: 251.2;
+      }
+    }`;
+    circle02.style.animation = "animate-circle 120s linear infinite";
+    var style = document.createElement("style");
+    style.innerHTML = keyframes;
+    document.head.appendChild(style);
+  }
 }

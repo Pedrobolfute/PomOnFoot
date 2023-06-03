@@ -1,12 +1,13 @@
-*{
+* {
   box-sizing: border-box;
 }
 
-:root{
+:root {
   --row-distance: 25% 10% 65%;
+  --filter-white: invert(100%) sepia(100%) saturate(0%) hue-rotate(125deg) brightness(110%) contrast(101%);
 }
 
-body{
+body {
   display: grid;
   align-content: center;
   width: 100vh;
@@ -16,14 +17,14 @@ body{
   overflow: hidden;
 }
 
-.pomodoro{
+.pomodoro {
   display: grid;
   grid-template-columns: 15% 70% 15%;
   width: 400px;
   height: 500px;
   margin: 0 auto;
   border-radius: 10px;
-  box-shadow: 4px 8px 16px 0 rgba(0,0,0,0.5);
+  box-shadow: 4px 8px 16px 0 rgba(0, 0, 0, 0.5);
   background: rgb(49, 45, 45);
   color: rgb(255, 255, 255);
   font-family: 'Open Sans', Helvetica, sans-serif;
@@ -31,42 +32,40 @@ body{
 
 
 /* Coluna Esquerda */
-.columnLeft{
+.columnLeft {
   display: grid;
   grid-template-rows: var(--row-distance);
   align-items: center;
   justify-items: center;
 }
 
-h6{
+h6 {
   font-family: 'Open Sans', Helvetica, sans-serif;
   font-size: 12px;
   font-weight: 900;
 }
 
-.buttonTodoLeft{
+.buttonTodoLeft {
   width: 50px;
   height: 100px;
-  clip-path: polygon(100% 0%, 50% 50%, 100% 100%);
-  background-color: rgb(249, 249, 249);
+  filter: var(--filter-white);
 }
 
-.buttonTodoLeft:hover{
+.buttonTodoLeft:hover {
   cursor: pointer;
-  background-color: #ce5454;
   transition: 0.3s;
-  width: 55px;
+  transform: scale(1.2);
 }
 
 /* Coluna Meio */
-.columnMiddle{
+.columnMiddle {
   display: grid;
   grid-template-rows: var(--row-distance);
   align-items: center;
   justify-items: center;
 }
 
-.timer{
+.timer {
   display: grid;
   grid-template-columns: 20% 65% 20%;
   align-items: center;
@@ -75,21 +74,23 @@ h6{
   margin: 0 auto;
 }
 
-.buttonTimerLeft{
+.buttonTimerLeft {
+  position: relative;
+  z-index: 1;
   width: 30px;
   height: 40px;
-  clip-path: polygon(100% 0%, 100% 100%, 0% 50%);
-  background-color: rgb(249, 249, 249);
+  filter: var(--filter-white)
 }
 
-.buttonTimerLeft:hover{
+.buttonTimerLeft:hover {
   cursor: pointer;
-  background-color: #ce5454;
   transition: 0.3s;
-  width: 35px;
+  transform: scale(1.2);
 }
 
-.time{
+.time {
+  position: relative;
+  z-index: 1;
   display: inline-grid;
   justify-content: center;
   align-items: center;
@@ -100,36 +101,44 @@ h6{
   background-color: rgb(206, 84, 84);
   border-radius: 50px;
   font-size: 2.5rem;
+  animation: changeColor 60s ease-in-out infinite alternate;
 }
 
-.time:hover{
+.time:hover {
+  transform: scale(1.05);
+  transition: 0.1s;
+}
+
+.time:hover {
   cursor: pointer;
 }
 
-.buttonTimerRight{
+.buttonTimerRight {
+  position: relative;
+  z-index: 2;
   width: 30px;
   height: 40px;
-  clip-path: polygon(0% 0%, 0% 100%, 100% 50%);
-  background-color: rgb(249, 249, 249);
+  filter: var(--filter-white);
+
 }
 
-.buttonTimerRight:hover{
+.buttonTimerRight:hover {
   cursor: pointer;
-  background-color: #ce5454;
-  transition: 0.3s;
-  width: 35px;
+  transition: .3s;
+  transform: scale(1.2);
 }
 
-.insert{
+.insert {
+  position: relative;
   display: flex;
   flex-direction: row;
   width: 90%;
   justify-content: space-around;
-  border:rgba(90, 89, 89, 0.884) solid 5px;
+  border: rgba(90, 89, 89, 0.884) solid 5px;
   background-color: rgba(90, 89, 89, 0.884);
 }
 
-.buttonAdd{
+.buttonAdd {
   width: 48px;
   height: 40px;
   font-weight: 900;
@@ -138,25 +147,31 @@ h6{
   padding: 0;
 }
 
-.buttonAdd:hover{
+.buttonAdd:hover {
   background-color: rgb(237, 131, 131);
   cursor: pointer;
 }
 
-.inputAdd{
+.buttonAdd img{
+  width: 40px;
+  height: 36px;
+
+}
+
+.inputAdd {
   font-size: 14px;
   font-weight: 500;
   background-color: rgb(39, 38, 38);
   color: white;
 }
 
-input:hover{
+input:hover {
   background-color: rgb(24, 23, 23);
 }
 
 /* Mexer aqui. */
-.list{
-  display:grid;
+.list {
+  display: grid;
   grid-auto-rows: 25px;
   height: 100%;
   width: 100%;
@@ -169,7 +184,7 @@ input:hover{
   align-content: start;
 }
 
-.formItem{
+.formItem {
   display: block;
   height: 100%;
   font-family: 'Open Sans', Helvetica, sans-serif;
@@ -177,39 +192,82 @@ input:hover{
   font-weight: 600;
   color: bisque;
   font-size: 14px;
-  
+
 }
 
-.taskList{
+.taskList {
 
   accent-color: red;
 }
 
 
 /* Coluna Direita */
-.columnRight{
+.columnRight {
   display: grid;
   grid-template-rows: var(--row-distance);
   align-items: center;
   justify-items: center;
 }
 
-.seeWeek{
-  display: block;
-  width: 20px;
-  height: 20px;
+.seeWeek {
+  cursor: pointer;
+  width: 48px;
+  height: 48px;
+  filter: var(--filter-white)
 }
 
-.buttonTodoRight{
+.seeWeek:hover {
+  transition: .3s;
+  transform: scale(1.1);
+}
+
+.buttonTodoRight {
   width: 50px;
   height: 100px;
-  clip-path: polygon(0% 0%, 50% 50%, 0% 100%);
-  background-color: rgb(249, 249, 249);
+  filter: var(--filter-white)
 }
 
-.buttonTodoRight:hover{
+.buttonTodoRight:hover {
   cursor: pointer;
-  background-color: #ce5454;
   transition: 0.3s;
-  width: 55px;
+  transform: scale(1.2);
 }
+
+.color {
+  animation: changeColor 2s ease-in-out infinite alternate;
+}
+
+/*Animação do circulo*/
+
+.dial-plate {
+  position: relative;
+}
+
+svg {
+  position: absolute;
+  pointer-events: none;
+  z-index: 10;
+  height: 240px;
+  width: 240px;
+  margin-left: -165.5px;
+  margin-top: -75px;
+}
+
+svg circle {
+  stroke-linecap: round;
+  fill: none;
+  stroke: #00000000;
+  stroke-dasharray: 251.2;
+  stroke-width: 1px;
+}
+
+circle:nth-child(2) {
+  stroke: #00fbff00;
+  stroke-dasharray: 251.2;
+  stroke-width: 3px;
+  animation: animate-circle 60s linear infinite;
+  transform: rotate(-90deg);
+  transform-origin: center center;
+}
+
+/* Pedro alterou isso */

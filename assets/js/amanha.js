@@ -1,7 +1,7 @@
-const seeWeek = document.getElementsByClassName('seeWeek')[0]
-const buttonTodoLeft = document.getElementsByClassName('buttonTodoLeft')[0]
-const buttonTodoRight = document.getElementsByClassName('buttonTodoRight')[0]
-const whoScreenIs = document.querySelector('h6').textContent.toLowerCase()
+// const seeWeek = document.getElementsByClassName('seeWeek')[0]
+// const buttonTodoLeft = document.getElementsByClassName('buttonTodoLeft')[0]
+// const buttonTodoRight = document.getElementsByClassName('buttonTodoRight')[0]
+// const whoScreenIs = document.querySelector('h6').textContent.toLowerCase()
 
 console.log(whoScreenIs)
 
