@@ -38,7 +38,7 @@ function start() {
     running = true;
     time = defaultTime * 60;
     watch();
-    interval = setInterval(watch, 1000);
+    interval = setInterval(watch, 10);
   }
 }
   
@@ -89,6 +89,7 @@ function showAlert() {
   setTimeout(() => {
     alert('Tempo esgotado!');
     som.pause();
+    window.location.href = "hoje.html"
     som.currentTime = 0;
   }, 100);
 }
