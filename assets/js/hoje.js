@@ -15,7 +15,6 @@ if (whoScreenIs === 'hoje') {
 } else if (whoScreenIs === 'ontem') {
   seeWeek.addEventListener('click', () => window.location.href = '../week.html')
 
-  //buttonTodoLeft.addEventListener('click', () => window.location.href = '');
 
   buttonTodoRight.addEventListener('click', () => window.location.href = './hoje.html');
 }
@@ -23,6 +22,4 @@ else if (whoScreenIs === 'amanhã') {
   seeWeek.addEventListener('click', () => window.location.href = '../week.html')
 
   buttonTodoLeft.addEventListener('click', () => window.location.href = '../hoje.html');
-
-  //buttonTodoRight.addEventListener('click', () => window.location.href = '');
 }
