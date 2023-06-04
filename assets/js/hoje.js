@@ -23,3 +23,4 @@ else if (whoScreenIs === 'amanhã') {
 
   buttonTodoLeft.addEventListener('click', () => window.location.href = '../hoje.html');
 }
+

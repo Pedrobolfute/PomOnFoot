@@ -92,12 +92,12 @@ insert.onsubmit = function(parameter){
   const inputAdd = document.getElementsByClassName('inputAdd')[0];
 
   if(inputAdd.value.trim() !== ''){
-  newTask(inputAdd.value);
+  newElement(inputAdd.value);
   insert.reset();
   }
 }
 
-function newTask(description){
+let newElement = function newTask(description){
   const createDiv = document.createElement("div");
   const createContent = document.createElement("input");
   const createLabel = document.createElement("label");
