@@ -1,10 +1,4 @@
-// const seeWeek = document.getElementsByClassName('seeWeek')[0]
-// const buttonTodoLeft = document.getElementsByClassName('buttonTodoLeft')[0]
-// const buttonTodoRight = document.getElementsByClassName('buttonTodoRight')[0]
-// const whoScreenIs = document.querySelector('h6').textContent.toLowerCase()
-
 console.log(whoScreenIs)
-
 
 if (whoScreenIs === 'hoje') {
   seeWeek.addEventListener('click', () => window.location.href = '../week.html')
@@ -15,8 +9,6 @@ if (whoScreenIs === 'hoje') {
 } else if (whoScreenIs === 'ontem') {
   seeWeek.addEventListener('click', () => window.location.href = '../week.html')
 
-  //buttonTodoLeft.addEventListener('click', () => window.location.href = '');
-
   buttonTodoRight.addEventListener('click', () => window.location.href = './hoje.html');
 }
 else if (whoScreenIs === 'amanhã') {
@@ -24,5 +16,12 @@ else if (whoScreenIs === 'amanhã') {
 
   buttonTodoLeft.addEventListener('click', () => window.location.href = '../hoje.html');
 
-  //buttonTodoRight.addEventListener('click', () => window.location.href = '');
+  tomorrowChangeEvents()
+}
+
+
+function tomorrowChangeEvents() {
+  const tomorrowButtonTodoRight = document.querySelector('.tomorrow.buttonTodoRight')
+  tomorrowButtonTodoRight.style.pointerEvents = 'none'
+  tomorrowButtonTodoRight.style.opacity = 0.5
 }
