@@ -40,9 +40,9 @@ body {
 }
 
 h6 {
-  font-family: 'Open Sans', Helvetica, sans-serif;
-  font-size: 12px;
-  font-weight: 900;
+  font-family: 'monospace', Helvetica, sans-serif;
+  font-size: 10px;
+  font-weight: 600;
 }
 
 .buttonTodoLeft {
