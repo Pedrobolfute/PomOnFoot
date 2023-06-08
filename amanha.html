@@ -4,50 +4,73 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Normalize Css  -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <!-- Css -->
   <link rel="stylesheet" href="./assets/css/stylus.css">
-  <link rel="shortcut icon" href="">
+  <link rel="stylesheet" href="./assets/css/config.css">
+  <link rel="shortcut icon" href="./assets/img/svg/task.svg">
+  <link rel="stylesheet" href="./assets/css/timer.css">
+  <link rel="stylesheet" href="./assets/css/toDo.css">
+
   <title>PomOnFoot</title>
 </head>
 <body>
 
+  <div class="config">
+    <header><h1>PomOnFoot</h1></header>
+    <div>
+      <span><img src="./assets/img/svg/unmute.svg" alt="unmute"></span>
+      <span><img src="./assets/img/svg/refresh.svg" alt="refresh"></span>
+      <span><img src="./assets/img/svg/volDown.svg" alt="volDown"></span>
+      <span><img src="./assets/img/svg/volUp.svg" alt="volUp"></span>
+      <span><img src="./assets/img/svg/theme.svg" alt="theme"></span>
+    </div>
+  </div>
   <div class="pomodoro">
 
     <div class="columnLeft">
       <header><h6>Amanhã</h6></header>
       <div></div>
-      <button class="buttonTodoLeft" type="button"></button>
+      <img src="./assets/img/svg/leftArrow.svg" alt="buttonTodoLeft" class="buttonTodoLeft">
     </div>
 
     <div class="columnMiddle">
       <div class="timer">
-        <button class="buttonTimerLeft" type="button"></button>
+      <img src="./assets/img/svg/leftArrow.svg" alt="buttonTimerLeft" class="buttonTimerLeft">
         <div class="dial-plate">
-          <header class="time">25</header>
+          <header class="time">30</header>
           <svg>
             <circle  cx="120" cy="120" r="40" class="circle01"></circle>
             <circle  cx="120" cy="120" r="40" class="circle02"></circle>
           </svg>
         </div>
-        <button class="buttonTimerRight" type="button"></button>
+        <img src="./assets/img/svg/rightArrow.svg" alt="buttonTimerRight" class="buttonTimerRight">
         <audio id="som" src="assets/musk/realme_9_pro.mp3"></audio>
       </div>
-      <form class="insert">
-        <button class="buttonAdd" type="submit"></button>
+      <form class="insert tomorrowInsert">
+        <button class="buttonAdd" type="submit">
+          <img src="./assets/img/svg/add.svg" alt="addTask">
+        </button>
         <input class="inputAdd" type="text" placeholder="To-Do">
       </form>
       <div class="list"></div>
     </div>
 
     <div class="columnRight">
-      <header><a href="./week.html"><button class="seeWeek" type="button"></button></a></header>
+      <header><img src="./assets/img/svg/see.svg" alt="see" id="see" class="seeWeek"></header>
       <div></div>
-      <button class="buttonTodoRight" type="button"></button>
+      <img src="./assets/img/svg/rightArrow.svg" alt="buttonTodoRight" class="tomorrow buttonTodoRight">
     </div>
   </div>
   
-<script src="./assets/js/index.js"></script>  
-<script src="./assets/js/hoje.js"></script>
-<script src="./assets/js/ontem.js"></script>
-<script src="./assets/js/amanha.js"></script>
+  <!-- JavaScript -->
+  <script src="./assets/js/index.js"></script>
+  <script src="./assets/js/timer.js"></script>  
+  <script src="./assets/js/toDo.js"></script>
+  <script src="./assets/js/config.js"></script>
+  <script src="./assets/js/dataStorage.js"></script>
 </body>
 </html>
