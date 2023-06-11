@@ -9,6 +9,7 @@ body.style.backgroundColor = '#000'
 frame.style.backgroundColor = '#333'
 unsee.style.cursor = 'pointer'
 
+
 //Main
 function main() {
   column1()

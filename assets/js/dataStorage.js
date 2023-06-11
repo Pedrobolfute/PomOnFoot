@@ -85,4 +85,18 @@ function fromWeek() {
     'saturday': 6,
     'sunday': 7
   }
+
+  
+
+}
+
+function getWeekData(){
+  const monday = document.querySelectorAll(`tr td:nth-child(${1})`)
+  const tuesday = document.querySelectorAll(`tr td:nth-child(${2})`)
+  const wednesday = document.querySelectorAll(`tr td:nth-child(${3})`)
+  const thursday = document.querySelectorAll(`tr td:nth-child(${4})`)
+  const friday = document.querySelectorAll(`tr td:nth-child(${5})`)
+  const saturday = document.querySelectorAll(`tr td:nth-child(${6})`)
+  const sunday = document.querySelectorAll(`tr td:nth-child(${7})`)
+
 }
