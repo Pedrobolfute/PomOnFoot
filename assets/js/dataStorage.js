@@ -1,9 +1,9 @@
 const date = new Date()
-const today = date.getDay() + 1
+const today = date.getDay()
 let tomorrow = today + 1
-if(tomorrow >= 7){tomorrow = 1}
+if (tomorrow >= 6) { tomorrow = 0 }
 let yesterday = today - 1
-if(yesterday <= 1){yesterday = 7}
+if (yesterday <= 0) { yesterday = 6 }
 
 
 
@@ -30,18 +30,18 @@ function setTodoData(value) {
   localStorage.setItem(`tasks${whichTodoDay()}`, JSON.stringify(tasks))
 }
 
-function loadLastTodoData(){
-    let list = document.getElementsByClassName('list')[0]
-    if (localStorage.hasOwnProperty(`tasks${whichTodoDay()}`)) {
-      let myTasks = JSON.parse(localStorage.getItem(`tasks${whichTodoDay()}`))
-      let last = myTasks[myTasks.length-1].task
-        const element = `
+function loadLastTodoData() {
+  let list = document.getElementsByClassName('list')[0]
+  if (localStorage.hasOwnProperty(`tasks${whichTodoDay()}`)) {
+    let myTasks = JSON.parse(localStorage.getItem(`tasks${whichTodoDay()}`))
+    let last = myTasks[myTasks.length - 1].task
+    const element = `
         <div class="formItem">
           <input type="checkbox" class="taskList" name="${last}" id="${last}">
           <label for="${last}">${last}</label></div>`
-        list.innerHTML += element
-    }
+    list.innerHTML += element
   }
+}
 
 function getTodoData() {
   let list = document.getElementsByClassName('list')[0]
@@ -71,7 +71,7 @@ function removeTodoData(item) {
   }
 }
 
-function cleanScreen(){
+function cleanScreen() {
   let list = document.getElementsByClassName('list')[0]
   list.innerHTML = ''
 }
@@ -80,38 +80,36 @@ function cleanScreen(){
 // from Week
 function fromWeek() {
   return week = {
-    'monday': 1,
-    'tuesday': 2,
-    'wednesday': 3,
-    'thursday': 4,
-    'friday': 5,
-    'saturday': 6,
-    'sunday': 7
+    'domingo': 0,
+    'segunda': 1,
+    'terçe': 2,
+    'quarta': 3,
+    'quinta': 4,
+    'sexta': 5,
+    'sábado': 6
   }
 
-  
+
 
 }
 
-function getWeekData(){
-  for(let i = 1; i <= 7; i++){
-    const allWeek = document.querySelectorAll(`tr td:nth-child(${i})`)
-  
-  if(localStorage.hasOwnProperty(`tasks${i}`)){
-    let myTasks = JSON.parse(localStorage.getItem(`tasks${i}`))
-    myTasks.map((task, index) => {
-      
-      allWeek[index].textContent = task.task
-    })
+function getWeekData() {
+  for (let i = 0; i <= 6; i++) {
+    const allWeek = document.querySelectorAll(`tr td:nth-child(${i+1})`)
+    if (localStorage.hasOwnProperty(`tasks${i}`)) {
+      let myTasks = JSON.parse(localStorage.getItem(`tasks${i}`))
+      myTasks.map((task, index) => {
+        allWeek[index].textContent = task.task
+      })
+    }
   }
 }
-}
 
-function setWeekData(value){
-  let tasks = Array()
-  if(localStorage.hasOwnProperty(`tasks${6}`)){
-    tasks.JSON.parse(localStorage.getItem(`tasks${6}`))
+function setWeekData(value) {
+    let tasks = Array()
+    if (localStorage.hasOwnProperty(`tasks${0}`)) {
+    tasks = JSON.parse(localStorage.getItem(`tasks${0}`))
+    }
+    tasks.push({ task: value })
+    localStorage.setItem(`tasks${0}`, JSON.stringify(tasks))
   }
-  tasks.push({task: value})
-  localStorage.setItem(`tasks${6}`, JSON.stringify(tasks))
-}

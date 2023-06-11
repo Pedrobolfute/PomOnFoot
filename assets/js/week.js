@@ -108,6 +108,7 @@ function insertInput(element) {
   `
   element.innerHTML = input
   keyEnter(element)
+  setWeekData(element)
 }
 
 function keyEnter(element) {
