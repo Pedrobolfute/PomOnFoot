@@ -1,7 +1,10 @@
 const date = new Date()
-const today = date.getDay()
-const tomorrow = today + 1
-const yesterday = today - 1
+const today = date.getDay() + 1
+let tomorrow = today + 1
+if(tomorrow >= 7){tomorrow = 1}
+let yesterday = today - 1
+if(yesterday <= 1){yesterday = 7}
+
 
 
 //From toDo
@@ -91,12 +94,24 @@ function fromWeek() {
 }
 
 function getWeekData(){
-  const monday = document.querySelectorAll(`tr td:nth-child(${1})`)
-  const tuesday = document.querySelectorAll(`tr td:nth-child(${2})`)
-  const wednesday = document.querySelectorAll(`tr td:nth-child(${3})`)
-  const thursday = document.querySelectorAll(`tr td:nth-child(${4})`)
-  const friday = document.querySelectorAll(`tr td:nth-child(${5})`)
-  const saturday = document.querySelectorAll(`tr td:nth-child(${6})`)
-  const sunday = document.querySelectorAll(`tr td:nth-child(${7})`)
+  for(let i = 1; i <= 7; i++){
+    const allWeek = document.querySelectorAll(`tr td:nth-child(${i})`)
+  
+  if(localStorage.hasOwnProperty(`tasks${i}`)){
+    let myTasks = JSON.parse(localStorage.getItem(`tasks${i}`))
+    myTasks.map((task, index) => {
+      
+      allWeek[index].textContent = task.task
+    })
+  }
+}
+}
 
+function setWeekData(value){
+  let tasks = Array()
+  if(localStorage.hasOwnProperty(`tasks${6}`)){
+    tasks.JSON.parse(localStorage.getItem(`tasks${6}`))
+  }
+  tasks.push({task: value})
+  localStorage.setItem(`tasks${6}`, JSON.stringify(tasks))
 }

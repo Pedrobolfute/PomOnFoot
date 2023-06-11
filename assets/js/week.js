@@ -9,7 +9,6 @@ body.style.backgroundColor = '#000'
 frame.style.backgroundColor = '#333'
 unsee.style.cursor = 'pointer'
 
-
 //Main
 function main() {
   column1()
@@ -20,7 +19,12 @@ function main() {
   column6()
   column7()
 }
-main()
+
+window.addEventListener('DOMContentLoaded', () => {
+  getWeekData()
+  main()  
+})
+
 
 //Funções
 function column1() {
