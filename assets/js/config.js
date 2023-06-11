@@ -1,3 +1,38 @@
+const btnPause = document.getElementById('music');
+const audio = new Audio('./assets/musk/Sinister - Anno Domini Beats.mp3');
+const playButton = document.querySelector('.time');
+
+let clicked = false;
+
+document.addEventListener('DOMContentLoaded', function() {
+  playButton.addEventListener('click', function() {
+      if(!clicked) {
+        audio.play();
+        clicked = true;
+      }
+      
+  });
+});
+
+/*window.addEventListener('load', ()=>{
+  btnPauseAlarm.addEventListener('click', ()=>{
+
+    if(!audio2.paused) {
+      audio2.pause();
+    }
+  });
+})*/
+
+btnPause.addEventListener('click',pausarMusic);
+
+function pausarMusic() {
+  if(!audio.paused) {
+    audio.pause();
+  }else {
+    audio.play();
+  }
+}
+
 function changeMusic() {
   let click = 0
   const mute = document.querySelector('.config span:nth-child(1) img')
@@ -13,7 +48,6 @@ function changeMusic() {
   })
 }
 changeMusic()
-
 
 function changeBell() {
   let click = 0
