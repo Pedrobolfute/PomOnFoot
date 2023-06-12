@@ -95,7 +95,7 @@ function fromWeek() {
 
 function getWeekData() {
   for (let i = 0; i <= 6; i++) {
-    const allWeek = document.querySelectorAll(`tr td:nth-child(${i+1})`)
+    const allWeek = document.querySelectorAll(`tr td:nth-child(${i + 1})`)
     if (localStorage.hasOwnProperty(`tasks${i}`)) {
       let myTasks = JSON.parse(localStorage.getItem(`tasks${i}`))
       myTasks.map((task, index) => {
@@ -105,11 +105,76 @@ function getWeekData() {
   }
 }
 
-function setWeekData(value) {
-    let tasks = Array()
-    if (localStorage.hasOwnProperty(`tasks${0}`)) {
-    tasks = JSON.parse(localStorage.getItem(`tasks${0}`))
-    }
-    tasks.push({ task: value })
-    localStorage.setItem(`tasks${0}`, JSON.stringify(tasks))
+function loadLastWeekData() {
+  let list = document.getElementsByClassName('enter')[0]
+  if (localStorage.hasOwnProperty(`tasks${0}`)) {
+    let myTasks = JSON.parse(localStorage.getItem(`tasks${0}`))
+    let last = myTasks[myTasks.length - 1].task
+    const element = `
+    <input 
+      type="text" 
+      style="
+          box-sizing: border-box;
+          height: 100%;
+          width: 100%;
+          border: solid 4px #0B57D0;
+          background-color: #abc8f7;
+          "
+      class="enter"
+      value="${isValueEmpty(last)}">
+  `
+    list.innerHTML += element
   }
+}
+
+function setWeekData(element, oldValue) {
+  let value = element.value
+  let oldV = oldValue
+  if (localStorage.hasOwnProperty(`tasks${0}`)) {
+    if (value.trim() !== '' && oldV.trim() == '') {
+      console.log('IF')
+      addWeekData(value, oldV)
+    } else if (value.trim() == '' && oldV.trim() !== '') {
+      removeWeekData(value, oldV)
+    } else {
+      console.log('ELSE')
+      changeWeekData(value, oldV)
+    }
+  }
+}
+
+//FUNÇÕES AUXILIARES À SETWEEKDATA
+function addWeekData(eleValue, old) {
+  let tasks = Array()
+  let value = eleValue
+  let oldValue = old
+  console.log(oldValue)
+
+  tasks = JSON.parse(localStorage.getItem(`tasks${0}`))
+  tasks.push({ task: value })
+  localStorage.setItem(`tasks${0}`, JSON.stringify(tasks))
+}
+
+function removeWeekData(value, oldV) {
+  let oldValue = oldV
+  let myTasks = JSON.parse(localStorage.getItem(`tasks${0}`))
+  myTasks = myTasks.filter(task => {
+    return task.task !== oldValue
+  })
+  localStorage.setItem(`tasks${0}`, JSON.stringify(myTasks))
+}
+
+function changeWeekData(value, oldV) {
+  let newValue = value
+  let oldValue = oldV
+  let myNewTasks = Array()
+
+  let myTasks = JSON.parse(localStorage.getItem(`tasks${0}`))
+  myTasks = myTasks.filter(task => {
+    return task.task !== oldValue
+  })
+  myNewTasks = myTasks
+  myNewTasks.push({task: newValue})
+  console.log(myNewTasks)
+  localStorage.setItem(`tasks${0}`, JSON.stringify(myNewTasks))
+}

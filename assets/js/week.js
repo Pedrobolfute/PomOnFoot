@@ -11,6 +11,7 @@ unsee.style.cursor = 'pointer'
 
 //Main
 function main() {
+
   column1()
   column2()
   column3()
@@ -93,6 +94,7 @@ function column7() {
 
 //Funções auxiliares
 function insertInput(element) {
+  let oldValue = element.textContent
   const input = `
     <input 
       type="text" 
@@ -107,16 +109,16 @@ function insertInput(element) {
       value="${isValueEmpty(element)}">
   `
   element.innerHTML = input
-  keyEnter(element)
-  setWeekData(element)
+  keyEnter(element, oldValue)
 }
 
-function keyEnter(element) {
+function keyEnter(element, oldValue) {
   const inputEle = document.querySelector('.enter')
   inputEle.addEventListener('keyup', (e) => {
     let key = e.which || e.keyCode
     if (key == 13) {
       element.textContent = inputEle.value
+      setWeekData(inputEle, oldValue)
     }
   })
 }
