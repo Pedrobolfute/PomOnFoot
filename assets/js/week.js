@@ -117,8 +117,9 @@ function keyEnter(element, oldValue) {
   inputEle.addEventListener('keyup', (e) => {
     let key = e.which || e.keyCode
     if (key == 13) {
+      let index = element.cellIndex
       element.textContent = inputEle.value
-      setWeekData(inputEle, oldValue)
+      setWeekData(inputEle, oldValue, index)
     }
   })
 }

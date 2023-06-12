@@ -127,54 +127,55 @@ function loadLastWeekData() {
   }
 }
 
-function setWeekData(element, oldValue) {
+function setWeekData(element, oldValue, index) {
   let value = element.value
   let oldV = oldValue
-  if (localStorage.hasOwnProperty(`tasks${0}`)) {
+  if (localStorage.hasOwnProperty(`tasks${index}`)) {
     if (value.trim() !== '' && oldV.trim() == '') {
       console.log('IF')
-      addWeekData(value, oldV)
+      addWeekData(value, oldV, index)
     } else if (value.trim() == '' && oldV.trim() !== '') {
-      removeWeekData(value, oldV)
+      removeWeekData(value, oldV, index)
     } else {
       console.log('ELSE')
-      changeWeekData(value, oldV)
+      changeWeekData(value, oldV, index)
     }
   }
 }
 
 //FUNÇÕES AUXILIARES À SETWEEKDATA
-function addWeekData(eleValue, old) {
+function addWeekData(eleValue, old, index) {
+  console.log(index)
   let tasks = Array()
   let value = eleValue
   let oldValue = old
   console.log(oldValue)
 
-  tasks = JSON.parse(localStorage.getItem(`tasks${0}`))
+  tasks = JSON.parse(localStorage.getItem(`tasks${index}`))
   tasks.push({ task: value })
-  localStorage.setItem(`tasks${0}`, JSON.stringify(tasks))
+  localStorage.setItem(`tasks${index}`, JSON.stringify(tasks))
 }
 
-function removeWeekData(value, oldV) {
+function removeWeekData(value, oldV, index) {
   let oldValue = oldV
-  let myTasks = JSON.parse(localStorage.getItem(`tasks${0}`))
+  let myTasks = JSON.parse(localStorage.getItem(`tasks${index}`))
   myTasks = myTasks.filter(task => {
     return task.task !== oldValue
   })
-  localStorage.setItem(`tasks${0}`, JSON.stringify(myTasks))
+  localStorage.setItem(`tasks${index}`, JSON.stringify(myTasks))
 }
 
-function changeWeekData(value, oldV) {
+function changeWeekData(value, oldV, index) {
   let newValue = value
   let oldValue = oldV
   let myNewTasks = Array()
 
-  let myTasks = JSON.parse(localStorage.getItem(`tasks${0}`))
+  let myTasks = JSON.parse(localStorage.getItem(`tasks${index}`))
   myTasks = myTasks.filter(task => {
     return task.task !== oldValue
   })
   myNewTasks = myTasks
   myNewTasks.push({task: newValue})
   console.log(myNewTasks)
-  localStorage.setItem(`tasks${0}`, JSON.stringify(myNewTasks))
+  localStorage.setItem(`tasks${index}`, JSON.stringify(myNewTasks))
 }
