@@ -1,7 +1,16 @@
-const btnPause = document.getElementById('music');
-const audio = new Audio('./assets/musk/Sinister - Anno Domini Beats.mp3');
-const playButton = document.querySelector('.time');
+const btnMusic = document.getElementById('btnMusic');
+const btnChangeMusic = document.getElementById('btnChangeMusic');
+const audioPlayer = document.getElementById('audioPlayer');
+const musicSource = document.getElementById('musicSource');
+//const playButton = document.querySelector('.time');
 
+let current = 0;
+let musicaAtiva = true;
+
+btnMusic.addEventListener('click',toggleMusic);
+btnChangeMusic.addEventListener('click',changeMusic);
+
+/*
 let clicked = false;
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -12,55 +21,68 @@ document.addEventListener('DOMContentLoaded', function() {
       }
       
   });
-});
+});*/
+let tracks = [
+  './assets/musk/1.mp3',
+  './assets/musk/2.mp3',
+  './assets/musk/3.mp3',
+  './assets/musk/4.mp3'
+]
 
-/*window.addEventListener('load', ()=>{
-  btnPauseAlarm.addEventListener('click', ()=>{
-
-    if(!audio2.paused) {
-      audio2.pause();
+function changeMusic(){
+  toggleMusic();
+  if(musicaAtiva) {
+    if(current < tracks.length - 1) {
+      current++;  
+    } else {
+      current = 0;
     }
-  });
-})*/
+    
+    let next = tracks[current];
+    console.log("carregar próxima musk: " + next);
 
-btnPause.addEventListener('click',pausarMusic);
-
-function pausarMusic() {
-  if(!audio.paused) {
-    audio.pause();
-  }else {
-    audio.play();
+    musicSource.setAttribute('src', next);
+    audioPlayer.load();
+    audioPlayer.play();
   }
 }
 
-function changeMusic() {
+function toggleMusic() {
+  
+  if(musicaAtiva && audioPlayer.paused) {
+    audioPlayer.play();
+  }else {
+    audioPlayer.pause();
+  }
+}
+
+function changeIconMusic() {
   let click = 0
   const mute = document.querySelector('.config span:nth-child(1) img')
   mute.addEventListener('click', function () {
     click++
     if (click === 0) {
-      mute.setAttribute('src', './assets/img/svg/unmute.svg')
-    } else {
-      click = -1
       mute.setAttribute('src', './assets/img/svg/mute.svg')
       mute.setAttribute('title', 'Ligar Musica')
+    } else {
+      click = -1
+      mute.setAttribute('src', './assets/img/svg/unmute.svg')
     }
   })
 }
-changeMusic()
+changeIconMusic()
 
 function changeBell() {
   let click = 0
-  const mute = document.querySelector('.config span:nth-child(5) img')
+  const mute = document.querySelector('.config span:nth-child(5) img');
   mute.addEventListener('click', function () {
-    click++
+    click++;
     if (click === 0) {
-      mute.setAttribute('src', './assets/img/svg/bell.svg')
+      mute.setAttribute('src', './assets/img/svg/bell.svg');
     } else {
-      click = -1
-      mute.setAttribute('src', './assets/img/svg/bellMute.svg')
-      mute.setAttribute('title', 'Ligar Alarme')
-
+      click = -1;
+      mute.setAttribute('src', './assets/img/svg/bellMute.svg');
+      mute.setAttribute('title', 'Ligar Alarme');
     }
   })
 }

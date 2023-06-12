@@ -6,7 +6,6 @@ const buttonTimerRight = document.querySelector('.buttonTimerRight');
 const buttonTimerLeft = document.querySelector('.buttonTimerLeft');
 const btnStart = document.querySelector('.time');
 
-
 let defaultTime = 30
 let time = defaultTime * 60;
 let running = false;
