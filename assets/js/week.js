@@ -1,17 +1,8 @@
 const returnToToday = document.getElementById('return');
 returnToToday.addEventListener('click', () => window.location.href = '../hoje.html')
 
-const body = document.querySelector('body')
-const frame = document.querySelector('.frame')
-const unsee = document.querySelector('#return')
-
-body.style.backgroundColor = '#000'
-frame.style.backgroundColor = '#333'
-unsee.style.cursor = 'pointer'
-
 //Main
 function main() {
-
   column1()
   column2()
   column3()
@@ -32,7 +23,8 @@ function column1() {
   const coluna = document.querySelectorAll(`tr td:nth-child(${1})`)
   coluna.forEach(block => {
     block.addEventListener('dblclick', (e) => {
-      insertInput(e.currentTarget)
+      let index = e.currentTarget.cellIndex + 1
+      insertInput(e.currentTarget, index)
     })
   })
 }
@@ -41,7 +33,8 @@ function column2() {
   const coluna = document.querySelectorAll(`tr td:nth-child(${2})`)
   coluna.forEach(block => {
     block.addEventListener('dblclick', (e) => {
-      insertInput(e.currentTarget)
+      let index = e.currentTarget.cellIndex + 1
+      insertInput(e.currentTarget, index)
     })
   })
 }
@@ -50,7 +43,8 @@ function column3() {
   const coluna = document.querySelectorAll(`tr td:nth-child(${3})`)
   coluna.forEach(block => {
     block.addEventListener('dblclick', (e) => {
-      insertInput(e.currentTarget)
+      let index = e.currentTarget.cellIndex + 1
+      insertInput(e.currentTarget, index)
     })
   })
 }
@@ -59,7 +53,8 @@ function column4() {
   const coluna = document.querySelectorAll(`tr td:nth-child(${4})`)
   coluna.forEach(block => {
     block.addEventListener('dblclick', (e) => {
-      insertInput(e.currentTarget)
+      let index = e.currentTarget.cellIndex + 1
+      insertInput(e.currentTarget, index)
     })
   })
 }
@@ -68,7 +63,8 @@ function column5() {
   const coluna = document.querySelectorAll(`tr td:nth-child(${5})`)
   coluna.forEach(block => {
     block.addEventListener('dblclick', (e) => {
-      insertInput(e.currentTarget)
+      let index = e.currentTarget.cellIndex + 1
+      insertInput(e.currentTarget, index)
     })
   })
 }
@@ -77,7 +73,8 @@ function column6() {
   const coluna = document.querySelectorAll(`tr td:nth-child(${6})`)
   coluna.forEach(block => {
     block.addEventListener('dblclick', (e) => {
-      insertInput(e.currentTarget)
+      let index = e.currentTarget.cellIndex + 1
+      insertInput(e.currentTarget, index)
     })
   })
 }
@@ -86,14 +83,15 @@ function column7() {
   const coluna = document.querySelectorAll(`tr td:nth-child(${7})`)
   coluna.forEach(block => {
     block.addEventListener('dblclick', (e) => {
-      insertInput(e.currentTarget)
+      let index = e.currentTarget.cellIndex + 1
+      insertInput(e.currentTarget, index)
     })
   })
 }
 
 
 //Funções auxiliares
-function insertInput(element) {
+function insertInput(element, index) {
   let oldValue = element.textContent
   const input = `
     <input 
@@ -109,17 +107,17 @@ function insertInput(element) {
       value="${isValueEmpty(element)}">
   `
   element.innerHTML = input
-  keyEnter(element, oldValue)
+  keyEnter(element, oldValue, index)
 }
 
-function keyEnter(element, oldValue) {
+function keyEnter(element, oldValue, index) {
+  let i = index
   const inputEle = document.querySelector('.enter')
   inputEle.addEventListener('keyup', (e) => {
     let key = e.which || e.keyCode
     if (key == 13) {
-      let index = element.cellIndex
       element.textContent = inputEle.value
-      setWeekData(inputEle, oldValue, index)
+      setWeekData(inputEle, oldValue, i)
     }
   })
 }

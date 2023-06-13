@@ -6,7 +6,6 @@ let yesterday = today - 1
 if (yesterday <= 0) { yesterday = 6 }
 
 
-
 //From toDo
 function whichTodoDay() {
   if (document.querySelector('h6')) {
@@ -78,21 +77,6 @@ function cleanScreen() {
 
 
 // from Week
-function fromWeek() {
-  return week = {
-    'domingo': 0,
-    'segunda': 1,
-    'terçe': 2,
-    'quarta': 3,
-    'quinta': 4,
-    'sexta': 5,
-    'sábado': 6
-  }
-
-
-
-}
-
 function getWeekData() {
   for (let i = 0; i <= 6; i++) {
     const allWeek = document.querySelectorAll(`tr td:nth-child(${i + 1})`)
@@ -105,64 +89,42 @@ function getWeekData() {
   }
 }
 
-function loadLastWeekData() {
-  let list = document.getElementsByClassName('enter')[0]
-  if (localStorage.hasOwnProperty(`tasks${0}`)) {
-    let myTasks = JSON.parse(localStorage.getItem(`tasks${0}`))
-    let last = myTasks[myTasks.length - 1].task
-    const element = `
-    <input 
-      type="text" 
-      style="
-          box-sizing: border-box;
-          height: 100%;
-          width: 100%;
-          border: solid 4px #0B57D0;
-          background-color: #abc8f7;
-          "
-      class="enter"
-      value="${isValueEmpty(last)}">
-  `
-    list.innerHTML += element
-  }
-}
 
 function setWeekData(element, oldValue, index) {
   let value = element.value
   let oldV = oldValue
-  if (localStorage.hasOwnProperty(`tasks${index}`)) {
-    if (value.trim() !== '' && oldV.trim() == '') {
-      console.log('IF')
-      addWeekData(value, oldV, index)
-    } else if (value.trim() == '' && oldV.trim() !== '') {
-      removeWeekData(value, oldV, index)
-    } else {
-      console.log('ELSE')
-      changeWeekData(value, oldV, index)
-    }
+
+  if (value.trim() !== '' && oldV.trim() == '') {
+    addWeekData(value, oldV, index)
+  } else if (value.trim() == '' && oldV.trim() !== '') {
+    removeWeekData(value, oldV, index)
+  } else if (oldV.trim() == value.trim()) {
+  } else {
+    changeWeekData(value, oldV, index)
   }
 }
 
 //FUNÇÕES AUXILIARES À SETWEEKDATA
 function addWeekData(eleValue, old, index) {
-  console.log(index)
+  let i = index - 1
   let tasks = Array()
   let value = eleValue
-  let oldValue = old
-  console.log(oldValue)
 
-  tasks = JSON.parse(localStorage.getItem(`tasks${index}`))
+  if (localStorage.hasOwnProperty(`tasks${i}`)) {
+    tasks = JSON.parse(localStorage.getItem(`tasks${i}`))
+  }
   tasks.push({ task: value })
-  localStorage.setItem(`tasks${index}`, JSON.stringify(tasks))
+  localStorage.setItem(`tasks${i}`, JSON.stringify(tasks))
 }
 
 function removeWeekData(value, oldV, index) {
   let oldValue = oldV
-  let myTasks = JSON.parse(localStorage.getItem(`tasks${index}`))
+
+  let myTasks = JSON.parse(localStorage.getItem(`tasks${index - 1}`))
   myTasks = myTasks.filter(task => {
     return task.task !== oldValue
   })
-  localStorage.setItem(`tasks${index}`, JSON.stringify(myTasks))
+  localStorage.setItem(`tasks${index - 1}`, JSON.stringify(myTasks))
 }
 
 function changeWeekData(value, oldV, index) {
@@ -170,12 +132,11 @@ function changeWeekData(value, oldV, index) {
   let oldValue = oldV
   let myNewTasks = Array()
 
-  let myTasks = JSON.parse(localStorage.getItem(`tasks${index}`))
+  let myTasks = JSON.parse(localStorage.getItem(`tasks${index - 1}`))
   myTasks = myTasks.filter(task => {
     return task.task !== oldValue
   })
   myNewTasks = myTasks
-  myNewTasks.push({task: newValue})
-  console.log(myNewTasks)
-  localStorage.setItem(`tasks${index}`, JSON.stringify(myNewTasks))
+  myNewTasks.push({ task: newValue })
+  localStorage.setItem(`tasks${index - 1}`, JSON.stringify(myNewTasks))
 }
