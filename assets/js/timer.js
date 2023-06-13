@@ -1,18 +1,23 @@
 // Neandro Area
 const display = document.querySelector('.time');
 const som = document.getElementById('som');
-const buttonTimerRight = document.querySelector('.buttonTimerRight')
-const buttonTimerLeft = document.querySelector('.buttonTimerLeft')
+const btnPauseAlarm = document.getElementById('alarm');
+const buttonTimerRight = document.querySelector('.buttonTimerRight');
+const buttonTimerLeft = document.querySelector('.buttonTimerLeft');
 const btnStart = document.querySelector('.time');
 
 let defaultTime = 30
 let time = defaultTime * 60;
 let running = false;
 let interval;
+let alarmActive = true;
+let alarmPaused = false;
 
 buttonTimerLeft.addEventListener('click', toDecrease);
 buttonTimerRight.addEventListener('click', increase);
 btnStart.addEventListener('click', start);
+btnPauseAlarm.addEventListener('click', toggleAlarm);
+
 
 function toDecrease() {
   if (!running && defaultTime >= 10) {
@@ -33,7 +38,7 @@ function start() {
     running = true;
     time = defaultTime * 60;
     watch();
-    interval = setInterval(watch, 1000);
+    interval = setInterval(watch, 10);
   }
 }
 
@@ -75,13 +80,31 @@ function formatTime(time) {
 }
 
 function showAlert() {
-  som.play();
-  setTimeout(() => {
-    alert('Tempo esgotado!');
+  if(alarmActive && !alarmPaused) {
+    alarmActive = false;
+    som.play();
+    setTimeout(() => {
+      alert('Tempo esgotado!');
+      som.pause();
+      window.location.href = "hoje.html";
+      som.currentTime = 0;
+      alarmActive = true;
+    }, 100);
+  }else {
+    toggleAlarm();
+    setTimeout(() => {
+      alert('Tempo esgotado!');
+      window.location.href = "hoje.html";
+      alarmActive = true;
+    }, 100);
+  }
+}
+
+function toggleAlarm() {
+  alarmPaused = !alarmPaused;
+  if(alarmPaused) {
     som.pause();
-    window.location.href = "hoje.html";
-    som.currentTime = 0;
-  }, 100);
+  }
 }
 
 function changeColor() {

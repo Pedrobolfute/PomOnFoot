@@ -14,6 +14,7 @@
   <link rel="shortcut icon" href="./assets/img/svg/task.svg">
   <link rel="stylesheet" href="./assets/css/timer.css">
   <link rel="stylesheet" href="./assets/css/toDo.css">
+  <link rel="stylesheet" href="assets/css/theme.css">
 
   <title>PomOnFoot</title>
 </head>
@@ -22,12 +23,12 @@
   <div class="config">
     <header><h1>PomOnFoot</h1></header>
     <div>
-      <span><img src="./assets/img/svg/unmute.svg" alt="unmute" title="Musica de Fundo"></span>
-      <span><img src="./assets/img/svg/refresh.svg" alt="refresh" title="Mudar Toque"></span>
-      <span><img src="./assets/img/svg/volDown.svg" alt="volDown" title="Diminuir Volume"></span>
-      <span><img src="./assets/img/svg/volUp.svg" alt="volUp" title="Almentar Valume"></span>
-      <span><img src="./assets/img/svg/bell.svg" alt="theme" title="Alarme"></span>
-      <span><img src="./assets/img/svg/theme.svg" alt="theme" title="Mudar Tema"></span>
+      <span id="btnMusic"><img src="./assets/img/svg/mute.svg" alt="unmute" title="Musica de Fundo"></span>
+      <span id="btnChangeMusic"><img src="./assets/img/svg/refresh.svg" alt="refresh" title="Mudar Toque"></span>
+      <span id="min"><img src="./assets/img/svg/volDown.svg" alt="volDown" title="Diminuir Volume"></span>
+      <span id="max"><img src="./assets/img/svg/volUp.svg" alt="volUp" title="Almentar Valume"></span>
+      <span id="alarm"><img src="./assets/img/svg/bell.svg" alt="theme" title="Alarme"></span>
+      <span><img src="./assets/img/svg/theme.svg" alt="theme" title="Mudar Tema" class="theme"></span>
     
     </div>
   </div>
@@ -51,6 +52,9 @@
         </div>
         <img src="./assets/img/svg/rightArrow.svg" alt="buttonTimerRight" class="buttonTimerRight">
         <audio id="som" src="assets/musk/realme_9_pro.mp3"></audio>
+        <audio id="audioPlayer">
+            <source id="musicSource" src="" >
+        </audio>
       </div>
       <form class="insert todayInsert">
         <button class="buttonAdd" type="submit">
@@ -74,5 +78,6 @@
 <script src="./assets/js/toDo.js"></script>
 <script src="./assets/js/config.js"></script>
 <script src="./assets/js/dataStorage.js"></script>
+<script src="assets/js/theme.js"></script>
 </body>
 </html>

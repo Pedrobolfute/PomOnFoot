@@ -4,80 +4,70 @@ const buttonTodoLeft = document.getElementsByClassName('buttonTodoLeft')[0]
 const buttonTodoRight = document.getElementsByClassName('buttonTodoRight')[0]
 const whoScreenIs = document.querySelector('h6').textContent.toLowerCase()
 
-if (whoScreenIs === 'hoje') {
+function changePage() {
+  let place = ['ontem', 'hoje', 'amanhã']
+  let index = 1
+  let day = document.querySelector('h6')
+
+  buttonTodoLeft.addEventListener('click', () => {
+    index--
+    day.textContent = place[index]
+    if (day.textContent == place[0]) {
+      yesterdayChangeEvents()
+      let list = document.getElementsByClassName('list')[0]
+    } else if (day.textContent == place[2]) {
+      tomorrowChangeEvents()
+    } else { todayChangeEvents() }
+    cleanScreen()
+    getTodoData()
+    load()
+  })
+
+  buttonTodoRight.addEventListener('click', () => {
+    index++
+    day.textContent = place[index]
+    if (day.textContent == place[2]) {
+      tomorrowChangeEvents()
+    } else if (day.textContent == place[0]) {
+      yesterdayChangeEvents()
+    } else { todayChangeEvents() }
+    cleanScreen()
+    getTodoData()
+    load()
+  })
+
   seeWeek.addEventListener('click', () => window.location.href = '../week.html')
-
-  buttonTodoLeft.addEventListener('click', () => window.location.href = '../ontem.html');
-
-  buttonTodoRight.addEventListener('click', () => window.location.href = './amanha.html');
-} else if (whoScreenIs === 'ontem') {
-  seeWeek.addEventListener('click', () => window.location.href = '../week.html')
-
-
-  buttonTodoRight.addEventListener('click', () => window.location.href = './hoje.html');
 }
-else if (whoScreenIs === 'amanhã') {
-  seeWeek.addEventListener('click', () => window.location.href = '../week.html')
+changePage()
 
-  buttonTodoLeft.addEventListener('click', () => window.location.href = '../hoje.html');
-}
-
-
-// Ontem
-if (whoScreenIs === 'hoje') {
-  seeWeek.addEventListener('click', () => window.location.href = '../week.html')
-
-  buttonTodoLeft.addEventListener('click', () => window.location.href = '../ontem.html');
-
-  buttonTodoRight.addEventListener('click', () => window.location.href = './amanha.html');
-} else if (whoScreenIs === 'ontem') {
-  seeWeek.addEventListener('click', () => window.location.href = '../week.html')
-
-  buttonTodoRight.addEventListener('click', () => window.location.href = './hoje.html');
-
-  yesterdayChangeEvents()
-}
-else if (whoScreenIs === 'amanhã') {
-  seeWeek.addEventListener('click', () => window.location.href = '../week.html')
-
-  buttonTodoLeft.addEventListener('click', () => window.location.href = '../hoje.html');
-
-}
 
 function yesterdayChangeEvents() {
-  const yesterdayFormPreventEvent = document.querySelector('.yesterdayInsert')
+  const yesterdayFormPreventEvent = document.querySelector('.insert')
   yesterdayFormPreventEvent.style.pointerEvents = 'none'
   yesterdayFormPreventEvent.style.opacity = 0.5
 
-  const yesterdayButtonTodoLeft = document.querySelector('.yesterday.buttonTodoLeft')
+  const yesterdayButtonTodoLeft = document.querySelector('.buttonTodoLeft')
   yesterdayButtonTodoLeft.style.pointerEvents = 'none'
   yesterdayButtonTodoLeft.style.opacity = 0.5
 }
 
+function todayChangeEvents() {
+  const todayChangeEvents = document.querySelector('.insert')
+  todayChangeEvents.style.pointerEvents = 'auto'
+  todayChangeEvents.style.opacity = ''
 
-// Amanha
-if (whoScreenIs === 'hoje') {
-  seeWeek.addEventListener('click', () => window.location.href = '../week.html')
+  const todayButtonTodoLeft = document.querySelector('.buttonTodoLeft')
+  todayButtonTodoLeft.style.pointerEvents = 'auto'
+  todayButtonTodoLeft.style.opacity = ''
 
-  buttonTodoLeft.addEventListener('click', () => window.location.href = '../ontem.html');
 
-  buttonTodoRight.addEventListener('click', () => window.location.href = './amanha.html');
-} else if (whoScreenIs === 'ontem') {
-  seeWeek.addEventListener('click', () => window.location.href = '../week.html')
-
-  buttonTodoRight.addEventListener('click', () => window.location.href = './hoje.html');
+  const todayButtonTodoRight = document.querySelector('.buttonTodoRight')
+  todayButtonTodoRight.style.pointerEvents = 'auto'
+  todayButtonTodoRight.style.opacity = ''
 }
-else if (whoScreenIs === 'amanhã') {
-  seeWeek.addEventListener('click', () => window.location.href = '../week.html')
-
-  buttonTodoLeft.addEventListener('click', () => window.location.href = '../hoje.html');
-
-  tomorrowChangeEvents()
-}
-
 
 function tomorrowChangeEvents() {
-  const tomorrowButtonTodoRight = document.querySelector('.tomorrow.buttonTodoRight')
+  const tomorrowButtonTodoRight = document.querySelector('.buttonTodoRight')
   tomorrowButtonTodoRight.style.pointerEvents = 'none'
   tomorrowButtonTodoRight.style.opacity = 0.5
 }

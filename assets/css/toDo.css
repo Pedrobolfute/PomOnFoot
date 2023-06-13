@@ -62,11 +62,14 @@ input:hover {
   font-family: 'Open Sans', Helvetica, sans-serif;
   text-transform: uppercase;
   font-weight: 600;
-  color: bisque;
+  color: rgb(0, 0, 0);
   font-size: 14px;
 
 }
 
+.taskList {
+  accent-color: red;
+}
 .taskList {
   accent-color: red;
 }

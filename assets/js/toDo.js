@@ -1,36 +1,31 @@
+function main() {
+  const insert = document.getElementsByClassName('insert')[0];
+  // getTodoData()
+  insert.onsubmit = function (parameter) {
+    parameter.preventDefault();
+    const inputAdd = document.getElementsByClassName('inputAdd')[0];
 
-const insert = document.getElementsByClassName('insert')[0];
-const list = document.getElementsByClassName('list')[0];
-
-insert.onsubmit = function(parameter){
-  
-  parameter.preventDefault();
-  const inputAdd = document.getElementsByClassName('inputAdd')[0];
-
-  if(inputAdd.value.trim() !== ''){
-  newElement(inputAdd.value);
-  insert.reset();
+    if (inputAdd.value.trim() !== '') {
+      setTodoData(inputAdd.value)
+      insert.reset();
+      loadLastTodoData()
+      load()
+    }
   }
 }
 
-let newElement = function newTask(description){
-  const createDiv = document.createElement("div");
-  const createContent = document.createElement("input");
-  const createLabel = document.createElement("label");
-  const descriptionInput = document.createTextNode(description);
+window.addEventListener('DOMContentLoaded', () => {
+  getTodoData()
+  main()
+  load()
+})
 
-  createContent.setAttribute("type", "checkbox");
-  createContent.setAttribute("class", "taskList");
-  createContent.setAttribute("name", description);
-  createContent.setAttribute("id", description);
-
-  createLabel.setAttribute("for", description);
-  createLabel.appendChild(descriptionInput);
-
-  createDiv.classList.add("formItem");
-  createDiv.appendChild(createContent);
-  createDiv.appendChild(createLabel);
-  createDiv.appendChild(descriptionInput);
-  
-  list.appendChild(createDiv);
+//Funcões Auxiliares
+function load() {
+  let checkboxList = document.querySelectorAll('input[type="checkbox"]')
+  checkboxList.forEach(checkbox => {
+    checkbox.addEventListener('change', () => {
+      removeTodoData(checkbox)
+    })
+  })
 }
