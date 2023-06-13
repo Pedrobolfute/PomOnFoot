@@ -99,3 +99,9 @@ h6 {
   transform: scale(1.2);
 }
 
+
+.buttonTodoRight:hover {
+  cursor: pointer;
+  transition: 0.3s;
+  transform: scale(1.2);
+}
