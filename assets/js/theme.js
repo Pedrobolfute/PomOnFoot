@@ -3,6 +3,9 @@ const icon = document.querySelector('.theme');
 const thElements = document.getElementsByTagName('th');
 const tdElements = document.getElementsByTagName('td');
 const elements = document.querySelectorAll('.theme, #return');
+const pomodoro = document.querySelector('.pomodoro');
+
+
 function changeImageColor(color) {
   const icons = document.querySelectorAll('.icon img');
   icons.forEach((img) => {
@@ -17,8 +20,10 @@ icon.addEventListener('click', function () {
   const container = document.querySelector('#container');
 
   if (isDarkMode) {
+    pomodoro.style.backgroundColor = 'aliceblue';
+    pomodoro.style.color = "#000";
     changeImageColor('invert(100%)');
-    container.style.backgroundColor = 'rgba(118, 112, 112, 1)';
+    container.style.backgroundColor = 'rgba(156, 191, 187)';
     container.style.color = '#000';
 
     for (var i = 0; i < thElements.length; i++) {
@@ -32,11 +37,13 @@ icon.addEventListener('click', function () {
     elements.forEach(element => {
       element.style.filter = 'invert(0%) sepia(5%) saturate(21%) hue-rotate(157deg) brightness(101%) contrast(105%)';
     });
-  } else {
 
+  } else {
+    pomodoro.style.backgroundColor = 'rgba(10, 13, 13, 0.5)';
+    pomodoro.style.color = '#fff';
     changeImageColor('invert(0%)');
-    container.style.backgroundColor = 'rgb(41, 31, 31)';
-    container.style.color = '#fff';
+    container.style.backgroundColor = 'rgba(10, 13, 13, 0.5)';
+    container.style.color = '#FFFF';
 
     for (var i = 0; i < thElements.length; i++) {
       thElements[i].style.borderColor = 'rgb(255, 255, 255)';
@@ -47,7 +54,7 @@ icon.addEventListener('click', function () {
     }
 
     elements.forEach(element => {
-      element.style.filter = 'invert(100%) sepia(5%) saturate(21%) hue-rotate(157deg) brightness(101%) contrast(105%)';
+      element.style.filter = 'invert(83%) sepia(57%) saturate(546%) hue-rotate(163deg) brightness(103%) contrast(102%)';
     });
   }
 });
