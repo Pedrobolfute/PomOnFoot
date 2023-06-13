@@ -2,26 +2,20 @@ const btnMusic = document.getElementById('btnMusic');
 const btnChangeMusic = document.getElementById('btnChangeMusic');
 const audioPlayer = document.getElementById('audioPlayer');
 const musicSource = document.getElementById('musicSource');
-//const playButton = document.querySelector('.time');
-
-let current = 0;
-let musicaAtiva = true;
+const btnVolumeDown = document.getElementById('min');
+const btnVolumeIncrease = document.getElementById('max');
 
 btnMusic.addEventListener('click',toggleMusic);
 btnChangeMusic.addEventListener('click',changeMusic);
+audioPlayer.addEventListener('ended', handleMusicEnd);
+btnVolumeDown.addEventListener('click', volumeDown);
+btnVolumeIncrease.addEventListener('click', volumeIncrease);
 
-/*
-let clicked = false;
+let current = 0;
+let musicaAtiva = true;
+let musicaPause = false;
+let next;
 
-document.addEventListener('DOMContentLoaded', function() {
-  playButton.addEventListener('click', function() {
-      if(!clicked) {
-        audio.play();
-        clicked = true;
-      }
-      
-  });
-});*/
 let tracks = [
   './assets/musk/1.mp3',
   './assets/musk/2.mp3',
@@ -30,7 +24,6 @@ let tracks = [
 ]
 
 function changeMusic(){
-  toggleMusic();
   if(musicaAtiva) {
     if(current < tracks.length - 1) {
       current++;  
@@ -38,7 +31,7 @@ function changeMusic(){
       current = 0;
     }
     
-    let next = tracks[current];
+    next = tracks[current];
     console.log("carregar próxima musk: " + next);
 
     musicSource.setAttribute('src', next);
@@ -50,9 +43,43 @@ function changeMusic(){
 function toggleMusic() {
   
   if(musicaAtiva && audioPlayer.paused) {
+  
+    next = tracks[current];
+    console.log("carregar próxima musk: " + next);
+
+    musicSource.setAttribute('src', next);
+    audioPlayer.load();
     audioPlayer.play();
+  
   }else {
     audioPlayer.pause();
+  }
+}
+
+function handleMusicEnd() {
+  audioPlayer.currentTime = 0;
+  changeMusic();
+}
+
+function volumeDown() {
+  if(musicaAtiva) {
+    if(audioPlayer.volume > 0.0){
+      setTimeout(() => {
+        audioPlayer.volume -= 0.1;
+        console.log(audioPlayer.volume -= 0.1);
+      }, 100);
+    }
+  }
+}
+
+function volumeIncrease() {
+  if(musicaAtiva) {
+    if(audioPlayer.volume < 1.0) {
+      setTimeout(() => {
+        audioPlayer.volume += 0.1;
+        console.log(audioPlayer.volume += 0.1);
+      }, 100);
+    }
   }
 }
 
