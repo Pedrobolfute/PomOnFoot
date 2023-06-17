@@ -19,6 +19,7 @@ icon.addEventListener('click', function () {
   const container = document.querySelector('#container');
 
   if (isDarkMode) {
+    temerLigthButtons();
     pomodoro.style.backgroundColor = 'aliceblue';
     pomodoro.style.color = "#000";
     changeImageColor('invert(100%)');
@@ -37,6 +38,7 @@ icon.addEventListener('click', function () {
     });
 
   } else {
+    temerDarkButtons();
     pomodoro.style.backgroundColor = 'rgba(10, 13, 13, 0.5)';
     pomodoro.style.color = '#fff';
     changeImageColor('invert(0%)');
@@ -55,3 +57,52 @@ icon.addEventListener('click', function () {
     });
   }
 });
+
+/*Cores dos botoes */
+
+function temerLigthButtons() {
+  var iconElements = document.querySelectorAll('.pomodoro');
+
+  iconElements.forEach(function (element) {
+    var images = element.querySelectorAll('img');
+
+    images.forEach(function (image) {
+      var originalColor = image.style.filter;
+
+      image.addEventListener('mouseover', function () {
+        image.style.filter = 'hue-rotate(90deg)';
+      });
+
+      image.addEventListener('mouseout', function () {
+        image.style.filter = originalColor;
+      });
+    });
+  });
+}
+
+function temerDarkButtons() {
+  var iconElements = document.querySelectorAll('.pomodoro');
+
+  iconElements.forEach(function (element) {
+    var images = element.querySelectorAll('img');
+
+    images.forEach(function (image) {
+
+      var originalFilter = image.style.filter;
+      image.addEventListener('mouseover', function () {
+        image.style.filter = 'invert(100%)';
+      });
+      image.addEventListener('mouseout', function () {
+        image.style.filter = originalFilter;
+      });
+    });
+  });
+}
+
+
+
+
+
+
+
+
