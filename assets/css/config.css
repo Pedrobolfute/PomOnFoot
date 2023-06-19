@@ -29,6 +29,7 @@
 }
 
 .config span:hover{
+  transition: 0.3s;
   transform: scale(1.2);
   cursor: pointer;
 }
