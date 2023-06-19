@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./week.css">
+    <link rel="stylesheet" href="./assets/css/week.css">
+    <link rel="stylesheet" href="./assets/css/theme.css">
     <title>Tabela da semana</title>
 </head>
 <body>
@@ -13,7 +14,10 @@
             
             <table>
                 <caption>
-                    <img src="assets/img/icone.png" alt="return" id="return">
+                        <div class="option">
+                            <img src="assets/img/svg/theme.svg" alt="" srcset="" class="theme" id="themeWeek" title="Aterar tema">
+                            <img src="assets/img/svg/unsee.svg" alt="return" id="return" title="Voltar a Pagina Principal">
+                        </div>
                     <h1>Semana</h1>
                 </caption>
                 
@@ -141,11 +145,8 @@
             </table>
         </div>
     </div>
-
-    <script src="./assets/js/semana.js"></script>
-    <script src="./assets/js/index.js"></script>
-    <script src="./assets/js/hoje.js"></script>
-    <script src="./assets/js/ontem.js"></script>
-    <script src="./assets/js/amanha.js"></script>
+    <script src="./assets/js/theme.js"></script>
+    <script src="./assets/js/dataStorage.js"></script>
+    <script src="./assets/js/week.js"></script>
 </body>
 </html>

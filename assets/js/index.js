@@ -1,113 +1,73 @@
-const btnStart = document.querySelector('.time');
-console.log(btnStart.textContent)
+// Hoje
+const seeWeek = document.getElementsByClassName('seeWeek')[0]
+const buttonTodoLeft = document.getElementsByClassName('buttonTodoLeft')[0]
+const buttonTodoRight = document.getElementsByClassName('buttonTodoRight')[0]
+const whoScreenIs = document.querySelector('h6').textContent.toLowerCase()
 
-const som = document.getElementById('som');
-let defaultTime = btnStart.textContent
+function changePage() {
+  let place = ['ontem', 'hoje', 'amanhã']
+  let index = 1
+  let day = document.querySelector('h6')
 
-class Timer {
-  constructor(displayId) {
-    this.display = document.querySelector(displayId);
-    this.time = defaultTime;
-    this.running = false;
-    this.interval = null;
-  }
+  buttonTodoLeft.addEventListener('click', () => {
+    index--
+    day.textContent = place[index]
+    if (day.textContent == place[0]) {
+      yesterdayChangeEvents()
+      let list = document.getElementsByClassName('list')[0]
+    } else if (day.textContent == place[2]) {
+      tomorrowChangeEvents()
+    } else { todayChangeEvents() }
+    cleanScreen()
+    getTodoData()
+    load()
+  })
 
-  start() {
-    if (!this.running) {
-      this.running = true;
-      this.time = defaultTime;
-      this.watch();
-      this.interval = setInterval(this.watch.bind(this), 1000);
-    }
-  }
+  buttonTodoRight.addEventListener('click', () => {
+    index++
+    day.textContent = place[index]
+    if (day.textContent == place[2]) {
+      tomorrowChangeEvents()
+    } else if (day.textContent == place[0]) {
+      yesterdayChangeEvents()
+    } else { todayChangeEvents() }
+    cleanScreen()
+    getTodoData()
+    load()
+  })
 
-  stop() {
-    clearInterval(this.interval);
-    this.time = 0;
-    this.running = false;
-  }
+  seeWeek.addEventListener('click', () => window.location.href = '../week.html')
+}
+changePage()
 
-  reset() {
-    this.stop();
-    this.display.textContent = '00';
-  }
 
-  watch() {
-    if (this.time >= 0) {
-      const { minutes, seconds } = this.getTimeComponents();
-      if(minutes < 1){
-        this.display.textContent = this.formatTime(seconds)
-      }else{
-        this.display.textContent = this.formatTime(minutes)
-      }
-    }
-  
-    if (this.time <= 0) {
-      this.stop();
-      this.showAlert();
-    } else {
-      this.time--;
-    }
-  }
-  getTimeComponents() {
-    const minutes = Math.floor((this.time % 3600) / 60);
-    const seconds = this.time % 60;
-    console.log(minutes, seconds)
-    return { minutes, seconds };
-  }
+function yesterdayChangeEvents() {
+  const yesterdayFormPreventEvent = document.querySelector('.insert')
+  yesterdayFormPreventEvent.style.pointerEvents = 'none'
+  yesterdayFormPreventEvent.style.opacity = 0.5
 
-  formatTime(time) {
-    return String(time).padStart(2, '0');
-  }
-
-  showAlert() {
-    som.play();
-    setTimeout(() => {
-      alert('Tempo esgotado!');
-      som.pause();
-      som.currentTime = 0;
-    }, 100);
-  }
+  const yesterdayButtonTodoLeft = document.querySelector('.buttonTodoLeft')
+  yesterdayButtonTodoLeft.style.pointerEvents = 'none'
+  yesterdayButtonTodoLeft.style.opacity = 0.5
 }
 
-const timer = new Timer('.time');
+function todayChangeEvents() {
+  const todayChangeEvents = document.querySelector('.insert')
+  todayChangeEvents.style.pointerEvents = 'auto'
+  todayChangeEvents.style.opacity = ''
+
+  const todayButtonTodoLeft = document.querySelector('.buttonTodoLeft')
+  todayButtonTodoLeft.style.pointerEvents = 'auto'
+  todayButtonTodoLeft.style.opacity = ''
 
 
-
-btnStart.addEventListener('click', timer.start.bind(timer));
-
-const insert = document.getElementsByClassName('insert')[0];
-const list = document.getElementsByClassName('list')[0];
-
-insert.onsubmit = function(parameter){
-  
-  parameter.preventDefault();
-  const inputAdd = document.getElementsByClassName('inputAdd')[0];
-
-  if(inputAdd.value.trim() !== ''){
-  newTask(inputAdd.value);
-  insert.reset();
-  }
+  const todayButtonTodoRight = document.querySelector('.buttonTodoRight')
+  todayButtonTodoRight.style.pointerEvents = 'auto'
+  todayButtonTodoRight.style.opacity = ''
 }
 
-function newTask(description){
-  const createDiv = document.createElement("div");
-  const createContent = document.createElement("input");
-  const createLabel = document.createElement("label");
-  const descriptionInput = document.createTextNode(description);
-
-  createContent.setAttribute("type", "checkbox");
-  createContent.setAttribute("class", "taskList");
-  createContent.setAttribute("name", description);
-  createContent.setAttribute("id", description);
-
-  createLabel.setAttribute("for", description);
-  createLabel.appendChild(descriptionInput);
-
-  createDiv.classList.add("formItem");
-  createDiv.appendChild(createContent);
-  createDiv.appendChild(createLabel);
-  createDiv.appendChild(descriptionInput);
-  
-  list.appendChild(createDiv);
+function tomorrowChangeEvents() {
+  const tomorrowButtonTodoRight = document.querySelector('.buttonTodoRight')
+  tomorrowButtonTodoRight.style.pointerEvents = 'none'
+  tomorrowButtonTodoRight.style.opacity = 0.5
 }

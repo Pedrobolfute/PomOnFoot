@@ -1,0 +1,97 @@
+/* From Timer */
+
+.timer {
+  display: grid;
+  grid-template-columns: 20% 65% 20%;
+  align-items: center;
+  justify-items: center;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+.buttonTimerLeft {
+  position: relative;
+  z-index: 1;
+  width: 30px;
+  height: 40px;
+  filter: var(--filter-white)
+}
+
+.buttonTimerLeft:hover {
+  cursor: pointer;
+  transition: 0.3s;
+  transform: scale(1.2);
+}
+
+.time {
+  position: relative;
+  z-index: 1;
+  display: inline-grid;
+  justify-content: center;
+  align-items: center;
+  width: 90px;
+  height: 90px;
+  font-size: 20px;
+  font-weight: 999;
+  background-color: rgb(206, 84, 84);
+  border-radius: 50px;
+  font-size: 2.5rem;
+  animation: changeColor 60s ease-in-out infinite alternate;
+}
+
+.time:hover {
+  transform: scale(1.05);
+  transition: 0.1s;
+}
+
+.time:hover {
+  cursor: pointer;
+}
+
+.buttonTimerRight {
+  position: relative;
+  z-index: 2;
+  width: 30px;
+  height: 40px;
+  filter: var(--filter-white);
+
+}
+
+.buttonTimerRight:hover {
+  cursor: pointer;
+  transition: .3s;
+  transform: scale(1.2);
+}
+
+/*Animação do circulo*/
+
+.dial-plate {
+  position: relative;
+}
+
+svg {
+  position: absolute;
+  pointer-events: none;
+  z-index: 10;
+  height: 240px;
+  width: 240px;
+  margin-left: -165.5px;
+  margin-top: -75px;
+}
+
+svg circle {
+  stroke-linecap: round;
+  fill: none;
+  stroke: #00000000;
+  stroke-dasharray: 251.2;
+  stroke-width: 1px;
+}
+
+circle:nth-child(2) {
+  stroke: #00fbff00;
+  stroke-dasharray: 251.2;
+  stroke-width: 3px;
+  animation: animate-circle 60s linear infinite;
+  transform: rotate(-90deg);
+  transform-origin: center center;
+}
