@@ -62,6 +62,7 @@ tr:nth-child(even) {
     width: 30px;
     border-radius: 10px;
     filter: var(--filter-white);
+    cursor: pointer;
 }
 
 .theme{
@@ -69,7 +70,7 @@ tr:nth-child(even) {
 }
 
 #return:hover, .theme:hover {
-    transition: 0.2s;
+    transition: 0.3s;
     transform: scale(1.3);
 }
 
