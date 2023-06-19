@@ -5,7 +5,6 @@ const tdElements = document.getElementsByTagName('td');
 const elements = document.querySelectorAll('.theme, #return');
 const pomodoro = document.querySelector('.pomodoro');
 
-
 function changeImageColor(color) {
   const icons = document.querySelectorAll('.icon img');
   icons.forEach((img) => {
@@ -20,12 +19,12 @@ icon.addEventListener('click', function () {
   const container = document.querySelector('#container');
 
   if (isDarkMode) {
+    temerLigthButtons();
     pomodoro.style.backgroundColor = 'aliceblue';
     pomodoro.style.color = "#000";
     changeImageColor('invert(100%)');
     container.style.backgroundColor = 'rgba(156, 191, 187)';
     container.style.color = '#000';
-
     for (var i = 0; i < thElements.length; i++) {
       thElements[i].style.borderColor = 'rgb(0, 0, 0)';
     }
@@ -39,12 +38,12 @@ icon.addEventListener('click', function () {
     });
 
   } else {
+    temerDarkButtons();
     pomodoro.style.backgroundColor = 'rgba(10, 13, 13, 0.5)';
     pomodoro.style.color = '#fff';
     changeImageColor('invert(0%)');
     container.style.backgroundColor = 'rgba(10, 13, 13, 0.5)';
     container.style.color = '#FFFF';
-
     for (var i = 0; i < thElements.length; i++) {
       thElements[i].style.borderColor = 'rgb(255, 255, 255)';
     }
@@ -58,3 +57,52 @@ icon.addEventListener('click', function () {
     });
   }
 });
+
+/*Cores dos botoes */
+
+function temerLigthButtons() {
+  var iconElements = document.querySelectorAll('.pomodoro');
+
+  iconElements.forEach(function (element) {
+    var images = element.querySelectorAll('img');
+
+    images.forEach(function (image) {
+      var originalColor = image.style.filter;
+
+      image.addEventListener('mouseover', function () {
+        image.style.filter = 'hue-rotate(90deg)';
+      });
+
+      image.addEventListener('mouseout', function () {
+        image.style.filter = originalColor;
+      });
+    });
+  });
+}
+
+function temerDarkButtons() {
+  var iconElements = document.querySelectorAll('.pomodoro');
+
+  iconElements.forEach(function (element) {
+    var images = element.querySelectorAll('img');
+
+    images.forEach(function (image) {
+
+      var originalFilter = image.style.filter;
+      image.addEventListener('mouseover', function () {
+        image.style.filter = 'invert(100%)';
+      });
+      image.addEventListener('mouseout', function () {
+        image.style.filter = originalFilter;
+      });
+    });
+  });
+}
+
+
+
+
+
+
+
+
