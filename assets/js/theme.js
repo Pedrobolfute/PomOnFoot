@@ -3,6 +3,7 @@ const icon = document.querySelector('.theme');
 const thElements = document.getElementsByTagName('th');
 const tdElements = document.getElementsByTagName('td');
 const elements = document.querySelectorAll('.theme, #return');
+let whichTheme;
 
 
 function changeImageColor(color) {
@@ -38,7 +39,7 @@ function temerLigthButtons() {
     images.forEach(function (image) {
       image.style.filter = 'hue-rotate(90deg)';
       var originalColor = image.style.filter;
-
+      
       image.addEventListener('mouseover', function () {
         image.style.filter = 'invert(83%) sepia(57%) saturate(546%) hue-rotate(163deg) brightness(103%) contrast(102%)';
       });
@@ -73,24 +74,15 @@ function temerDarkButtons() {
 
 function temeDark() {
   let pomodoro = document.querySelector('.pomodoro');
-  let container = document.querySelector('#container');
   temerDarkButtons();
   pomodoro.style.background = '';
   pomodoro.style.backgroundColor = 'rgba(10, 13, 13, 0.5)';
   pomodoro.style.color = '#fff';
-  container.style.backgroundColor = 'rgba(10, 13, 13, 0.5)';
-  container.style.color = '#FFFF';
-
 }
 
 function temerLigth() {
   let pomodoro = document.querySelector('.pomodoro');
-  let container = document.querySelector('#container');
   temerLigthButtons();
   pomodoro.style.background = 'linear-gradient(0deg, rgb(255 255 255), rgb(227 84 84 / 51%))';
   pomodoro.style.color = "#000";
-  container.style.backgroundColor = 'rgba(210, 184, 184, 1)';
-  container.style.color = '#000';
 }
-
-

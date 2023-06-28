@@ -1,5 +1,13 @@
 const returnToToday = document.getElementById('return');
-returnToToday.addEventListener('click', () => window.location.href = '../hoje.html')
+returnToToday.addEventListener('click', () => {
+  let config = document.querySelector('.config')
+  let pomodoro = document.querySelector('.pomodoro')
+  let week = document.querySelector('#container')
+
+  config.style.display = 'grid'
+  pomodoro.style.display = 'grid'
+  week.style.display = 'none'
+})
 
 //Main
 function main() {
