@@ -17,7 +17,7 @@ function changePage() {
     } else if (day.textContent == place[2]) {
       tomorrowChangeEvents()
     } else { todayChangeEvents() }
-    cleanScreen()
+    cleanTodoData()
     getTodoData()
     load()
   })
@@ -30,7 +30,7 @@ function changePage() {
     } else if (day.textContent == place[0]) {
       yesterdayChangeEvents()
     } else { todayChangeEvents() }
-    cleanScreen()
+    cleanTodoData()
     getTodoData()
     load()
   })
@@ -43,7 +43,8 @@ function changePage() {
     config.style.display = 'none'
     pomodoro.style.display = 'none'
     week.style.display = 'flex'
-
+    cleanWeekData()
+    getWeekData()
   })
 }
 changePage()

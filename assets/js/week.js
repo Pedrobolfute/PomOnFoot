@@ -7,10 +7,13 @@ returnToToday.addEventListener('click', () => {
   config.style.display = 'grid'
   pomodoro.style.display = 'grid'
   week.style.display = 'none'
+
+  cleanTodoData()
+  getTodoData()
 })
 
-//Main
-function main() {
+//mainWeek
+function mainWeek() {
   column1()
   column2()
   column3()
@@ -22,7 +25,7 @@ function main() {
 
 window.addEventListener('DOMContentLoaded', () => {
   getWeekData()
-  main()  
+  mainWeek()  
 })
 
 

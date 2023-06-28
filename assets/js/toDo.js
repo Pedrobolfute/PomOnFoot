@@ -1,6 +1,11 @@
-function main() {
+window.addEventListener('DOMContentLoaded', () => {
+  getTodoData()
+  mainPomodore()
+  load()
+})
+
+function mainPomodore() {
   const insert = document.getElementsByClassName('insert')[0];
-  // getTodoData()
   insert.onsubmit = function (parameter) {
     parameter.preventDefault();
     const inputAdd = document.getElementsByClassName('inputAdd')[0];
@@ -13,12 +18,6 @@ function main() {
     }
   }
 }
-
-window.addEventListener('DOMContentLoaded', () => {
-  getTodoData()
-  main()
-  load()
-})
 
 //Funcões Auxiliares
 function load() {
