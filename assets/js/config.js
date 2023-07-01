@@ -5,14 +5,14 @@ const musicSource = document.getElementById('musicSource');
 const btnVolumeDown = document.getElementById('min');
 const btnVolumeIncrease = document.getElementById('max');
 
-btnMusic.addEventListener('click',toggleMusic);
-btnChangeMusic.addEventListener('click',changeMusic);
+btnMusic.addEventListener('click', toggleMusic);
+btnChangeMusic.addEventListener('click', changeMusic);
 audioPlayer.addEventListener('ended', handleMusicEnd);
 btnVolumeDown.addEventListener('click', volumeDown);
 btnVolumeIncrease.addEventListener('click', volumeIncrease);
 
 let current = 0;
-let musicaAtiva = true;
+let musicaAtiva = false;
 let musicaPause = false;
 let next;
 
@@ -23,14 +23,14 @@ let tracks = [
   './assets/musk/4.mp3'
 ]
 
-function changeMusic(){
-  if(musicaAtiva) {
-    if(current < tracks.length - 1) {
-      current++;  
+function changeMusic() {
+  if (musicaAtiva) {
+    if (current < tracks.length - 1) {
+      current++;
     } else {
       current = 0;
     }
-    
+
     next = tracks[current];
     console.log("carregar próxima musk: " + next);
 
@@ -41,17 +41,17 @@ function changeMusic(){
 }
 
 function toggleMusic() {
-  
-  if(musicaAtiva && audioPlayer.paused) {
-  
+
+  if (musicaAtiva && audioPlayer.paused) {
+
     next = tracks[current];
     console.log("carregar próxima musk: " + next);
 
     musicSource.setAttribute('src', next);
     audioPlayer.load();
     audioPlayer.play();
-  
-  }else {
+
+  } else {
     audioPlayer.pause();
   }
 }
@@ -62,8 +62,8 @@ function handleMusicEnd() {
 }
 
 function volumeDown() {
-  if(musicaAtiva) {
-    if(audioPlayer.volume > 0.0){
+  if (musicaAtiva) {
+    if (audioPlayer.volume > 0.0) {
       setTimeout(() => {
         audioPlayer.volume -= 0.1;
         console.log(audioPlayer.volume -= 0.1);
@@ -73,8 +73,8 @@ function volumeDown() {
 }
 
 function volumeIncrease() {
-  if(musicaAtiva) {
-    if(audioPlayer.volume < 1.0) {
+  if (musicaAtiva) {
+    if (audioPlayer.volume < 1.0) {
       setTimeout(() => {
         audioPlayer.volume += 0.1;
         console.log(audioPlayer.volume += 0.1);
@@ -90,11 +90,13 @@ function changeIconMusic() {
   mute.addEventListener('click', () => {
     click++
     if (click === 0) {
+      musicaAtiva = false
       mute.setAttribute('src', './assets/img/svg/mute.svg')
       mute.setAttribute('title', 'Ligar Musica')
       mute.setAttribute('alt', 'unmute')
     } else {
       click = -1
+      musicaAtiva = true
       mute.setAttribute('src', './assets/img/svg/unmute.svg')
       mute.setAttribute('title', 'Desligar Musica')
       mute.setAttribute('alt', 'mute')
@@ -123,12 +125,14 @@ function changeBell() {
 changeBell()
 
 function animateChangeMusic() {
-  let random = 0
   const mute = document.querySelector('.config span:nth-child(2) img');
+  let random = 0
   mute.addEventListener('click', () => {
-    random += 180
-    mute.style.transform = `rotate(${random}deg)`
+    if (musicaAtiva) {
+      random += 180
+      mute.style.transform = `rotate(${random}deg)`
       mute.style.transition = '0.5s'
-    })
+    }
+  })
 }
 animateChangeMusic()

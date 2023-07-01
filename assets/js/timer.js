@@ -5,6 +5,7 @@ const btnPauseAlarm = document.getElementById('alarm');
 const buttonTimerRight = document.querySelector('.buttonTimerRight');
 const buttonTimerLeft = document.querySelector('.buttonTimerLeft');
 const btnStart = document.querySelector('.time');
+let whachTime = 1000
 
 let defaultTime = 30
 let time = defaultTime * 60;
@@ -38,7 +39,7 @@ function start() {
     running = true;
     time = defaultTime * 60;
     watch();
-    interval = setInterval(watch, 10);
+    interval = setInterval(watch, whachTime);
   }
 }
 
@@ -166,7 +167,7 @@ function animationCircle() {
         stroke-dashoffset: 251.2;
       }
     }`;
-    circle02.style.animation = "animate-circle 120s linear infinite";
+    circle02.style.animation = `animate-circle ${(whachTime*60)/1000}s linear infinite`;
     var style = document.createElement("style");
     style.innerHTML = keyframes;
     document.head.appendChild(style);
