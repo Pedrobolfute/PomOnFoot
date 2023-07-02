@@ -167,7 +167,7 @@ function animationCircle() {
         stroke-dashoffset: 251.2;
       }
     }`;
-    circle02.style.animation = `animate-circle ${(whachTime*60)/1000}s linear infinite`;
+    circle02.style.animation = `animate-circle ${(whachTime*120)/1000}s linear infinite`;
     var style = document.createElement("style");
     style.innerHTML = keyframes;
     document.head.appendChild(style);

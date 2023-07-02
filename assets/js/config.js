@@ -63,10 +63,10 @@ function handleMusicEnd() {
 
 function volumeDown() {
   if (musicaAtiva) {
-    if (audioPlayer.volume > 0.0) {
+    if (audioPlayer.volume > 0.1) {
       setTimeout(() => {
         audioPlayer.volume -= 0.1;
-        console.log(audioPlayer.volume -= 0.1);
+        console.log(audioPlayer.volume);
       }, 100);
     }
   }
