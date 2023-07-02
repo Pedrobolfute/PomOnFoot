@@ -1,7 +1,7 @@
 // Hoje
-const seeWeek = document.getElementsByClassName('seeWeek')[0]
-const buttonTodoLeft = document.getElementsByClassName('buttonTodoLeft')[0]
-const buttonTodoRight = document.getElementsByClassName('buttonTodoRight')[0]
+const seeWeek = document.querySelector('.seeWeek')
+const buttonTodoLeft = document.querySelector('.buttonTodoLeft')
+const buttonTodoRight = document.querySelector('.buttonTodoRight')
 const whoScreenIs = document.querySelector('h6').textContent.toLowerCase()
 
 function changePage() {
@@ -14,11 +14,10 @@ function changePage() {
     day.textContent = place[index]
     if (day.textContent == place[0]) {
       yesterdayChangeEvents()
-      let list = document.getElementsByClassName('list')[0]
     } else if (day.textContent == place[2]) {
       tomorrowChangeEvents()
     } else { todayChangeEvents() }
-    cleanScreen()
+    cleanTodoData()
     getTodoData()
     load()
   })
@@ -31,12 +30,22 @@ function changePage() {
     } else if (day.textContent == place[0]) {
       yesterdayChangeEvents()
     } else { todayChangeEvents() }
-    cleanScreen()
+    cleanTodoData()
     getTodoData()
     load()
   })
 
-  seeWeek.addEventListener('click', () => window.location.href = '../week.html')
+  seeWeek.addEventListener('click', () => {
+    let config = document.querySelector('.config')
+    let pomodoro = document.querySelector('.pomodoro')
+    let week = document.querySelector('#container')
+
+    config.style.display = 'none'
+    pomodoro.style.display = 'none'
+    week.style.display = 'flex'
+    cleanWeekData()
+    getWeekData()
+  })
 }
 changePage()
 
