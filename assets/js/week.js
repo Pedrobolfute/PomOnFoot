@@ -1,8 +1,19 @@
 const returnToToday = document.getElementById('return');
-returnToToday.addEventListener('click', () => window.location.href = '../hoje.html')
+returnToToday.addEventListener('click', () => {
+  let config = document.querySelector('.config')
+  let pomodoro = document.querySelector('.pomodoro')
+  let week = document.querySelector('#container')
 
-//Main
-function main() {
+  config.style.display = 'grid'
+  pomodoro.style.display = 'grid'
+  week.style.display = 'none'
+
+  cleanTodoData()
+  getTodoData()
+})
+
+//mainWeek
+function mainWeek() {
   column1()
   column2()
   column3()
@@ -14,7 +25,7 @@ function main() {
 
 window.addEventListener('DOMContentLoaded', () => {
   getWeekData()
-  main()  
+  mainWeek()  
 })
 
 
