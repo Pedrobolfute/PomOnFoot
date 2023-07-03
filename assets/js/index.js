@@ -1,111 +1,82 @@
-let defaultTime = 3
+// Hoje
+const seeWeek = document.querySelector('.seeWeek')
+const buttonTodoLeft = document.querySelector('.buttonTodoLeft')
+const buttonTodoRight = document.querySelector('.buttonTodoRight')
+const whoScreenIs = document.querySelector('h6').textContent.toLowerCase()
 
-class Timer {
-  constructor(displayId) {
-    this.display = document.querySelector(displayId);
-    this.time = defaultTime;
-    this.running = false;
-    this.interval = null;
-  }
+function changePage() {
+  let place = ['ontem', 'hoje', 'amanhã']
+  let index = 1
+  let day = document.querySelector('h6')
 
-  start() {
-    if (!this.running) {
-      this.running = true;
-      this.time = defaultTime;
-      this.watch();
-      this.interval = setInterval(this.watch.bind(this), 1000);
-    }
-  }
+  buttonTodoLeft.addEventListener('click', () => {
+    index--
+    day.textContent = place[index]
+    if (day.textContent == place[0]) {
+      yesterdayChangeEvents()
+    } else if (day.textContent == place[2]) {
+      tomorrowChangeEvents()
+    } else { todayChangeEvents() }
+    cleanTodoData()
+    getTodoData()
+    load()
+  })
 
-  stop() {
-    clearInterval(this.interval);
-    this.time = 0;
-    this.running = false;
-  }
+  buttonTodoRight.addEventListener('click', () => {
+    index++
+    day.textContent = place[index]
+    if (day.textContent == place[2]) {
+      tomorrowChangeEvents()
+    } else if (day.textContent == place[0]) {
+      yesterdayChangeEvents()
+    } else { todayChangeEvents() }
+    cleanTodoData()
+    getTodoData()
+    load()
+  })
 
-  reset() {
-    this.stop();
-    this.display.textContent = '00';
-  }
+  seeWeek.addEventListener('click', () => {
+    let config = document.querySelector('.config')
+    let pomodoro = document.querySelector('.pomodoro')
+    let week = document.querySelector('#container')
 
-  watch() {
-    if (this.time >= 0) {
-      const { minutes, seconds } = this.getTimeComponents();
-      if(minutes < 1){
-        this.display.textContent = this.formatTime(seconds)
-      }else{
-        this.display.textContent = this.formatTime(minutes)
-      }
-    }
-  
-    if (this.time <= 0) {
-      this.stop();
-      this.showAlert();
-    } else {
-      this.time--;
-    }
-  }
-  getTimeComponents() {
-    const hours = Math.floor(this.time / 3600);
-    const minutes = Math.floor((this.time % 3600) / 60);
-    const seconds = this.time % 60;
-    return { hours, minutes, seconds };
-  }
+    config.style.display = 'none'
+    pomodoro.style.display = 'none'
+    week.style.display = 'flex'
+    cleanWeekData()
+    getWeekData()
+  })
+}
+changePage()
 
-  formatTime(time) {
-    return String(time).padStart(2, '0');
-  }
 
-  showAlert() {
-    som.play();
-    setTimeout(() => {
-      alert('Tempo esgotado!');
-      som.pause();
-      som.currentTime = 0;
-    }, 100);
-  }
+function yesterdayChangeEvents() {
+  const yesterdayFormPreventEvent = document.querySelector('.insert')
+  yesterdayFormPreventEvent.style.pointerEvents = 'none'
+  yesterdayFormPreventEvent.style.opacity = 0.5
+
+  const yesterdayButtonTodoLeft = document.querySelector('.buttonTodoLeft')
+  yesterdayButtonTodoLeft.style.pointerEvents = 'none'
+  yesterdayButtonTodoLeft.style.opacity = 0.5
 }
 
-const timer = new Timer('.time');
-const btnStart = document.querySelector('.time');
+function todayChangeEvents() {
+  const todayChangeEvents = document.querySelector('.insert')
+  todayChangeEvents.style.pointerEvents = 'auto'
+  todayChangeEvents.style.opacity = ''
 
-const som = document.getElementById('som');
+  const todayButtonTodoLeft = document.querySelector('.buttonTodoLeft')
+  todayButtonTodoLeft.style.pointerEvents = 'auto'
+  todayButtonTodoLeft.style.opacity = ''
 
 
-btnStart.addEventListener('click', timer.start.bind(timer));
-
-const insert = document.getElementsByClassName('insert')[0];
-const list = document.getElementsByClassName('list')[0];
-
-insert.onsubmit = function(parameter){
-  
-  parameter.preventDefault();
-  const inputAdd = document.getElementsByClassName('inputAdd')[0];
-
-  if(inputAdd.value.trim() !== ''){
-  newTask(inputAdd.value);
-  insert.reset();
-  }
+  const todayButtonTodoRight = document.querySelector('.buttonTodoRight')
+  todayButtonTodoRight.style.pointerEvents = 'auto'
+  todayButtonTodoRight.style.opacity = ''
 }
 
-function newTask(description){
-  const createDiv = document.createElement("div");
-  const createContent = document.createElement("input");
-  const createLabel = document.createElement("label");
-  const descriptionInput = document.createTextNode(description);
-
-  createContent.setAttribute("type", "checkbox");
-  createContent.setAttribute("class", "taskList");
-  createContent.setAttribute("name", description);
-  createContent.setAttribute("id", description);
-
-  createLabel.setAttribute("for", description);
-  createLabel.appendChild(descriptionInput);
-
-  createDiv.classList.add("formItem");
-  createDiv.appendChild(createContent);
-  createDiv.appendChild(createLabel);
-  createDiv.appendChild(descriptionInput);
-  
-  list.appendChild(createDiv);
+function tomorrowChangeEvents() {
+  const tomorrowButtonTodoRight = document.querySelector('.buttonTodoRight')
+  tomorrowButtonTodoRight.style.pointerEvents = 'none'
+  tomorrowButtonTodoRight.style.opacity = 0.5
 }

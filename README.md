@@ -1,11 +1,5 @@
-# Olha o preview
+# PomOnFoot
 
-## CSS TO-DO (Pedro)
+![view](./assets/img/view.gif)
 
-Ajustar a sobreposição do texto, no css
-
-![preview](./assets/img/preview.gif)
-
-Deiv add...
-
-![Preview](./assets/img/deiv.gif)
+## Em construção...
