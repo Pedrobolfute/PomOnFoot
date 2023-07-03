@@ -84,11 +84,9 @@ function volumeIncrease() {
 }
 
 //Funções de animação dos botões made by Pedro
-//Funções de animação dos botões made by Pedro
 function changeIconMusic() {
   let click = 0
   const mute = document.querySelector('.config span:nth-child(1) img')
-  mute.addEventListener('click', () => {
   mute.addEventListener('click', () => {
     click++
     if (click === 0) {
@@ -96,13 +94,10 @@ function changeIconMusic() {
       mute.setAttribute('src', './assets/img/svg/mute.svg')
       mute.setAttribute('title', 'Ligar Musica')
       mute.setAttribute('alt', 'unmute')
-      mute.setAttribute('alt', 'unmute')
     } else {
       click = -1
       musicaAtiva = true
       mute.setAttribute('src', './assets/img/svg/unmute.svg')
-      mute.setAttribute('title', 'Desligar Musica')
-      mute.setAttribute('alt', 'mute')
       mute.setAttribute('title', 'Desligar Musica')
       mute.setAttribute('alt', 'mute')
     }
@@ -114,19 +109,14 @@ function changeBell() {
   let click = 0
   const mute = document.querySelector('.config span:nth-child(5) img');
   mute.addEventListener('click', () => {
-  mute.addEventListener('click', () => {
     click++;
     if (click === 0) {
       mute.setAttribute('src', './assets/img/svg/bell.svg');
       mute.setAttribute('title', 'Alarme Ligado');
       mute.setAttribute('alt', 'Alarm On');
-      mute.setAttribute('title', 'Alarme Ligado');
-      mute.setAttribute('alt', 'Alarm On');
     } else {
       click = -1;
       mute.setAttribute('src', './assets/img/svg/bellMute.svg');
-      mute.setAttribute('title', 'Alarme Desligado');
-      mute.setAttribute('alt', 'Alarm Off');
       mute.setAttribute('title', 'Alarme Desligado');
       mute.setAttribute('alt', 'Alarm Off');
     }
