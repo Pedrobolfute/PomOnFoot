@@ -70,13 +70,20 @@ function removeTodoData(item) {
   }
 }
 
-function cleanScreen() {
+function cleanTodoData() {
   let list = document.getElementsByClassName('list')[0]
   list.innerHTML = ''
 }
 
 
 // from Week
+function cleanWeekData(){
+  const allWeek = document.querySelectorAll(`tr td`)
+  for(let i = 0; i <= allWeek.length-1; i++){
+    allWeek[i].textContent = ''
+  }
+}
+
 function getWeekData() {
   for (let i = 0; i <= 6; i++) {
     const allWeek = document.querySelectorAll(`tr td:nth-child(${i + 1})`)

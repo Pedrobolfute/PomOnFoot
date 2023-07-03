@@ -3,7 +3,8 @@ const icon = document.querySelector('.theme');
 const thElements = document.getElementsByTagName('th');
 const tdElements = document.getElementsByTagName('td');
 const elements = document.querySelectorAll('.theme, #return');
-const pomodoro = document.querySelector('.pomodoro');
+let whichTheme;
+
 
 function changeImageColor(color) {
   const icons = document.querySelectorAll('.icon img');
@@ -16,45 +17,14 @@ icon.addEventListener('click', function () {
   body.classList.toggle('dark-mode');
 
   const isDarkMode = body.classList.contains('dark-mode');
-  const container = document.querySelector('#container');
 
   if (isDarkMode) {
-    temerLigthButtons();
-    pomodoro.style.backgroundColor = 'aliceblue';
-    pomodoro.style.color = "#000";
     changeImageColor('invert(100%)');
-    container.style.backgroundColor = 'rgba(156, 191, 187)';
-    container.style.color = '#000';
-    for (var i = 0; i < thElements.length; i++) {
-      thElements[i].style.borderColor = 'rgb(0, 0, 0)';
-    }
-
-    for (var i = 0; i < tdElements.length; i++) {
-      tdElements[i].style.borderColor = 'rgb(0, 0, 0)';
-    }
-
-    elements.forEach(element => {
-      element.style.filter = 'invert(0%) sepia(5%) saturate(21%) hue-rotate(157deg) brightness(101%) contrast(105%)';
-    });
+    temerLigth();
 
   } else {
-    temerDarkButtons();
-    pomodoro.style.backgroundColor = 'rgba(10, 13, 13, 0.5)';
-    pomodoro.style.color = '#fff';
     changeImageColor('invert(0%)');
-    container.style.backgroundColor = 'rgba(10, 13, 13, 0.5)';
-    container.style.color = '#FFFF';
-    for (var i = 0; i < thElements.length; i++) {
-      thElements[i].style.borderColor = 'rgb(255, 255, 255)';
-    }
-
-    for (var i = 0; i < tdElements.length; i++) {
-      tdElements[i].style.borderColor = 'rgb(255, 255, 255)';
-    }
-
-    elements.forEach(element => {
-      element.style.filter = 'invert(83%) sepia(57%) saturate(546%) hue-rotate(163deg) brightness(103%) contrast(102%)';
-    });
+    temeDark();
   }
 });
 
@@ -64,13 +34,14 @@ function temerLigthButtons() {
   var iconElements = document.querySelectorAll('.pomodoro');
 
   iconElements.forEach(function (element) {
-    var images = element.querySelectorAll('img');
+    var images = element.querySelectorAll('img:not(.buttonAdd img)');
 
     images.forEach(function (image) {
+      image.style.filter = 'hue-rotate(90deg)';
       var originalColor = image.style.filter;
-
+      
       image.addEventListener('mouseover', function () {
-        image.style.filter = 'hue-rotate(90deg)';
+        image.style.filter = 'invert(83%) sepia(57%) saturate(546%) hue-rotate(163deg) brightness(103%) contrast(102%)';
       });
 
       image.addEventListener('mouseout', function () {
@@ -84,10 +55,10 @@ function temerDarkButtons() {
   var iconElements = document.querySelectorAll('.pomodoro');
 
   iconElements.forEach(function (element) {
-    var images = element.querySelectorAll('img');
+    var images = element.querySelectorAll('img:not(.buttonAdd img)');
 
     images.forEach(function (image) {
-
+      image.style.filter = 'invert(83%) sepia(57%) saturate(546%) hue-rotate(163deg) brightness(103%) contrast(102%)';
       var originalFilter = image.style.filter;
       image.addEventListener('mouseover', function () {
         image.style.filter = 'invert(100%)';
@@ -99,10 +70,19 @@ function temerDarkButtons() {
   });
 }
 
+/*funções para alterar os temas */
 
+function temeDark() {
+  let pomodoro = document.querySelector('.pomodoro');
+  temerDarkButtons();
+  pomodoro.style.background = '';
+  pomodoro.style.backgroundColor = 'rgba(10, 13, 13, 0.5)';
+  pomodoro.style.color = '#fff';
+}
 
-
-
-
-
-
+function temerLigth() {
+  let pomodoro = document.querySelector('.pomodoro');
+  temerLigthButtons();
+  pomodoro.style.background = 'linear-gradient(0deg, rgb(255 255 255), rgb(227 84 84 / 51%))';
+  pomodoro.style.color = "#000";
+}
