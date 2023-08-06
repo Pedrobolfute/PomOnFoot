@@ -1,8 +1,8 @@
 const body = document.body;
-const icon = document.querySelector('.theme');
+const icon = document.querySelector('#theme');
 const thElements = document.getElementsByTagName('th');
 const tdElements = document.getElementsByTagName('td');
-const elements = document.querySelectorAll('.theme, #return');
+const elements = document.querySelectorAll('#theme, #return');
 let whichTheme;
 
 
