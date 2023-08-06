@@ -87,7 +87,7 @@ function showAlert() {
     setTimeout(() => {
       alert('Tempo esgotado!');
       som.pause();
-      window.location.href = "hoje.html";
+      window.location.href = "index.html";
       som.currentTime = 0;
       alarmActive = true;
     }, 100);
@@ -95,7 +95,7 @@ function showAlert() {
     toggleAlarm();
     setTimeout(() => {
       alert('Tempo esgotado!');
-      window.location.href = "hoje.html";
+      window.location.href = "index.html";
       alarmActive = true;
     }, 100);
   }
