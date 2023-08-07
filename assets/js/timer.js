@@ -50,10 +50,8 @@ function stop() {
 }
 
 function watch() {
-
   if (time >= 0) {
     const { minutes, seconds } = getTimeComponents(time);
-
     if (time >= 60) {
       display.textContent = formatTime(minutes);
     } else {
@@ -61,7 +59,6 @@ function watch() {
       display.textContent = seconds;
     }
   }
-
   if (time <= 0) {
     stop();
     showAlert();
@@ -69,6 +66,7 @@ function watch() {
     time--;
   }
 }
+
 function getTimeComponents(time) {
   const minutes = Math.floor((time % 7200) / 60);
   const seconds = time % 60;
@@ -110,42 +108,33 @@ function toggleAlarm() {
 
 function changeColor() {
   let cor = document.querySelector('.time')
-
   if (time % 2 == 0) {
     cor.style.backgroundColor = '#ce5454'
   } else {
     cor.style.backgroundColor = '#de2e2e'
   }
-
 }
 
 
 // Deiv Area
 const circle = document.querySelector('.dial-plate');
-
 circle.addEventListener('click', animationCircle);
-
 function animationCircle() {
   const circle01 = document.querySelector('.circle01');
   const circle02 = document.querySelector('.circle02');
-
   circle01.style.stroke = 'black';
   circle02.style.stroke = '#00fbff';
-
   if (time == 0) {
-
     circle01.style.stroke = '#00000000';
     circle02.style.stroke = '#00fbff00';
     circle02.style.animation = "none";
-
     var keyframes = "";
-
     var style = document.createElement("style");
     style.innerHTML = keyframes;
     document.head.appendChild(style);
   } else {
-    circle01.style.stroke = 'black';
-    circle02.style.stroke = '#00fbff';
+    circle01.style.stroke = '#CE5454';
+    circle02.style.stroke = '#ffffffcc';
     var keyframes = `@keyframes animate-circle {
       0% {
         transform: rotate(-90deg) scaleY(1);
