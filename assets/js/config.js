@@ -17,10 +17,10 @@ let musicaPause = false;
 let next;
 
 let tracks = [
-  './assets/musk/1.mp3',
-  './assets/musk/2.mp3',
-  './assets/musk/3.mp3',
-  './assets/musk/4.mp3'
+  './assets/audio/rain.mp3',
+  './assets/audio/thunderstorm.mp3',
+  './assets/audio/fire.mp3',
+  './assets/audio/hits.mp3'
 ]
 
 function changeMusic() {
@@ -32,7 +32,7 @@ function changeMusic() {
     }
 
     next = tracks[current];
-    console.log("carregar próxima musk: " + next);
+    console.log("carregar próxima audio: " + next);
 
     musicSource.setAttribute('src', next);
     audioPlayer.load();
@@ -45,7 +45,7 @@ function toggleMusic() {
   if (musicaAtiva && audioPlayer.paused) {
 
     next = tracks[current];
-    console.log("carregar próxima musk: " + next);
+    console.log("carregar próxima audio: " + next);
 
     musicSource.setAttribute('src', next);
     audioPlayer.load();
