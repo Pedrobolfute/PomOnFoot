@@ -9,7 +9,7 @@ if (yesterday <= 0) { yesterday = 6 }
 //From toDo
 function whichTodoDay() {
   if (document.querySelector('h6')) {
-    const whoScreenIs = document.querySelector('h6').textContent.toLowerCase()
+    const whoScreenIs = document.querySelector('.info h6').textContent.toLowerCase()
     if (whoScreenIs === 'hoje') {
       return today
     } else if (whoScreenIs === 'amanhã') {

@@ -53,8 +53,13 @@ body {
 
 h6 {
   font-family: 'monospace', Helvetica, sans-serif;
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 600;
+}
+
+.info h6{
+  color: aliceblue;
+  font-size: 1rem;
 }
 
 .buttonTodoLeft {
