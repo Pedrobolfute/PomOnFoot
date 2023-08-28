@@ -2,12 +2,12 @@
 const seeWeek = document.querySelector('.seeWeek')
 const buttonTodoLeft = document.querySelector('.buttonTodoLeft')
 const buttonTodoRight = document.querySelector('.buttonTodoRight')
-const whoScreenIs = document.querySelector('h6').textContent.toLowerCase()
+const whoScreenIs = document.querySelector('.info h6').textContent.toLowerCase()
 
 function changePage() {
-  let place = ['ontem', 'hoje', 'amanhã']
+  let place = ['Ontem', 'Hoje', 'Amanhã']
   let index = 1
-  let day = document.querySelector('h6')
+  let day = document.querySelector('.info h6')
 
   buttonTodoLeft.addEventListener('click', () => {
     index--
