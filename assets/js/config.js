@@ -58,7 +58,7 @@ function toggleMusic() {
 
 function handleMusicEnd() {
   audioPlayer.currentTime = 0;
-  changeMusic();
+  audioPlayer.play();
 }
 
 function volumeDown() {

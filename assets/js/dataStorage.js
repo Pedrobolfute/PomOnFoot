@@ -1,8 +1,8 @@
 const date = new Date()
 const today = date.getDay()
 let tomorrow = today + 1
-if (tomorrow >= 6) { tomorrow = 0 }
 let yesterday = today - 1
+if (tomorrow >= 6) { tomorrow = 0 }
 if (yesterday <= 0) { yesterday = 6 }
 
 
@@ -30,7 +30,7 @@ function setTodoData(value) {
 }
 
 function loadLastTodoData() {
-  let list = document.getElementsByClassName('list')[0]
+  let list = document.querySelector('.list')
   if (localStorage.hasOwnProperty(`tasks${whichTodoDay()}`)) {
     let myTasks = JSON.parse(localStorage.getItem(`tasks${whichTodoDay()}`))
     let last = myTasks[myTasks.length - 1].task
@@ -43,7 +43,7 @@ function loadLastTodoData() {
 }
 
 function getTodoData() {
-  let list = document.getElementsByClassName('list')[0]
+  let list = document.querySelector('.list')
   if (localStorage.hasOwnProperty(`tasks${whichTodoDay()}`)) {
     let myTasks = JSON.parse(localStorage.getItem(`tasks${whichTodoDay()}`))
     myTasks.forEach(task => {
@@ -71,7 +71,7 @@ function removeTodoData(item) {
 }
 
 function cleanTodoData() {
-  let list = document.getElementsByClassName('list')[0]
+  let list = document.querySelector('.list')
   list.innerHTML = ''
 }
 
