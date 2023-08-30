@@ -20,30 +20,24 @@ icon.addEventListener('click', function () {
 
   if (isDarkMode) {
     changeImageColor('invert(100%)');
-    temerLigth();
+    themeLigth();
 
   } else {
     changeImageColor('invert(0%)');
-    temeDark();
+    themeDark();
   }
 });
 
 /*Cores dos botoes */
 
-function temerLigthButtons() {
+function themeLigthButtons() {
   var iconElements = document.querySelectorAll('.pomodoro');
-
   iconElements.forEach(function (element) {
     var images = element.querySelectorAll('img:not(.buttonAdd img)');
 
     images.forEach(function (image) {
       image.style.filter = 'hue-rotate(90deg)';
       var originalColor = image.style.filter;
-      
-      image.addEventListener('mouseover', function () {
-        image.style.filter = 'invert(83%) sepia(57%) saturate(546%) hue-rotate(163deg) brightness(103%) contrast(102%)';
-      });
-
       image.addEventListener('mouseout', function () {
         image.style.filter = originalColor;
       });
@@ -51,18 +45,14 @@ function temerLigthButtons() {
   });
 }
 
-function temerDarkButtons() {
+function themeDarkButtons() {
   var iconElements = document.querySelectorAll('.pomodoro');
-
   iconElements.forEach(function (element) {
     var images = element.querySelectorAll('img:not(.buttonAdd img)');
 
     images.forEach(function (image) {
       image.style.filter = 'invert(83%) sepia(57%) saturate(546%) hue-rotate(163deg) brightness(103%) contrast(102%)';
       var originalFilter = image.style.filter;
-      image.addEventListener('mouseover', function () {
-        image.style.filter = 'invert(100%)';
-      });
       image.addEventListener('mouseout', function () {
         image.style.filter = originalFilter;
       });
@@ -72,17 +62,40 @@ function temerDarkButtons() {
 
 /*funções para alterar os temas */
 
-function temeDark() {
+function themeDark() {
+  let allBody = document.body
   let pomodoro = document.querySelector('.pomodoro');
-  temerDarkButtons();
+  let time = document.querySelector('.dial-plate .time')
+  let insertBlock = document.querySelector('.columnMiddle .insert')
+  let info = document.querySelector('.info h6')
+  let inputAdd = document.querySelector('.inputAdd')
   pomodoro.style.background = '';
   pomodoro.style.backgroundColor = 'rgba(10, 13, 13, 0.5)';
+  allBody.style.background = ''
   pomodoro.style.color = '#fff';
+  time.style.background = ''
+  insertBlock.style.backgroundColor = ''
+  info.style.color = ''
+  inputAdd.style.color = ''
+  inputAdd.style.backgroundColor = ''
+  themeDarkButtons();
 }
 
-function temerLigth() {
+function themeLigth() {
+  let allBody = document.body
   let pomodoro = document.querySelector('.pomodoro');
-  temerLigthButtons();
-  pomodoro.style.background = 'linear-gradient(0deg, rgb(255 255 255), rgb(227 84 84 / 51%))';
-  pomodoro.style.color = "#000";
+  let time = document.querySelector('.dial-plate .time')
+  let insertBlock = document.querySelector('.columnMiddle .insert')
+  let info = document.querySelector('.info h6')
+  let inputAdd = document.querySelector('.inputAdd')
+  pomodoro.style.background = '#ffffff88';
+  pomodoro.style.color = "#e4dddd";
+  allBody.style.background = '#cac3c3'
+  time.style.background = '#ce5454'
+  insertBlock.style.backgroundColor = '#00000057'
+  insertBlock.style.borderColor = '#79797957'
+  info.style.color = 'black'
+  inputAdd.style.backgroundColor = 'aliceblue'
+  inputAdd.style.color = 'black'
+  themeLigthButtons();
 }
