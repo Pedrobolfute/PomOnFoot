@@ -12,13 +12,13 @@
     crossorigin="anonymous" referrerpolicy="no-referrer" />
 
   <!-- Css -->
-  <link rel="stylesheet" href="./assets/css/stylus.css">
-  <link rel="stylesheet" href="./assets/css/config.css">
-  <link rel="shortcut icon" href="./assets/img/svg/task.svg">
-  <link rel="stylesheet" href="./assets/css/timer.css">
-  <link rel="stylesheet" href="./assets/css/toDo.css">
-  <link rel="stylesheet" href="assets/css/theme.css">
-  <link rel="stylesheet" href="assets/css/week.css">
+  <link rel="stylesheet" href="./src/assets/css/stylus.css">
+  <link rel="stylesheet" href="./src/assets/css/config.css">
+  <link rel="shortcut icon" href="./src/assets/img/svg/task.svg">
+  <link rel="stylesheet" href="./src/assets/css/timer.css">
+  <link rel="stylesheet" href="./src/assets/css/toDo.css">
+  <link rel="stylesheet" href="./src/assets/css/theme.css">
+  <link rel="stylesheet" href="./src/assets/css/week.css">
   <title>PomOnFoot</title>
 </head>
 
@@ -29,12 +29,12 @@
         <h1>PomOnFoot</h1>
       </header>
       <div class="icon">
-        <span id="btnMusic"><img src="./assets/img/svg/mute.svg" alt="unmute" title="Ligar Musica"></span>
-        <span id="btnChangeMusic"><img src="./assets/img/svg/refresh.svg" alt="refresh" title="Mudar Toque"></span>
-        <span id="min"><img src="./assets/img/svg/volDown.svg" alt="volDown" title="Diminuir Volume"></span>
-        <span id="max"><img src="./assets/img/svg/volUp.svg" alt="volUp" title="Almentar Valume"></span>
-        <span id="alarm"><img src="./assets/img/svg/bell.svg" alt="Alarm On" title="Alarme Ligado"></span>
-        <span id="theme"><img src="./assets/img/svg/theme.svg" alt="theme" title="Mudar Tema"></span>
+        <span id="btnMusic"><img src="./src/assets/img/svg/mute.svg" alt="unmute" title="Ligar Musica"></span>
+        <span id="btnChangeMusic"><img src="./src/assets/img/svg/refresh.svg" alt="refresh" title="Mudar Toque"></span>
+        <span id="min"><img src="./src/assets/img/svg/volDown.svg" alt="volDown" title="Diminuir Volume"></span>
+        <span id="max"><img src="./src/assets/img/svg/volUp.svg" alt="volUp" title="Almentar Valume"></span>
+        <span id="alarm"><img src="./src/assets/img/svg/bell.svg" alt="Alarm On" title="Alarme Ligado"></span>
+        <span id="theme"><img src="./src/assets/img/svg/theme.svg" alt="theme" title="Mudar Tema"></span>
       </div>
     </div>
 
@@ -44,12 +44,12 @@
           <h6>...</h6>
         </header>
         <div></div>
-        <img src="./assets/img/svg/leftArrow.svg" alt="buttonTodoLeft" class="buttonTodoLeft">
+        <img src="./src/assets/img/svg/leftArrow.svg" alt="buttonTodoLeft" class="buttonTodoLeft">
       </div>
 
       <div class="columnMiddle">
         <div class="timer">
-          <img src="./assets/img/svg/leftArrow.svg" alt="buttonTimerLeft" class="buttonTimerLeft">
+          <img src="./src/assets/img/svg/leftArrow.svg" alt="buttonTimerLeft" class="buttonTimerLeft">
           <div class="dial-plate">
             <header class="time">30</header>
             <svg>
@@ -57,15 +57,15 @@
               <circle cx="120" cy="120" r="40" class="circle02"></circle>
             </svg>
           </div>
-          <img src="./assets/img/svg/rightArrow.svg" alt="buttonTimerRight" class="buttonTimerRight">
-          <audio id="som" src="assets/audio/realme_9_pro.mp3"></audio>
+          <img src="./src/assets/img/svg/rightArrow.svg" alt="buttonTimerRight" class="buttonTimerRight">
+          <audio id="som" src="./src/assets/audio/realme_9_pro.mp3"></audio>
           <audio id="audioPlayer">
             <source id="musicSource" src="">
           </audio>
         </div>
         <form class="insert todayInsert">
           <button class="buttonAdd" type="submit">
-            <img src="./assets/img/svg/add.svg" alt="addTask">
+            <img src="./src/assets/img/svg/add.svg" alt="addTask">
           </button>
           <input class="inputAdd" type="text" placeholder="To-Do">
         </form>
@@ -73,9 +73,9 @@
       </div>
 
       <div class="columnRight">
-        <header><img src="./assets/img/svg/see.svg" alt="see" id="see" class="seeWeek" title="Ver Semana"></header>
+        <header><img src="./src/assets/img/svg/see.svg" alt="see" id="see" class="seeWeek" title="Ver Semana"></header>
         <div></div>
-        <img src="./assets/img/svg/rightArrow.svg" alt="buttonTodoRight" class="buttonTodoRight">
+        <img src="./src/assets/img/svg/rightArrow.svg" alt="buttonTodoRight" class="buttonTodoRight">
       </div>
     </div>
 
@@ -84,7 +84,7 @@
       <table>
         <caption>
           <div class="option">
-            <img src="assets/img/svg/unsee.svg" alt="return" id="return" title="Voltar a Pagina Principal">
+            <img src="./src/assets/img/svg/unsee.svg" alt="return" id="return" title="Voltar a Pagina Principal">
             <h1>Semana</h1>
           </div>
         </caption>
@@ -202,13 +202,13 @@
   </span>
 
   <!-- JavaScript -->
-  <script src="./assets/js/index.js"></script>
-  <script src="./assets/js/timer.js"></script>
-  <script src="./assets/js/toDo.js"></script>
-  <script src="./assets/js/config.js"></script>
-  <script src="./assets/js/dataStorage.js"></script>
-  <script src="assets/js/theme.js"></script>
-  <script src="assets/js/week.js"></script>
+  <script src="./src/assets/js/index.js"></script>
+  <script src="./src/assets/js/timer.js"></script>
+  <script src="./src/assets/js/toDo.js"></script>
+  <script src="./src/assets/js/config.js"></script>
+  <script src="./src/assets/js/dataStorage.js"></script>
+  <script src="./src/assets/js/theme.js"></script>
+  <script src="./src/assets/js/week.js"></script>
 
 </body>
 
