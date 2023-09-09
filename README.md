@@ -1,5 +1,5 @@
 # PomOnFoot
 
-![view](./assets/img/view.gif)
+![view](./src/assets/img/view.gif)
 
 ## Em construção...
