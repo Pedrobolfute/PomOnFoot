@@ -17,10 +17,10 @@ let musicaPause = false;
 let next;
 
 let tracks = [
-  './assets/audio/rain.mp3',
-  './assets/audio/thunderstorm.mp3',
-  './assets/audio/fire.mp3',
-  './assets/audio/hits.mp3'
+  './src/assets/audio/rain.mp3',
+  './src/assets/audio/thunderstorm.mp3',
+  './src/assets/audio/fire.mp3',
+  './src/assets/audio/hits.mp3'
 ]
 
 function changeMusic() {
@@ -91,13 +91,13 @@ function changeIconMusic() {
     click++
     if (click === 0) {
       musicaAtiva = false
-      mute.setAttribute('src', './assets/img/svg/mute.svg')
+      mute.setAttribute('src', './src/assets/img/svg/mute.svg')
       mute.setAttribute('title', 'Ligar Musica')
       mute.setAttribute('alt', 'unmute')
     } else {
       click = -1
       musicaAtiva = true
-      mute.setAttribute('src', './assets/img/svg/unmute.svg')
+      mute.setAttribute('src', './src/assets/img/svg/unmute.svg')
       mute.setAttribute('title', 'Desligar Musica')
       mute.setAttribute('alt', 'mute')
     }
@@ -111,12 +111,12 @@ function changeBell() {
   mute.addEventListener('click', () => {
     click++;
     if (click === 0) {
-      mute.setAttribute('src', './assets/img/svg/bell.svg');
+      mute.setAttribute('src', './src/assets/img/svg/bell.svg');
       mute.setAttribute('title', 'Alarme Ligado');
       mute.setAttribute('alt', 'Alarm On');
     } else {
       click = -1;
-      mute.setAttribute('src', './assets/img/svg/bellMute.svg');
+      mute.setAttribute('src', './src/assets/img/svg/bellMute.svg');
       mute.setAttribute('title', 'Alarme Desligado');
       mute.setAttribute('alt', 'Alarm Off');
     }

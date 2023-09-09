@@ -1,3 +1,4 @@
+//ORIGINAL
 const date = new Date()
 const today = date.getDay()
 let tomorrow = today + 1
