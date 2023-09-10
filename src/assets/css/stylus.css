@@ -97,3 +97,7 @@ h6 {
   width: 48px;
   height: 48px;
 }
+
+div .buttonTimerLeft, div .buttonTimerRight, .buttonTodoLeft, .buttonTodoRight, .seeWeek{
+  filter: invert(83%) sepia(57%) saturate(546%) hue-rotate(163deg)
+}
