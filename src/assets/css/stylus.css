@@ -2,6 +2,23 @@
   box-sizing: border-box;
 }
 
+/* Works on Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #ce5454 transparent;
+}
+
+/* Works on Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #ce5454;
+  border-radius: 20px;
+}
+
 :root {
   --row-distance: 25% 10% 65%;
   --filter-white: invert(100%) sepia(100%) saturate(0%) hue-rotate(125deg) brightness(110%) contrast(101%);
@@ -12,28 +29,32 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  
-  width: 90vw;
+  width: 100vw;
   height: 100vh;
-  margin: 0 auto;
+  max-width: 100vw;
+  max-height: 100vh;
+  margin: 0px auto;
   background: rgb(82, 80, 80);
   overflow: hidden;
 }
 
 .frame{
-  width: 90vw;
-  height: 90vh;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-
+  justify-content: flex-start;
+  align-items: center;
+  height: 100vh;
+  width: 90vw;
+  margin: 0px auto;
 }
 
 .pomodoro {
   display: grid;
   grid-template-columns: 15% 70% 15%;
-  width: 400px;
-  height: 500px;
+  width: 90vw;
+  height: 70vh;
+  max-height: 100%;
+  max-width: 100%;
   margin: 0 auto;
   border-radius: 10px;
   box-shadow: 4px 8px 16px 0 rgba(0, 0, 0, 0.5);
@@ -42,13 +63,12 @@ body {
   font-family: 'Open Sans', Helvetica, sans-serif;
 }
 
-
-/* Coluna Esquerda */
-.columnLeft {
+.columnLeft, .columnMiddle, .columnRight {
   display: grid;
   grid-template-rows: var(--row-distance);
   align-items: center;
   justify-items: center;
+  max-height: 90%;
 }
 
 h6 {
@@ -62,64 +82,22 @@ h6 {
   font-size: 1rem;
 }
 
-.buttonTodoLeft {
+.buttonTodoLeft, .buttonTodoRight {
   width: 50px;
   height: 100px;
-  filter: invert(83%) sepia(57%) saturate(546%) hue-rotate(163deg) brightness(103%) contrast(102%);
 }
 
-.buttonTodoLeft:hover {
+.buttonTodoLeft:hover, .buttonTodoRight:hover, .seeWeek:hover {
   cursor: pointer;
   transition: 0.3s;
   transform: scale(1.2);
-}
-
-
-/* Coluna Meio */
-.columnMiddle {
-  display: grid;
-  grid-template-rows: var(--row-distance);
-  align-items: center;
-  justify-items: center;
-}
-
-
-/* Coluna Direita */
-.columnRight {
-  display: grid;
-  grid-template-rows: var(--row-distance);
-  align-items: center;
-  justify-items: center;
 }
 
 .seeWeek {
-  cursor: pointer;
   width: 48px;
   height: 48px;
-  filter: invert(83%) sepia(57%) saturate(546%) hue-rotate(163deg) brightness(103%) contrast(102%);
 }
 
-.seeWeek:hover {
-  transition: .3s;
-  transform: scale(1.1);
-}
-
-.buttonTodoRight {
-  width: 50px;
-  height: 100px;
-  filter: invert(83%) sepia(57%) saturate(546%) hue-rotate(163deg) brightness(103%) contrast(102%);
-}
-
-.buttonTodoRight:hover {
-  cursor: pointer;
-  transition: 0.3s;
-  transform: scale(1.2);
-}
-
-div .buttonTimerLeft{
-  filter: invert(83%) sepia(57%) saturate(546%) hue-rotate(163deg) brightness(103%) contrast(102%);
-}
-
-div .buttonTimerRight{
-  filter: invert(83%) sepia(57%) saturate(546%) hue-rotate(163deg) brightness(103%) contrast(102%);
+div .buttonTimerLeft, div .buttonTimerRight, .buttonTodoLeft, .buttonTodoRight, .seeWeek{
+  filter: invert(83%) sepia(57%) saturate(546%) hue-rotate(163deg)
 }

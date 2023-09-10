@@ -4,7 +4,8 @@
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=2">
+  <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no"> -->
 
   <!-- Normalize Css  -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
@@ -69,7 +70,9 @@
           </button>
           <input class="inputAdd" type="text" placeholder="To-Do">
         </form>
-        <div class="list"></div>
+        <div class="list-block">
+          <div class="list"></div>
+        </div>
       </div>
 
       <div class="columnRight">
@@ -194,12 +197,13 @@
         </TBody>
       </table>
     </div>
+    <span class="info">
+      <header>
+        <h6>Hoje</h6>
+      </header>
+    </span>
   </div>
-  <span class="info">
-    <header>
-      <h6>Hoje</h6>
-    </header>
-  </span>
+
 
   <!-- JavaScript -->
   <script src="./src/assets/js/index.js"></script>
@@ -209,7 +213,6 @@
   <script src="./src/assets/js/dataStorage.js"></script>
   <script src="./src/assets/js/theme.js"></script>
   <script src="./src/assets/js/week.js"></script>
-
 </body>
 
 </html>
