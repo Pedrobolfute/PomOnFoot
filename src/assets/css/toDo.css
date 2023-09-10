@@ -1,19 +1,16 @@
-/* From ToDo, but NOT include buttonTodoLeft and buttonTodoRight */
-
 .insert {
-  position: relative;
   display: flex;
   flex-direction: row-reverse;
   width: 100%;
-  justify-content: space-around;
+  justify-content: space-evenly;
   border: rgba(90, 89, 89, 0.884) solid 5px;
   border-radius: 5px;
   background-color: rgba(90, 89, 89, 0.884);
 }
 
 .buttonAdd {
-  width: 48px;
-  height: 40px;
+  width: 20%;
+  height: 42px;
   background-color: rgb(246, 163, 163);
   padding: 0;
   border-radius: 5px;
@@ -27,12 +24,11 @@
 .buttonAdd img{
   width: 40px;
   height: 36px;
-
 }
 
 .inputAdd {
   width: 80%;
-  font-size: 14px;
+  font-size: 1rem;
   font-weight: 500;
   background-color: rgb(39, 38, 38);
   color: white;
@@ -43,35 +39,29 @@ input:hover {
   background-color: rgb(24, 23, 23);
 }
 
-/* Mexer aqui. */
-.list {
+.list-block {
   display: grid;
-  grid-auto-rows: 25px;
-  height: 100%;
+  height: 90%;
   width: 100%;
-  max-height: 280px;
-  max-width: 260px;
-  font-weight: 600;
-  font-size: 20px;
-  color: aliceblue;
+  max-height: 55vh;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
   overflow: auto;
-  align-content: start;
+
 }
 
 .formItem {
   display: block;
-  height: 100%;
   font-family: 'Open Sans', Helvetica, sans-serif;
   text-transform: uppercase;
   font-weight: 600;
   color: rgb(150, 88, 88);
-  font-size: 14px;
-
+  font-size: 1rem;
 }
 
-.taskList {
-  accent-color: red;
-}
 .taskList {
   accent-color: red;
 }

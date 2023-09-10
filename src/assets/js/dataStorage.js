@@ -51,7 +51,8 @@ function getTodoData() {
       const element = `
       <div class="formItem">
         <input type="checkbox" class="taskList" name="${task.task}" id="${task.task}">
-        <label for="${task.task}">${task.task}</label></div>`
+        <label for="${task.task}">${task.task}</label>
+      </div>`
       list.innerHTML += element
     })
   }
