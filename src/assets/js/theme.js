@@ -59,6 +59,7 @@ function setDarkTheme() {
   let time = document.querySelector('.dial-plate .time')
   let insertBlock = document.querySelector('.columnMiddle .insert')
   let info = document.querySelector('.info h6')
+  let dots = document.querySelector('header h6')
   let inputAdd = document.querySelector('.inputAdd')
   pomodoro.style.background = ''
   pomodoro.style.backgroundColor = ''
@@ -67,6 +68,7 @@ function setDarkTheme() {
   time.style.background = ''
   insertBlock.style.backgroundColor = ''
   info.style.color = ''
+  dots.style.color = ''
   inputAdd.style.color = ''
   inputAdd.style.backgroundColor = ''
   setDarkThemeButtons()
@@ -78,6 +80,7 @@ function setLightTheme() {
   let time = document.querySelector('.dial-plate .time')
   let insertBlock = document.querySelector('.columnMiddle .insert')
   let info = document.querySelector('.info h6')
+  let dots = document.querySelector('header h6')
   let inputAdd = document.querySelector('.inputAdd')
   pomodoro.style.background = '#ffffff88'
   pomodoro.style.color = "#e4dddd"
@@ -86,6 +89,7 @@ function setLightTheme() {
   insertBlock.style.backgroundColor = '#00000057'
   insertBlock.style.borderColor = '#79797957'
   info.style.color = 'black'
+  dots.style.color = 'black'
   inputAdd.style.backgroundColor = 'aliceblue'
   inputAdd.style.color = 'black'
   setLightThemeButtons()
