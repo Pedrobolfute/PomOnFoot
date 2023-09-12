@@ -6,29 +6,48 @@
   --filter-white: invert(100%) sepia(100%) saturate(0%) hue-rotate(125deg) brightness(110%) contrast(101%);
 }
 
+table thead, table tbody{
+  display: grid;
+  width: 100%;
+}
+
+table tbody{
+  height: 100%;
+}
+
+tr{
+  display: grid;
+  grid-template-columns: 14.29% 14.29% 14.29% 14.29% 14.29% 14.29% 14.29%;
+}
+
 th,
 td {
+    display: grid;
+    align-items: center;
+
     border: 3px solid rgba(255, 255, 255, 0.744);
-    font-size: 18px;
-    width: 120px;
-    height: 35px;
-    border-radius: 10px;
+    font-size: 1.25rem;
+    width: auto;
+    height: auto;
+    min-width: 170px;
+    min-height: 58px;
+    border-radius: 5px;
+    overflow-x: auto;
 }
 
 th{
+  font-size: 1.5rem;
   font-weight: 900;
   color: beige;
 }
 
 #container {
-    overflow-x: auto;
-    overflow-y: auto;
     background-color: rgba(79, 86, 85, 0.6);
-    width: 100%;
-    height: 100%;
+    width: 99%;
+    height: 99%;
     color: white;
 
-    display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     border: 5px solid black;
@@ -38,68 +57,41 @@ th{
     box-shadow: 10px 10px 50px 0px rgba(0, 0, 0, 0.75);
 }
 
+#container table{
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+
+  width: 99%;
+  height: 90%;
+}
+
 .option{
   display: flex;
-  flex-direction: row-reverse;
-  justify-content: space-evenly;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  height: 8%;
 }
 
 .option h1{
-  margin: 1rem auto;
+  font-size: 3rem;
+  font-weight: 900;
+  letter-spacing: 0.25rem;
+  color: #ce5454;
+  margin: 0rem 0rem 1rem 0rem;
 }
 
 #return{
-    margin:  0px;
-    width: 30px;
-    border-radius: 10px;
-    filter: var(--filter-white);
+    position: fixed;
+    margin: 1rem auto;
+    width: 48px;
     cursor: pointer;
 }
 
 #return:hover{
     transition: 0.3s;
-    transform: scale(1.3);
+    transform: scale(1.1);
 }
-
-.option img{
-    filter: invert(83%) sepia(57%) saturate(546%) hue-rotate(163deg) brightness(103%) contrast(102%);
-}
-
- @media screen and (min-width: 400px) {
-    th,
-    td {
-        width: 12vw;
-        height: 6vh;
-        font-size: 0.750rem;
-    }
-
-    #return {
-        margin-left: 270px;
-    } 
-}
-@media screen and (min-width: 500px) {
-    th,
-    td {
-        width: 12vw;
-        height: 6vh;
-        font-size: 0.750rem;
-    }
-
-    #return {
-        margin-left: 270px;
-    }
-}
-
-@media screen and (min-width: 750px) {
-    th,
-    td {
-        font-size: 0.875rem;
-        width: 12vw;
-        height: 6vh;
-    }
-
-    #return {
-        margin-left: 50px;
-    }
-} 
-
