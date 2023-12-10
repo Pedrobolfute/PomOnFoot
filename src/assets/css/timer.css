@@ -1,7 +1,7 @@
 /* From Timer */
 .timer {
   display: grid;
-  grid-template-columns: 20% 65% 20%;
+  grid-template-columns: 20% 60% 20%;
   align-items: center;
   justify-items: center;
   justify-content: center;
@@ -28,10 +28,10 @@
   display: inline-grid;
   justify-content: center;
   align-items: center;
-  width: 90px;
-  height: 90px;
+  width: 100%;
+  height: 100%;
   font-weight: 999;
-  background-color: rgb(206, 84, 84);
+  /* background-color: rgb(206, 84, 84); */
   border-radius: 50px;
   font-size: 2.5rem;
 }
@@ -58,34 +58,4 @@
   cursor: pointer;
   transition: .3s;
   transform: scale(1.2);
-}
-
-/*Animação do circulo*/
-.dial-plate {
-  position: relative;
-}
-
-svg {
-  position: absolute;
-  pointer-events: none;
-  z-index: 10;
-  height: 240px;
-  width: 240px;
-  margin-left: -164.5px;
-  margin-top: -75px;
-}
-
-svg circle {
-  stroke-linecap: round;
-  fill: none;
-  stroke-dasharray: 251.2;
-  stroke-width: 3px;
-}
-
-circle:nth-child(2) {
-  stroke-dasharray: 251.2;
-  stroke-width: 5px;
-  animation: animate-circle 60s linear infinite;
-  transform: rotate(-90deg);
-  transform-origin: center center;
 }
