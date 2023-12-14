@@ -17,8 +17,8 @@ function changePage() {
     } else if (day.textContent == place[2]) {
       tomorrowChangeEvents()
     } else { todayChangeEvents() }
-    cleanTodoData()
-    getTodoData()
+    data.cleanTodoData(list)
+    data.getTodoData(list)
     load()
   })
 
@@ -30,8 +30,8 @@ function changePage() {
     } else if (day.textContent == place[0]) {
       yesterdayChangeEvents()
     } else { todayChangeEvents() }
-    cleanTodoData()
-    getTodoData()
+    data.cleanTodoData(list)
+    data.getTodoData(list)
     load()
   })
 
@@ -43,8 +43,8 @@ function changePage() {
     config.style.display = 'none'
     pomodoro.style.display = 'none'
     week.style.display = 'flex'
-    cleanWeekData()
-    getWeekData()
+    data.cleanWeekData(document.querySelectorAll(`tr td`))
+    data.getWeekData()
   })
 }
 changePage()
