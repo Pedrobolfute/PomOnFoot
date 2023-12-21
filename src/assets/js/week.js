@@ -8,8 +8,8 @@ returnToToday.addEventListener('click', () => {
   pomodoro.style.display = 'grid'
   week.style.display = 'none'
 
-  cleanTodoData()
-  getTodoData()
+  data.cleanTodoData(document.querySelector('.list'))
+  data.getTodoData(document.querySelector('.list'))
 })
 
 //mainWeek
@@ -24,7 +24,7 @@ function mainWeek() {
 }
 
 window.addEventListener('DOMContentLoaded', () => {
-  getWeekData()
+  data.getWeekData()
   mainWeek()  
 })
 
@@ -128,7 +128,7 @@ function keyEnter(element, oldValue, index) {
     let key = e.which || e.keyCode
     if (key == 13) {
       element.textContent = inputEle.value
-      setWeekData(inputEle, oldValue, i)
+      data.setWeekData(inputEle, oldValue, i)
     }
   })
 }

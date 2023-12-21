@@ -72,7 +72,7 @@ body {
 
 h6 {
   font-family: 'monospace', Helvetica, sans-serif;
-  font-size: 14px;
+  font-size: 8px;
   font-weight: 600;
 }
 
@@ -102,7 +102,7 @@ div .buttonTimerLeft, div .buttonTimerRight, .buttonTodoLeft, .buttonTodoRight, 
   filter: invert(83%) sepia(57%) saturate(546%) hue-rotate(163deg)
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 768px) and (min-height: 800px){
   .pomodoro{
     width: 550px;
     height: 650px;
