@@ -1,6 +1,8 @@
-let toy = []
-toy[0] = `
-(*_*)<br>
+function animationBoy(){
+
+  let toy = []
+  toy[0] = `
+  (*_*)<br>
 .||\\.<br>
 ..|..<br>
 ./ |.<br>`
@@ -23,7 +25,6 @@ toy[3] = `
 ..|..<br>
 .| |.<br>`
 
-window.addEventListener('DOMContentLoaded', ()=>{
   const icon = document.querySelector('.columnLeft h6')
   let toyPosition = 0
   setInterval(()=>{
@@ -31,5 +32,4 @@ window.addEventListener('DOMContentLoaded', ()=>{
     toyPosition += 1
     if(toyPosition > 3){ toyPosition = 0}
   }, 250)
-})
-
+}
