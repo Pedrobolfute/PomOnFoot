@@ -5,7 +5,7 @@ const btnPauseAlarm = document.getElementById('alarm');
 const buttonTimerRight = document.querySelector('.buttonTimerRight');
 const buttonTimerLeft = document.querySelector('.buttonTimerLeft');
 const btnStart = document.querySelector('.time');
-let whachTime = 1000
+let whachTime = 100
 
 let defaultTime = 30
 let time = defaultTime * 60;
@@ -35,9 +35,10 @@ function increase() {
 }
 
 function start() {
+  animationBoy()
   if (!running) {
     running = true;
-    time = defaultTime * 60;
+    time = (defaultTime * 60)+59;
     watch();
     interval = setInterval(watch, whachTime);
   }
@@ -55,11 +56,10 @@ function watch() {
     if (time >= 60) {
       display.textContent = formatTime(minutes);
     } else {
-      changeColor();
-      display.textContent = seconds;
+      display.textContent = 0;
     }
   }
-  if (time <= 0) {
+  if (time <= 60) {
     stop();
     showAlert();
   } else {

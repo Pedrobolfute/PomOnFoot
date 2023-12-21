@@ -1,5 +1,8 @@
+const list = document.querySelector('.list')
+
 window.addEventListener('DOMContentLoaded', () => {
-  getTodoData()
+  // data.removeDaysBefore()
+  data.getTodoData(list)
   mainPomodore()
   load()
 })
@@ -11,9 +14,9 @@ function mainPomodore() {
     const inputAdd = document.getElementsByClassName('inputAdd')[0];
 
     if (inputAdd.value.trim() !== '') {
-      setTodoData(inputAdd.value)
+      data.setTodoData(inputAdd.value)
       insert.reset();
-      loadLastTodoData()
+      data.loadLastTodoData(list)
       load()
     }
   }
@@ -24,7 +27,7 @@ function load() {
   let checkboxList = document.querySelectorAll('input[type="checkbox"]')
   checkboxList.forEach(checkbox => {
     checkbox.addEventListener('change', () => {
-      removeTodoData(checkbox)
+      data.removeTodoData(checkbox)
     })
   })
 }

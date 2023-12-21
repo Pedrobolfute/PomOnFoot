@@ -85,7 +85,7 @@ function setLightTheme() {
   pomodoro.style.background = '#ffffff88'
   pomodoro.style.color = "#e4dddd"
   allBody.style.background = '#cac3c3'
-  time.style.background = '#ce5454'
+  time.style.color = '#ce5454'
   insertBlock.style.backgroundColor = '#00000057'
   insertBlock.style.borderColor = '#79797957'
   info.style.color = 'black'
