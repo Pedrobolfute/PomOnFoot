@@ -1,10 +1,7 @@
-const theDay = document.querySelector('.info h6')
 const list = document.querySelector('.list')
 
-const data = new DataStorage(theDay)
-console.log(data)
-
 window.addEventListener('DOMContentLoaded', () => {
+  // data.removeDaysBefore()
   data.getTodoData(list)
   mainPomodore()
   load()
