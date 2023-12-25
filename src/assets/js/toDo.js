@@ -25,8 +25,10 @@ function mainPomodore() {
 //Funcões Auxiliares
 function load() {
   let checkboxList = document.querySelectorAll('input[type="checkbox"]')
+  let i = 0;
   checkboxList.forEach(checkbox => {
     checkbox.addEventListener('change', () => {
+      console.log('mudo ' + i+1)
       data.removeTodoData(checkbox)
     })
   })
