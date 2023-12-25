@@ -1,7 +1,7 @@
 const list = document.querySelector('.list')
 
 window.addEventListener('DOMContentLoaded', () => {
-  // data.removeDaysBefore()
+  data.removePast()
   data.getTodoData(list)
   mainPomodore()
   load()
