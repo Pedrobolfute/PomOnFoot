@@ -1,4 +1,7 @@
 // Hoje
+const theDay = document.querySelector('.info h6')
+const data = new DataStorage(theDay)
+
 const seeWeek = document.querySelector('.seeWeek')
 const buttonTodoLeft = document.querySelector('.buttonTodoLeft')
 const buttonTodoRight = document.querySelector('.buttonTodoRight')
@@ -14,11 +17,12 @@ function changePage() {
     day.textContent = place[index]
     if (day.textContent == place[0]) {
       yesterdayChangeEvents()
+      data.cleanTodoData(list)
     } else if (day.textContent == place[2]) {
       tomorrowChangeEvents()
     } else { todayChangeEvents() }
-    cleanTodoData()
-    getTodoData()
+    data.cleanTodoData(list)
+    data.getTodoData(list)
     load()
   })
 
@@ -30,8 +34,8 @@ function changePage() {
     } else if (day.textContent == place[0]) {
       yesterdayChangeEvents()
     } else { todayChangeEvents() }
-    cleanTodoData()
-    getTodoData()
+    data.cleanTodoData(list)
+    data.getTodoData(list)
     load()
   })
 
@@ -43,8 +47,8 @@ function changePage() {
     config.style.display = 'none'
     pomodoro.style.display = 'none'
     week.style.display = 'flex'
-    cleanWeekData()
-    getWeekData()
+    data.cleanWeekData(document.querySelectorAll(`tr td`))
+    data.getWeekData()
   })
 }
 changePage()
