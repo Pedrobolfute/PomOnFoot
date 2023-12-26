@@ -1,8 +1,1 @@
-body.white-mode {
-    background-color: #cac3c3a7;
-    color: #ffffff;
-}
-
-#themeWeek, #return{
-    filter: invert(100%) sepia(0%) saturate(1284%) hue-rotate(144deg) brightness(107%) contrast(110%);
-}
+body.white-mode{background-color:#cac3c3a7;color:#fff}#return,#themeWeek{filter:invert(100%) sepia(0%) saturate(1284%) hue-rotate(144deg) brightness(107%) contrast(110%)}
