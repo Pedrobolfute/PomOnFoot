@@ -36,6 +36,7 @@ function increase() {
 
 function start() {
   animationBoy()
+  animationTimer()
   if (!running) {
     running = true;
     time = (defaultTime * 60)+59;

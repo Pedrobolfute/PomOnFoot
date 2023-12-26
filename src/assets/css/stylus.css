@@ -70,16 +70,20 @@ body {
   max-height: 400px;
 }
 
-h6 {
+.columnLeft header h6{
   font-family: 'monospace', Helvetica, sans-serif;
-  font-size: 8px;
-  font-weight: 600;
+  font-size: 0.75rem;
+  font-weight: 300;
+  text-align: center;
 }
 
 .info h6{
+  font-family: 'monospace', Helvetica, sans-serif;
   margin-top: 50%;
   color: aliceblue;
   font-size: 1rem;
+  font-weight: 600;
+
 }
 
 .buttonTodoLeft, .buttonTodoRight {

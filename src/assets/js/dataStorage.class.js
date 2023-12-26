@@ -25,8 +25,6 @@ class DataStorage {
 
   getWeek() {
     const date = new Date()
-    // if(date.getDay() > 6){ return date.getWeek()+1}
-    // if(date.getDay() < 0){return date.getWeek()-1}
     return date.getWeek()
   }
 
@@ -51,58 +49,28 @@ class DataStorage {
     }
   }
 
-  // getYesterdayData(elementPlace) {
-  //   let yesterday = Array()
-  //   if (this.allWeek[this.getDay()] == this.allWeek[0]) {
-  //     if(localStorage.hasOwnProperty(`${this.getWeek() - 1}-${this.allWeek[6]}`)){
-
-  //       yesterday = JSON.parse(localStorage.getItem(`${this.getWeek() - 1}-${this.allWeek[6]}`))
-  //       localStorage.setItem(this.allWeek[7], JSON.stringify(yesterday))
-  //       yesterday.forEach(task => {
-  //         console.log(task)
-  //         const element = `
-  //         <div class="formItem">
-  //         <input type="checkbox" class="taskList" name="${task.task}" id="${task.task}">
-  //         <label for="${task.task}">${task.task}</label>
-  //         </div>
-  //         `
-  //         elementPlace.innerHTML += element
-  //       })
-  //     }
-  //   } else {
-  //     if(localStorage.hasOwnProperty(`${this.getWeek()}-${this.allWeek[this.getDay() - 1]}`)){
-  //       yesterday = JSON.parse(localStorage.getItem(`${this.getWeek()}-${this.allWeek[this.whichTodoDay()]}`))
-  //       localStorage.setItem(this.allWeek[7], JSON.stringify(yesterday))
-  //       yesterday.forEach(task => {
-  //         const element = `
-  //         <div class="formItem">
-  //         <input type="checkbox" class="taskList" name="${task.task}" id="${task.task}">
-  //         <label for="${task.task}">${task.task}</label>
-  //         </div>
-  //         `
-  //         elementPlace.innerHTML += element
-  //       })
-  //     }
-  //   }
-  // }
-
-  removeDaysBefore() {
-    for (let indexWeek = this.getWeek(); indexWeek >= 0; indexWeek--) {
-      for (let indexDays = 6; indexDays >= 0; indexDays--) {
-        if (indexWeek === this.getWeek() && indexDays >= this.getDay()) { //contece nada
-          if (indexWeek === this.getWeek() && indexDays === 0) {
-            if (localStorage.hasOwnProperty(`${this.getWeek() - 1}-${this.allWeek[6]}`)) {
-              console.log('É domingo, remove sabado passado')
-              localStorage.removeItem(`${this.getWeek() - 1}-${this.allWeek[6]}`)
+  removePast() {
+    for (let i = 0; i <= this.getWeek(); i++) {
+      for (let j = 0; j <= 6; j++) {
+        if (i <= this.getWeek() - 2) {
+          if (localStorage.hasOwnProperty(`${i}-${this.allWeek[j]}`)) {
+            localStorage.removeItem(`${i}-${this.allWeek[j]}`)
+          }
+        } else {
+          if (i === this.getWeek() && j === 0) {
+            if (localStorage.hasOwnProperty(`${i - 1}-${this.allWeek[5]}`)) {
+              localStorage.removeItem(`${i - 1}-${this.allWeek[5]}`)
             }
           }
-          console.log(`${indexWeek}-${indexDays} - Só msg`)
-        }
-        else {
-          if (localStorage.hasOwnProperty(`${indexWeek}-${this.allWeek[indexDays]}`)) {
-            console.log(`${indexWeek}-${this.allWeek[indexDays]} - Vou remover.`)
-            localStorage.removeItem(`${indexWeek}-${this.allWeek[indexDays]}`)
-
+          else if (i === this.getWeek() && j === 1) {
+            if (localStorage.hasOwnProperty(`${i - 1}-${this.allWeek[6]}`)) {
+              localStorage.removeItem(`${i - 1}-${this.allWeek[6]}`)
+            }
+          }
+          else if (i === this.getWeek() && j != 0 && j != 1 && j <= this.getDay()) {
+            if (localStorage.hasOwnProperty(`${i}-${this.allWeek[j]}`)) {
+              localStorage.removeItem(`${i}-${this.allWeek[j - 2]}`)
+            }
           }
         }
       }
@@ -138,7 +106,7 @@ class DataStorage {
   getTodoData(elementPlace) {
     let myTasks
     if (localStorage.hasOwnProperty(`${this.getWeek()}-${this.allWeek[this.whichTodoDay()]}`)) {
-      if(this.getWeek() === 6 && localStorage.hasOwnProperty(`${this.getWeek() + 1}-${this.allWeek[0]}`)){
+      if (this.getWeek() === 6 && localStorage.hasOwnProperty(`${this.getWeek() + 1}-${this.allWeek[0]}`)) {
         myTasks = JSON.parse(localStorage.getItem(`${this.getWeek() + 1}-${this.allWeek[this.whichTodoDay()]}`))
       }
       myTasks = JSON.parse(localStorage.getItem(`${this.getWeek()}-${this.allWeek[this.whichTodoDay()]}`))
@@ -192,7 +160,7 @@ class DataStorage {
     let isMyWeek = this.getDay() <= index - 1
     if (isMyWeek) { weekTrobleshot = this.getWeek() }
     else { weekTrobleshot = this.getWeek() + 1 }
-    console.log('Index:'+index, 'dia:'+this.getDay(), 'todo-Day:'+this.whichTodoDay())
+    console.log('Index:' + index, 'dia:' + this.getDay(), 'todo-Day:' + this.whichTodoDay())
 
     let value = element.value
     //add

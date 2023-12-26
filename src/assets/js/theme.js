@@ -65,7 +65,7 @@ function setDarkTheme() {
   pomodoro.style.backgroundColor = ''
   allBody.style.background = ''
   pomodoro.style.color = ''
-  time.style.background = ''
+  time.style.color = ''
   insertBlock.style.backgroundColor = ''
   info.style.color = ''
   dots.style.color = ''

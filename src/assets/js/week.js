@@ -10,6 +10,7 @@ returnToToday.addEventListener('click', () => {
 
   data.cleanTodoData(document.querySelector('.list'))
   data.getTodoData(document.querySelector('.list'))
+  load()
 })
 
 //mainWeek
