@@ -1,60 +1,26 @@
-function animationBoy(){
-
-  let toy = []
-  toy[0] = `
+function animationBoy(){let r=[];r[0]=`
   *_* <br>
   /|\\ <br>
   / \\ <br>
   .., <br>
-  `
-
-toy[1] = `
+  `,r[1]=`
 *_^ <br>
 /|\\ <br>
 / \\ <br>
 .,. <br>
-`
-toy[2] = `
+`,r[2]=`
 *_* <br>
 /|\\ <br>
 | | <br>
 ,.. <br>
-`
-
-toy[3] = `
+`,r[3]=`
 *_* <br>
 /|\\  <br>
 / \\ <br>
 .,. <br>
-`
-
-toy[4] = `
+`,r[4]=`
 *_* <br>
 /|\\  <br>
 | | <br>
 ,.. <br>
-`
-
-  const icon = document.querySelector('.columnLeft h6')
-  let toyPosition = 0
-  setInterval(()=>{
-    icon.innerHTML = toy[toyPosition]
-    toyPosition += 1
-    if(toyPosition > toy.length-1){ toyPosition = 0}
-  }, 250)
-}
-
-function animationTimer(){
-  let time = document.querySelector('.dial-plate .time')
-  let k = true
-  setInterval(() => {
-    if(k){
-      time.style.transform = 'scale(1.0)'
-      k = false
-    }else{
-      time.style.transform = 'scale(1.1)'
-      k = true
-    }
-  }, 500);
-
-}
+`;let b=document.querySelector(".columnLeft h6"),e=0;setInterval(()=>{b.innerHTML=r[e],(e+=1)>r.length-1&&(e=0)},250)}function animationTimer(){let r=document.querySelector(".dial-plate .time"),b=!0;setInterval(()=>{b?(r.style.transform="scale(1.0)",b=!1):(r.style.transform="scale(1.1)",b=!0)},500)}
