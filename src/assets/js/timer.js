@@ -1,4 +1,3 @@
-// Neandro Area
 const display = document.querySelector('.time');
 const som = document.getElementById('som');
 const btnPauseAlarm = document.getElementById('alarm');

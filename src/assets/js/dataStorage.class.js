@@ -145,10 +145,14 @@ class DataStorage {
   }
   getWeekData() {
     let myTasks = Array()
+    let days
     for (let i = 0; i <= 6; i++) {
+      if (i >= this.getDay()) {
+        days = i
+      }
       const elements = document.querySelectorAll(`tr td:nth-child(${i + 1})`)
-      if (localStorage.hasOwnProperty(`${this.getWeek()}-${this.allWeek[i]}`) || localStorage.hasOwnProperty(`${this.getWeek() + 1}-${this.allWeek[i]}`)) {
-        myTasks = JSON.parse(localStorage.getItem(`${this.getWeek()}-${this.allWeek[i]}`) || localStorage.getItem(`${this.getWeek() + 1}-${this.allWeek[i]}`))
+      if (localStorage.hasOwnProperty(`${this.getWeek()}-${this.allWeek[days]}`) || localStorage.hasOwnProperty(`${this.getWeek() + 1}-${this.allWeek[i]}`)) {
+        myTasks = JSON.parse(localStorage.getItem(`${this.getWeek()}-${this.allWeek[days]}`) || localStorage.getItem(`${this.getWeek() + 1}-${this.allWeek[i]}`))
         myTasks.map((task, index) => {
           elements[index].textContent = task.task
         })
@@ -160,7 +164,6 @@ class DataStorage {
     let isMyWeek = this.getDay() <= index - 1
     if (isMyWeek) { weekTrobleshot = this.getWeek() }
     else { weekTrobleshot = this.getWeek() + 1 }
-    console.log('Index:' + index, 'dia:' + this.getDay(), 'todo-Day:' + this.whichTodoDay())
 
     let value = element.value
     //add
@@ -185,7 +188,6 @@ class DataStorage {
     } else {
       let myNewTasks = Array()
       let myTasks = JSON.parse(localStorage.getItem(`${weekTrobleshot}-${this.allWeek[index - 1]}`))
-      console.log(myNewTasks)
       myTasks = myTasks.filter(task => {
         return task.task !== oldValue
       })
