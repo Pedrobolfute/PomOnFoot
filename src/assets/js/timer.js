@@ -5,7 +5,7 @@ const btnPauseAlarm = document.getElementById('alarm');
 const buttonTimerRight = document.querySelector('.buttonTimerRight');
 const buttonTimerLeft = document.querySelector('.buttonTimerLeft');
 const btnStart = document.querySelector('.time');
-let whachTime = 1000
+let whachTime = 10
 
 let defaultTime = 30
 let time = defaultTime * 60;
@@ -13,6 +13,8 @@ let running = false;
 let interval;
 let alarmActive = true;
 let alarmPaused = false;
+let boy
+let timePulse
 
 buttonTimerLeft.addEventListener('click', toDecrease);
 buttonTimerRight.addEventListener('click', increase);
@@ -35,11 +37,11 @@ function increase() {
 }
 
 function start() {
-  animationBoy()
-  animationTimer()
+  boy = setInterval(animationBoy, 250)
+  timePulse = setInterval(animationTimer, 500)
   if (!running) {
     running = true;
-    time = (defaultTime * 60)+59;
+    time = (defaultTime * 60) + 59;
     watch();
     interval = setInterval(watch, whachTime);
   }
@@ -47,6 +49,8 @@ function start() {
 
 function stop() {
   clearInterval(interval);
+  clearInterval(boy)
+  clearInterval(timePulse)
   time = 0;
   running = false;
 }
@@ -80,30 +84,23 @@ function formatTime(time) {
 }
 
 function showAlert() {
-  if(alarmActive && !alarmPaused) {
-    alarmActive = false;
+  if (alarmActive) {
     som.play();
     setTimeout(() => {
-      alert('Tempo esgotado!');
-      som.pause();
-      window.location.href = "index.html";
-      som.currentTime = 0;
-      alarmActive = true;
-    }, 100);
-  }else {
-    toggleAlarm();
-    setTimeout(() => {
-      alert('Tempo esgotado!');
-      window.location.href = "index.html";
-      alarmActive = true;
-    }, 100);
+      const icon = document.querySelector('.columnLeft h6')
+      display.innerHTML = defaultTime
+      icon.innerHTML = toy[0]
+      data.cleanTodoData(document.querySelector('.list'))
+      data.getTodoData(document.querySelector('.list'))
+      load()
+    }, (Math.ceil(som.duration) + 1) * 1000)
   }
 }
 
 function toggleAlarm() {
   alarmPaused = !alarmPaused;
-  if(alarmPaused) {
-    som.pause();
+  if (alarmPaused) {
+    som.volume = 1e-16
   }
 }
 
