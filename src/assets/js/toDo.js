@@ -28,7 +28,6 @@ function load() {
   let i = 0;
   checkboxList.forEach(checkbox => {
     checkbox.addEventListener('change', () => {
-      console.log('mudo ' + i+1)
       data.removeTodoData(checkbox)
     })
   })

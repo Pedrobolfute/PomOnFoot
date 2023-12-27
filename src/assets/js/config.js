@@ -32,8 +32,6 @@ function changeMusic() {
     }
 
     next = tracks[current];
-    console.log("carregar próxima audio: " + next);
-
     musicSource.setAttribute('src', next);
     audioPlayer.load();
     audioPlayer.play();
@@ -45,8 +43,6 @@ function toggleMusic() {
   if (musicaAtiva && audioPlayer.paused) {
 
     next = tracks[current];
-    console.log("carregar próxima audio: " + next);
-
     musicSource.setAttribute('src', next);
     audioPlayer.load();
     audioPlayer.play();
@@ -66,7 +62,6 @@ function volumeDown() {
     if (audioPlayer.volume > 0.1) {
       setTimeout(() => {
         audioPlayer.volume -= 0.1;
-        console.log(audioPlayer.volume);
       }, 100);
     }
   }
@@ -77,13 +72,11 @@ function volumeIncrease() {
     if (audioPlayer.volume < 1.0) {
       setTimeout(() => {
         audioPlayer.volume += 0.1;
-        console.log(audioPlayer.volume += 0.1);
       }, 100);
     }
   }
 }
 
-//Funções de animação dos botões made by Pedro
 function changeIconMusic() {
   let click = 0
   const mute = document.querySelector('.config span:nth-child(1) img')
