@@ -5,7 +5,7 @@ const btnPauseAlarm = document.getElementById('alarm');
 const buttonTimerRight = document.querySelector('.buttonTimerRight');
 const buttonTimerLeft = document.querySelector('.buttonTimerLeft');
 const btnStart = document.querySelector('.time');
-let whachTime = 10
+let whachTime = 1000
 
 let defaultTime = 30
 let time = defaultTime * 60;
