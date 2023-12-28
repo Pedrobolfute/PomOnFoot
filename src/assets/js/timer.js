@@ -53,7 +53,7 @@ function stop() {
   clearInterval(timePulse)
   time = 0;
   running = false;
-  setTimeout(()=>{
+  setTimeout(() => {
     btnStart.addEventListener('click', start)
   }, (Math.ceil(som.duration) + 1) * 1000)
 }
@@ -87,9 +87,15 @@ function formatTime(time) {
 }
 
 function showAlert() {
+  let getVolume = audioPlayer.volume
   if (alarmActive) {
+    const audioPlayer = document.getElementById('audioPlayer');
+    if (audioPlayer.volume > 0.4) {
+      audioPlayer.volume = 0.2
+    }
     som.play();
     setTimeout(() => {
+      audioPlayer.volume = getVolume
       const icon = document.querySelector('.columnLeft h6')
       display.innerHTML = defaultTime
       icon.innerHTML = toy[0]
