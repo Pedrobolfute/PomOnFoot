@@ -38,6 +38,7 @@ function increase() {
 function start() {
   boy = setInterval(animationBoy, 250)
   timePulse = setInterval(animationTimer, 500)
+  btnStart.removeEventListener('click', start)
   if (!running) {
     running = true;
     time = (defaultTime * 60) + 59;
@@ -52,6 +53,9 @@ function stop() {
   clearInterval(timePulse)
   time = 0;
   running = false;
+  setTimeout(()=>{
+    btnStart.addEventListener('click', start)
+  }, (Math.ceil(som.duration) + 1) * 1000)
 }
 
 function watch() {
