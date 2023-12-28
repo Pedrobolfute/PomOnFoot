@@ -42,6 +42,7 @@ function toggleMusic() {
 
   if (musicaAtiva && audioPlayer.paused) {
 
+    console.log(audioPlayer.volume)
     next = tracks[current];
     musicSource.setAttribute('src', next);
     audioPlayer.load();
