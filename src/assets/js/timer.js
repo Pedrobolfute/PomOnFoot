@@ -1,1 +1,113 @@
-const display=document.querySelector(".time"),som=document.getElementById("som"),btnPauseAlarm=document.getElementById("alarm"),buttonTimerRight=document.querySelector(".buttonTimerRight"),buttonTimerLeft=document.querySelector(".buttonTimerLeft"),btnStart=document.querySelector(".time");let whachTime=1e3,defaultTime=30,time=60*defaultTime,running=!1,interval,alarmActive=!0,alarmPaused=!1;function toDecrease(){return!running&&defaultTime>=10&&(display.textContent=defaultTime-=5),defaultTime}function increase(){return!running&&defaultTime<=85&&(display.textContent=defaultTime+=5),defaultTime}function start(){animationBoy(),animationTimer(),running||(running=!0,time=60*defaultTime+59,watch(),interval=setInterval(watch,whachTime))}function stop(){clearInterval(interval),time=0,running=!1}function watch(){if(time>=0){let{minutes:e,seconds:t}=getTimeComponents(time);time>=60?display.textContent=formatTime(e):display.textContent=0}time<=60?(stop(),showAlert()):time--}function getTimeComponents(e){let t=Math.floor(e%7200/60),n=e%60;return console.log(t,n),{minutes:t,seconds:n}}function formatTime(e){return String(e).padStart(1,"0")}function showAlert(){alarmActive&&!alarmPaused?(alarmActive=!1,som.play(),setTimeout(()=>{alert("Tempo esgotado!"),som.pause(),window.location.href="index.html",som.currentTime=0,alarmActive=!0},100)):(toggleAlarm(),setTimeout(()=>{alert("Tempo esgotado!"),window.location.href="index.html",alarmActive=!0},100))}function toggleAlarm(){(alarmPaused=!alarmPaused)&&som.pause()}function changeColor(){let e=document.querySelector(".time");time%2==0?e.style.backgroundColor="#ce5454":e.style.backgroundColor="#de2e2e"}buttonTimerLeft.addEventListener("click",toDecrease),buttonTimerRight.addEventListener("click",increase),btnStart.addEventListener("click",start),btnPauseAlarm.addEventListener("click",toggleAlarm);
+const display = document.querySelector('.time');
+const som = document.getElementById('som');
+const btnPauseAlarm = document.getElementById('alarm');
+const buttonTimerRight = document.querySelector('.buttonTimerRight');
+const buttonTimerLeft = document.querySelector('.buttonTimerLeft');
+const btnStart = document.querySelector('.time');
+let whachTime = 1000
+
+let defaultTime = 30
+let time = defaultTime * 60;
+let running = false;
+let interval;
+let alarmActive = true;
+let alarmPaused = false;
+let boy
+let timePulse
+
+buttonTimerLeft.addEventListener('click', toDecrease);
+buttonTimerRight.addEventListener('click', increase);
+btnStart.addEventListener('click', start);
+btnPauseAlarm.addEventListener('click', toggleAlarm);
+
+
+function toDecrease() {
+  if (!running && defaultTime >= 10) {
+    display.textContent = defaultTime -= 5;
+  }
+  return defaultTime;
+}
+
+function increase() {
+  if (!running && defaultTime <= 85) {
+    display.textContent = defaultTime += 5;
+  }
+  return defaultTime;
+}
+
+function start() {
+  boy = setInterval(animationBoy, 250)
+  timePulse = setInterval(animationTimer, 500)
+  if (!running) {
+    running = true;
+    time = (defaultTime * 60) + 59;
+    watch();
+    interval = setInterval(watch, whachTime);
+  }
+}
+
+function stop() {
+  clearInterval(interval);
+  clearInterval(boy)
+  clearInterval(timePulse)
+  time = 0;
+  running = false;
+}
+
+function watch() {
+  if (time >= 0) {
+    const { minutes, seconds } = getTimeComponents(time);
+    if (time >= 60) {
+      display.textContent = formatTime(minutes);
+    } else {
+      display.textContent = 0;
+    }
+  }
+  if (time <= 60) {
+    stop();
+    showAlert();
+  } else {
+    time--;
+  }
+}
+
+function getTimeComponents(time) {
+  const minutes = Math.floor((time % 7200) / 60);
+  const seconds = time % 60;
+  console.log(minutes, seconds)
+  return { minutes, seconds };
+}
+
+function formatTime(time) {
+  return String(time).padStart(1, '0');
+}
+
+function showAlert() {
+  if (alarmActive) {
+    som.play();
+    setTimeout(() => {
+      const icon = document.querySelector('.columnLeft h6')
+      display.innerHTML = defaultTime
+      icon.innerHTML = toy[0]
+      data.cleanTodoData(document.querySelector('.list'))
+      data.getTodoData(document.querySelector('.list'))
+      load()
+    }, (Math.ceil(som.duration) + 1) * 1000)
+  }
+}
+
+function toggleAlarm() {
+  alarmPaused = !alarmPaused;
+  if (alarmPaused) {
+    som.volume = 1e-16
+  }
+}
+
+function changeColor() {
+  let cor = document.querySelector('.time')
+  if (time % 2 == 0) {
+    cor.style.backgroundColor = '#ce5454'
+  } else {
+    cor.style.backgroundColor = '#de2e2e'
+  }
+}

@@ -1,201 +1,217 @@
-<!doctype html>
-<html lang=en>
+<!DOCTYPE html>
+<html lang="en">
+
 <head>
-<meta charset=UTF-8>
-<meta http-equiv=X-UA-Compatible content="IE=edge">
-<meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
-<link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w==" crossorigin=anonymous referrerpolicy=no-referrer>
-<link rel=stylesheet href=./src/assets/css/stylus.css>
-<link rel=stylesheet href=./src/assets/css/config.css>
-<link rel=stylesheet href=./src/assets/css/timer.css>
-<link rel=stylesheet href=./src/assets/css/toDo.css>
-<link rel=stylesheet href=./src/assets/css/theme.css>
-<link rel=stylesheet href=./src/assets/css/week.css>
-<link rel="shortcut icon" href=./src/assets/img/svg/task.svg>
-<title>PomOnFoot</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+  <!-- Normalize Css  -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
+    integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- Css -->
+    <link rel="stylesheet" href="./src/assets/css/stylus.css">
+    <link rel="stylesheet" href="./src/assets/css/config.css">
+    <link rel="stylesheet" href="./src/assets/css/timer.css">
+    <link rel="stylesheet" href="./src/assets/css/toDo.css">
+    <link rel="stylesheet" href="./src/assets/css/theme.css">
+    <link rel="stylesheet" href="./src/assets/css/week.css">
+    <link rel="shortcut icon" href="./src/assets/img/svg/task.svg">
+  <title>PomOnFoot</title>
 </head>
+
 <body>
-<div class=frame>
-<div class=config>
-<header>
-<h1>PomOnFoot</h1>
-</header>
-<div class=icon>
-<span id=btnMusic><img src=./src/assets/img/svg/mute.svg alt=unmute title="Ligar Musica"></span>
-<span id=btnChangeMusic><img src=./src/assets/img/svg/refresh.svg alt=refresh title="Mudar Toque"></span>
-<span id=min><img src=./src/assets/img/svg/volDown.svg alt=volDown title="Diminuir Volume"></span>
-<span id=max><img src=./src/assets/img/svg/volUp.svg alt=volUp title="Almentar Valume"></span>
-<span id=alarm><img src=./src/assets/img/svg/bell.svg alt="Alarm On" title="Alarme Ligado"></span>
-<span id=theme><img src=./src/assets/img/svg/theme.svg alt=theme title="Mudar Tema"></span>
-</div>
-</div>
-<div class=pomodoro>
-<div class=columnLeft>
-<header>
-<h6>
-*_*<br>
-/|\ <br>
-/ \ <br>
-...
-</h6>
-</header>
-<div></div>
-<img src=./src/assets/img/svg/leftArrow.svg alt=buttonTodoLeft class=buttonTodoLeft>
-</div>
-<div class=columnMiddle>
-<div class=timer>
-<img src=./src/assets/img/svg/leftArrow.svg alt=buttonTimerLeft class=buttonTimerLeft>
-<div class=dial-plate>
-<header class=time>30</header>
-</div>
-<img src=./src/assets/img/svg/rightArrow.svg alt=buttonTimerRight class=buttonTimerRight>
-<audio id=som src=./src/assets/audio/realme_9_pro.mp3></audio>
-<audio id=audioPlayer>
-<source id=musicSource src="">
-</audio>
-</div>
-<form class="insert todayInsert">
-<button class=buttonAdd type=submit>
-<img src=./src/assets/img/svg/add.svg alt=addTask>
-</button>
-<input class=inputAdd placeholder=To-Do>
-</form>
-<div class=list-block>
-<div class=list></div>
-</div>
-</div>
-<div class=columnRight>
-<header><img src=./src/assets/img/svg/see.svg alt=see id=see class=seeWeek title="Ver Semana"></header>
-<div></div>
-<img src=./src/assets/img/svg/rightArrow.svg alt=buttonTodoRight class=buttonTodoRight>
-</div>
-</div>
-<div id=container style=display:none>
-<div class=option>
-<h1>...</h1>
-<img src=./src/assets/img/svg/unsee.svg alt=return id=return title="Voltar a Pagina Principal">
-<h1>...</h1>
-</div>
-<table>
-<caption></caption>
-<thead>
-<tr>
-<th>DOM</th>
-<th>SEG</th>
-<th>TER</th>
-<th>QUA</th>
-<th>QUI</th>
-<th>SEX</th>
-<th>SÁB</th>
-</tr>
-</thead>
-<TBody>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-</TBody>
-</table>
-</div>
-<span class=info>
-<header>
-<h6>Hoje</h6>
-</header>
-</span>
-</div>
-<script src=./src/assets/js/dataStorage.class.js></script>
-<script src=./src/assets/js/index.js></script>
-<script src=./src/assets/js/moveIcon.js></script>
-<script src=./src/assets/js/timer.js></script>
-<script src=./src/assets/js/toDo.js></script>
-<script src=./src/assets/js/config.js></script>
-<script src=./src/assets/js/theme.js></script>
-<script src=./src/assets/js/week.js></script>
+  <div class="frame">
+    <div class="config">
+      <header>
+        <h1>PomOnFoot</h1>
+      </header>
+      <div class="icon">
+        <span id="btnMusic"><img src="./src/assets/img/svg/mute.svg" alt="unmute" title="Ligar Musica"></span>
+        <span id="btnChangeMusic"><img src="./src/assets/img/svg/refresh.svg" alt="refresh" title="Mudar Toque"></span>
+        <span id="min"><img src="./src/assets/img/svg/volDown.svg" alt="volDown" title="Diminuir Volume"></span>
+        <span id="max"><img src="./src/assets/img/svg/volUp.svg" alt="volUp" title="Almentar Valume"></span>
+        <span id="alarm"><img src="./src/assets/img/svg/bell.svg" alt="Alarm On" title="Alarme Ligado"></span>
+        <span id="theme"><img src="./src/assets/img/svg/theme.svg" alt="theme" title="Mudar Tema"></span>
+      </div>
+    </div>
+
+    <div class="pomodoro">
+      <div class="columnLeft">
+        <header>
+          <h6> 
+            *_*<br>
+            /|\ <br>
+            / \ <br>
+            ... 
+          </h6>
+        </header>
+        <div></div>
+        <img src="./src/assets/img/svg/leftArrow.svg" alt="buttonTodoLeft" class="buttonTodoLeft">
+      </div>
+
+      <div class="columnMiddle">
+        <div class="timer">
+          <img src="./src/assets/img/svg/leftArrow.svg" alt="buttonTimerLeft" class="buttonTimerLeft">
+          <div class="dial-plate">
+            <header class="time">30</header>
+          </div>
+          <img src="./src/assets/img/svg/rightArrow.svg" alt="buttonTimerRight" class="buttonTimerRight">
+          <audio id="som" src="./src/assets/audio/time_ended.mp3"></audio>
+          <audio id="audioPlayer">
+            <source id="musicSource" src="">
+          </audio>
+        </div>
+        <form class="insert todayInsert">
+          <button class="buttonAdd" type="submit">
+            <img src="./src/assets/img/svg/add.svg" alt="addTask">
+          </button>
+          <input class="inputAdd" type="text" placeholder="To-Do">
+        </form>
+        <div class="list-block">
+          <div class="list"></div>
+        </div>
+      </div>
+
+      <div class="columnRight">
+        <header><img src="./src/assets/img/svg/see.svg" alt="see" id="see" class="seeWeek" title="Ver Semana"></header>
+        <div></div>
+        <img src="./src/assets/img/svg/rightArrow.svg" alt="buttonTodoRight" class="buttonTodoRight">
+      </div>
+    </div>
+
+    <div id="container" style="display:none">
+      <div class="option">
+        <h1>...</h1>
+        <img src="./src/assets/img/svg/unsee.svg" alt="return" id="return" title="Voltar a Pagina Principal">
+        <h1>...</h1>
+      </div>
+      <table>
+        <caption></caption>
+        <thead>
+          <tr>
+            <th>DOM</th>
+            <th>SEG</th>
+            <th>TER</th>
+            <th>QUA</th>
+            <th>QUI</th>
+            <th>SEX</th>
+            <th>SÁB</th>
+          </tr>
+        </thead>
+        <TBody>
+          <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+        </TBody>
+      </table>
+    </div>
+    <span class="info">
+      <header>
+        <h6>Hoje</h6>
+      </header>
+    </span>
+  </div>
+
+
+  <!-- JavaScript -->
+  <script src="./src/assets/js/dataStorage.class.js"></script>
+  <script src="./src/assets/js/index.js"></script>
+  <script src="./src/assets/js/moveIcon.js"></script>
+  <script src="./src/assets/js/timer.js"></script>
+  <script src="./src/assets/js/toDo.js"></script>
+  <script src="./src/assets/js/config.js"></script>
+  <script src="./src/assets/js/theme.js"></script>
+  <script src="./src/assets/js/week.js"></script>
 </body>
+
 </html>
