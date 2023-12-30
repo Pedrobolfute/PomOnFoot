@@ -150,7 +150,7 @@ class DataStorage {
     }
   }
   removeTodoData(item) {
-        let isTomorrow = this.element.textContent.toLowerCase() === 'amanhã'
+    let isTomorrow = this.element.textContent.toLowerCase() === 'amanhã'
     let isSaturday = this.getDay() === 6
     let weekTrobleshot
     if (isTomorrow && isSaturday) { weekTrobleshot = this.getWeek() + 1 }
