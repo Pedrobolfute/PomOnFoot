@@ -91,8 +91,13 @@ class DataStorage {
     localStorage.setItem(`${weekTrobleshot}-${this.allWeek[this.whichTodoDay()]}`, JSON.stringify(tasks))
   }
   loadLastTodoData(elementPlace) {
-    if (localStorage.hasOwnProperty(`${this.getWeek()}-${this.allWeek[this.whichTodoDay()]}`)) {
-      let myTasks = JSON.parse(localStorage.getItem(`${this.getWeek()}-${this.allWeek[this.whichTodoDay()]}`))
+    let isTomorrow = this.element.textContent.toLowerCase() === 'amanhã'
+    let isSaturday = this.getDay() === 6
+    let weekTrobleshot
+    if (isTomorrow && isSaturday) { weekTrobleshot = this.getWeek() + 1 }
+    else { weekTrobleshot = this.getWeek() }
+    if (localStorage.hasOwnProperty(`${weekTrobleshot}-${this.allWeek[this.whichTodoDay()]}`)) {
+      let myTasks = JSON.parse(localStorage.getItem(`${weekTrobleshot}-${this.allWeek[this.whichTodoDay()]}`))
       let lastTask = myTasks[myTasks.length - 1].task
       const element = `
       <div class="formItem">
@@ -105,31 +110,59 @@ class DataStorage {
   }
   getTodoData(elementPlace) {
     let myTasks
-    if (localStorage.hasOwnProperty(`${this.getWeek()}-${this.allWeek[this.whichTodoDay()]}`)) {
-      if (this.getWeek() === 6 && localStorage.hasOwnProperty(`${this.getWeek() + 1}-${this.allWeek[0]}`)) {
+    if (localStorage.hasOwnProperty(`${this.getWeek()}-${this.allWeek[this.whichTodoDay()]}`) || localStorage.hasOwnProperty(`${this.getWeek() + 1}-${this.allWeek[0]}`)) {
+      if (this.getDay() === 6 && this.whichTodoDay() === 0 && localStorage.hasOwnProperty(`${this.getWeek() + 1}-${this.allWeek[0]}`)) {
         myTasks = JSON.parse(localStorage.getItem(`${this.getWeek() + 1}-${this.allWeek[this.whichTodoDay()]}`))
-      }
-      myTasks = JSON.parse(localStorage.getItem(`${this.getWeek()}-${this.allWeek[this.whichTodoDay()]}`))
-      myTasks.forEach(task => {
-        const element = `
-        <div class="formItem">
+        myTasks.forEach(task => {
+          const element = `
+          <div class="formItem">
           <input type="checkbox" class="taskList" name="${task.task}" id="${task.task}">
           <label for="${task.task}">${task.task}</label>
-        </div>
-        `
-        elementPlace.innerHTML += element
-      })
+          </div>
+          `
+          elementPlace.innerHTML += element
+        })
+      } else if (this.getDay() === 0 && this.whichTodoDay() === 6 && localStorage.hasOwnProperty(`${this.getWeek() - 1}-${this.allWeek[6]}`)) {
+        myTasks = JSON.parse(localStorage.getItem(`${this.getWeek() - 1}-${this.allWeek[this.whichTodoDay()]}`))
+        myTasks.forEach(task => {
+          const element = `
+          <div class="formItem">
+            <input type="checkbox" class="taskList" name="${task.task}" id="${task.task}">
+            <label for="${task.task}">${task.task}</label>
+          </div>
+          `
+          elementPlace.innerHTML += element
+        })
+      } else {
+        if (localStorage.hasOwnProperty(`${this.getWeek()}-${this.allWeek[this.whichTodoDay()]}`)) {
+          myTasks = JSON.parse(localStorage.getItem(`${this.getWeek()}-${this.allWeek[this.whichTodoDay()]}`))
+          myTasks.forEach(task => {
+            const element = `
+          <div class="formItem">
+          <input type="checkbox" class="taskList" name="${task.task}" id="${task.task}">
+          <label for="${task.task}">${task.task}</label>
+          </div>
+          `
+            elementPlace.innerHTML += element
+          })
+        }
+      }
     }
   }
   removeTodoData(item) {
+        let isTomorrow = this.element.textContent.toLowerCase() === 'amanhã'
+    let isSaturday = this.getDay() === 6
+    let weekTrobleshot
+    if (isTomorrow && isSaturday) { weekTrobleshot = this.getWeek() + 1 }
+    else { weekTrobleshot = this.getWeek() }
     if (item) {
       let itemValue = item.getAttribute('name')
-      if (localStorage.hasOwnProperty(`${this.getWeek()}-${this.allWeek[this.whichTodoDay()]}`)) {
-        let myTasks = JSON.parse(localStorage.getItem(`${this.getWeek()}-${this.allWeek[this.whichTodoDay()]}`))
+      if (localStorage.hasOwnProperty(`${weekTrobleshot}-${this.allWeek[this.whichTodoDay()]}`)) {
+        let myTasks = JSON.parse(localStorage.getItem(`${weekTrobleshot}-${this.allWeek[this.whichTodoDay()]}`))
         myTasks = myTasks.filter(task => {
           return task.task !== `${itemValue}`
         })
-        localStorage.setItem(`${this.getWeek()}-${this.allWeek[this.whichTodoDay()]}`, JSON.stringify(myTasks))
+        localStorage.setItem(`${weekTrobleshot}-${this.allWeek[this.whichTodoDay()]}`, JSON.stringify(myTasks))
       }
     }
   }
