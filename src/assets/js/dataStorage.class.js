@@ -110,8 +110,8 @@ class DataStorage {
   }
   getTodoData(elementPlace) {
     let myTasks
-    if (localStorage.hasOwnProperty(`${this.getWeek()}-${this.allWeek[this.whichTodoDay()]}`) || localStorage.hasOwnProperty(`${this.getWeek() + 1}-${this.allWeek[0]}`)) {
-      if (this.getDay() === 6 && this.whichTodoDay() === 0 && localStorage.hasOwnProperty(`${this.getWeek() + 1}-${this.allWeek[0]}`)) {
+    if (this.getDay() === 6 && this.whichTodoDay() === 0) {
+      if (localStorage.hasOwnProperty(`${this.getWeek() + 1}-${this.allWeek[0]}`)) {
         myTasks = JSON.parse(localStorage.getItem(`${this.getWeek() + 1}-${this.allWeek[this.whichTodoDay()]}`))
         myTasks.forEach(task => {
           const element = `
@@ -122,30 +122,32 @@ class DataStorage {
           `
           elementPlace.innerHTML += element
         })
-      } else if (this.getDay() === 0 && this.whichTodoDay() === 6 && localStorage.hasOwnProperty(`${this.getWeek() - 1}-${this.allWeek[6]}`)) {
+      }
+    } else if (this.getDay() === 0 && this.whichTodoDay() === 6) {
+      if (localStorage.hasOwnProperty(`${this.getWeek() - 1}-${this.allWeek[6]}`)) {
         myTasks = JSON.parse(localStorage.getItem(`${this.getWeek() - 1}-${this.allWeek[this.whichTodoDay()]}`))
         myTasks.forEach(task => {
           const element = `
-          <div class="formItem">
+            <div class="formItem">
             <input type="checkbox" class="taskList" name="${task.task}" id="${task.task}">
             <label for="${task.task}">${task.task}</label>
-          </div>
-          `
+            </div>
+            `
           elementPlace.innerHTML += element
         })
-      } else {
-        if (localStorage.hasOwnProperty(`${this.getWeek()}-${this.allWeek[this.whichTodoDay()]}`)) {
-          myTasks = JSON.parse(localStorage.getItem(`${this.getWeek()}-${this.allWeek[this.whichTodoDay()]}`))
-          myTasks.forEach(task => {
-            const element = `
+      }
+    } else {
+      if (localStorage.hasOwnProperty(`${this.getWeek()}-${this.allWeek[this.whichTodoDay()]}`)) {
+        myTasks = JSON.parse(localStorage.getItem(`${this.getWeek()}-${this.allWeek[this.whichTodoDay()]}`))
+        myTasks.forEach(task => {
+          const element = `
           <div class="formItem">
           <input type="checkbox" class="taskList" name="${task.task}" id="${task.task}">
           <label for="${task.task}">${task.task}</label>
           </div>
           `
-            elementPlace.innerHTML += element
-          })
-        }
+          elementPlace.innerHTML += element
+        })
       }
     }
   }
