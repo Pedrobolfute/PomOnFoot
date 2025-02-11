@@ -17,6 +17,7 @@ let musicaPause = false;
 let next;
 
 let tracks = [
+  './src/assets/audio/chill.mp3',
   './src/assets/audio/rain.mp3',
   './src/assets/audio/thunderstorm.mp3',
   './src/assets/audio/fire.mp3',
